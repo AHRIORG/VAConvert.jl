@@ -1,0 +1,7 @@
+name = "VAConvert"
+uuid = "39626ebd-a23c-478f-a8e6-9f00e0d42834"
+authors = ["Kobus Herbst", "Ariane Sessego"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.10"
