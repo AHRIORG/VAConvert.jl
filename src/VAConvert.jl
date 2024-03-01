@@ -8,7 +8,7 @@ using DataFrames
 using CSV
 using Logging
 # Write your package code here.
-export readtable, connectdb, sessions, individual_deaths, sessionvalues
+export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -20,6 +20,26 @@ function connectdb(server, database)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
     con = ODBC.Connection(conStr)
     return con
+end
+
+function getvariables(con)
+    sql = """
+    SELECT
+      Variable, Prompt, VarDomain, VarGroup
+    FROM dbo.Variables;
+    """
+    df = DBInterface.execute(con, sql) |> DataFrame
+    return df
+end
+
+function getdomains(con)
+    sql = """
+    SELECT
+      VarDomain,Code,Caption,Sequence
+    FROM dbo.VarDomainCodes;
+    """
+    df = DBInterface.execute(con, sql) |> DataFrame
+    return df
 end
 
 function sessions(con, source)
@@ -130,7 +150,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         while ismissing(df[i, col]) && i <= nrow(df)
             i += 1
         end
-        if i <= nrow(i)
+        if i <= nrow(df)
             params = fill(df[i, col], 7)
             rf = DBInterface.execute(stmt, params) |> DataFrame
             insertcols!(rf, :QSessionID, :IIntID => df[i, :IIntID], :Source => String(col))
