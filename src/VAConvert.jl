@@ -8,7 +8,7 @@ using DataFrames
 using CSV
 using Logging
 # Write your package code here.
-export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains
+export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains, read_variablemap
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -166,7 +166,107 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         end
         return rf
     end
-    return nothing
+    return DataFrame()
+end
+
+"""
+    read_variablemap(path,file)::AbstractDataFrame
+
+Read a PyCrossVA configuration file and return a DataFrame with the contents.
+Renames the columns to match the variablemappings table:
+    * New Column Name = destination_variable - the variable_id of the new column
+    * New Column Documentation = destination_description - Stored in the variable table
+    * Source Column ID = from_variable - the variable_id of the source variable
+    * Source Column Documentation = from_description - will be in the variables table
+    * Relationship = operator - the operator to be used to create the new variable
+    * Condition = operants - the operants to be used with the operator
+    * Prerequisite = prerequisite_variable - the variable name of the prerequisite
+"""
+function read_variablemap(path, file)::AbstractDataFrame
+    filepath = joinpath(path, file)
+    if !isfile(filepath)
+        @error "File not found: $filepath"
+        return DataFrame()
+    end
+    df = CSV.read(joinpath(path, file), DataFrame)
+    rename!(df, Dict("New Column Name" => "destination_variable",
+        "New Column Documentation" => "destination_description",
+        "Source Column ID" => "from_variable",
+        "Source Column Documentation" => "from_description",
+        "Relationship" => "operator",
+        "Condition" => "operants",
+        "Prerequisite" => "prerequisite_variable"))
+    return df
+end
+#=
+  * eq: is equal to
+  * gt: is greater than
+  * ge: is greater than or equal to
+  * lt: is less than
+  * le: is less than or equal to
+  * ne: is not equal to
+  * contains: contains the substring
+  * between: is between 2 numbers, inclusive
+=#
+eq(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(isequal(x, y), "y", "n"))
+gt(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(x > y, "y", "n"))
+ge(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(x >= y, "y", "n"))
+lt(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(isless(x,y), "y", "n"))
+le(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(x <= y, "y", "n"))
+contains(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(Base.contains(x, y), "y", "n"))
+
+"""
+    between(x, y)
+
+Whether x falls within the range y.  y must be a string of the form "a to b" where a and b are integers.
+x will be converted to an integer if it is a string.
+"""
+function between(x, y)
+    if ismissing(x) || ismissing(y)
+        return "-"
+    else
+        r = split(y, "to")
+        if length(r) != 2
+            error("Invalid range: $y")
+        else
+            if isa(x, AbstractString)
+                x = parse(Int64, x)
+            end
+            a = parse(Int64, r[1])
+            b = parse(Int64, r[2])
+            return x >= a && x <= b ? "y" : "n"
+        end
+    end
+end
+
+"""
+    OR(old,new)
+
+    Evaluate OR condition
+"""
+function OR(old, new)
+    if old == "y" || new == "y"
+        return "y"
+    elseif old == "-" && new == "-"
+        return "-"
+    else
+        return "n"
+    end
+end
+
+"""
+    AND(x, y)
+
+Evaluate AND condition
+"""
+function AND(x, y)
+    if x == "y" && y == "y"
+        return "y"
+    elseif x == "-" && y == "-"
+        return "-"
+    else
+        return "n"
+    end
 end
 
 end
