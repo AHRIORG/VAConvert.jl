@@ -40,12 +40,16 @@ try
   pretty_table(io, va_variables; alignment=[:c, :l, :r], show_subheader=false)
   va_variables = leftjoin(va_variables, vavariables, on=:Variable, makeunique=true)
   # output csv files for each source variables
-  for source in unique(va_variables.Source)
+  outputdir = joinpath(ENV["DATA_PATH"], "csvfiles")
+  if !isdir(outputdir)
+      mkpath(outputdir)
+  end
+for source in unique(va_variables.Source)
     source_variables = filter(row -> row.Source == source, va_variables)
-    CSV.write(joinpath(inputdir, "VAVariables_$source.csv"), source_variables)
+    CSV.write(joinpath(outputdir, "VAVariables_$source.csv"), source_variables)
   end
   #output variable domains
-  CSV.write(joinpath(inputdir, "VAVariableDomains.csv"), vadomains)
+  CSV.write(joinpath(outputdir, "VAVariableDomains.csv"), vadomains)
 finally
   elapsed = now() - start_time
   @info "===== Completed $(Dates.format(now(), "yyyy-mm-dd HH:MM")) duration $(canonicalize(Dates.CompoundPeriod(elapsed)))"
