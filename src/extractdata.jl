@@ -27,8 +27,10 @@ try
     df1 = sessions(acq, "VAQ") # read old questionnaire sessions
     df2 = sessions(acq, "VAP") # read new questionnaire sessions
     df3 = sessions(acq, "VCL") # read checklist sessions
-    df = vcat(df1, df2, df3)
+    df4 = sessions(acq, "VAW") # read WHO2020 sessions
+    df = vcat(df1, df2, df3, df4)
     @info "Sources\n"
+    flush(io)
     sources = combine(groupby(df, :Source), nrow => :n)
     pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
     deaths = unstack(df, :IIntID, :Source, :QSessionID)
@@ -39,12 +41,14 @@ try
     deaths = leftjoin(individuals, deaths, on=:IIntID, matchmissing = :error)
     transform!(deaths, :VAQ => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAQ,
                        :VAP => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAP,
-                       :VCL => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVCL)
+                       :VCL => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVCL,
+                       :VAW => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAW)
     dyr = combine(groupby(deaths,:DoDYr; sort = true), :hasVAQ => sum => :nVAQ,
                                                        :hasVAP => sum => :nVAP,
                                                        :hasVCL => sum => :nVCL,
+                                                       :hasVAW => sum => :nVAW,
                                                        nrow => :nDeaths)
-    pretty_table(io, dyr; alignment=[:c, :r, :r, :r, :r], show_subheader=false)
+    pretty_table(io, dyr; alignment=[:c, :r, :r, :r, :r, :r], show_subheader=false)
     flush(io)
     v = sessionvalues(acq, deaths, :VAQ)
     @info "$(nrow(v)) values written for source $(:VAQ)"
@@ -52,7 +56,9 @@ try
     @info "$(nrow(l)) values written for source $(:VCL)"
     p = sessionvalues(acq, deaths, :VAP)
     @info "$(nrow(p)) values written for source $(:VAP)"
-    values = vcat(v,l,p)
+    w = sessionvalues(acq, deaths, :VAW)
+    @info "$(nrow(p)) values written for source $(:VAW)"
+    values = vcat(v,l,p,w)
     flush(io)
     acq_variables = getvariables(acq)
     va_variables = combine(groupby(values, [:Variable]), nrow => :n)

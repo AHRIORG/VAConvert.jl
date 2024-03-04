@@ -31,7 +31,7 @@ try
   @info "VA Variable Values $(nrow(vadata)) rows\n"
   @info "VA Deaths $(nrow(vadeaths)) rows\n"
   @info "VA Variables $(nrow(vavariables)) rows\n"
-  pretty_table(io, vavariables; show_subheader=false)
+  pretty_table(io, vavariables; alignment=[:l, :l, :l, :l, :r], show_subheader=false)
   #summarise rows for each source
   sources = combine(groupby(vadata, :Source), nrow => :n)
   pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
