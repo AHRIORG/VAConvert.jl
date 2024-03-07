@@ -8,7 +8,8 @@ using DataFrames
 using CSV
 using Logging
 # Write your package code here.
-export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains, read_variablemap
+export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains, 
+        convert_durations, read_variablemap
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -168,7 +169,21 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
     end
     return DataFrame()
 end
+function convert_durations(variables::AbstractDataFrame, data::AbstractDataFrame)::AbstractDataFrame
+    duration_map = Dict{String, Union{Number, Missing}("NAD" => missing, "DFT" => missing, "MIS" => missing, "R"=> "missing",
+    "DAY" => 1, "WEE" => 7, "MON" => 30, "YEA" => 365, "U" => missing,
+    "H" => 1/24, "M" => 30, "D" => 1, "Y" => 365, "W" => 7)}
+    duration_domains = ["VA_Units","VAPUnits","VAWUnit1","VAWUnit2","VAWUnit3"]
+    duration_variables = subset(variables, in.(variables[!, :VarDomain], duration_domains))[:, :Variable]
+    for row in eachrow(subset(data, in.(data[!, :Variable], duration_variables)))
+        if row[:Value] != missing
+            if row[:Variable] in duration_variables
+                data[row, :Value] = row[:Value] * duration_map[row[:Variable]]
+            end
+        end
+    end
 
+end
 """
     read_variablemap(path,file)::AbstractDataFrame
 
