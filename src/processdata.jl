@@ -44,14 +44,20 @@ try
   # output csv files for each source variables
   outputdir = joinpath(ENV["DATA_PATH"], "csvfiles")
   if !isdir(outputdir)
-      mkpath(outputdir)
+    mkpath(outputdir)
   end
-for source in unique(va_variables.Source)
+  for source in unique(va_variables.Source)
     source_variables = filter(row -> row.Source == source, va_variables)
     CSV.write(joinpath(outputdir, "VAVariables_$source.csv"), source_variables)
   end
   #output variable domains
   CSV.write(joinpath(outputdir, "VAVariableDomains.csv"), vadomains)
+  #output va data as flat csv files
+  for source in unique(vadata.Source)
+    source_data = filter(row -> row.Source == source, vadata)
+    flat_data = unstack(source_data, :IIntID, :Variable, :Value)
+    CSV.write(joinpath(outputdir, "VAData_$source.csv"), flat_data)
+  end
 finally
   elapsed = now() - start_time
   @info "===== Completed $(Dates.format(now(), "yyyy-mm-dd HH:MM")) duration $(canonicalize(Dates.CompoundPeriod(elapsed)))"
