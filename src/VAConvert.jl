@@ -9,7 +9,7 @@ using CSV
 using Logging
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains, 
-        convert_durations, read_variablemap
+        read_variablemap
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -169,6 +169,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
     end
     return DataFrame()
 end
+#=
 function convert_durations(variables::AbstractDataFrame, data::AbstractDataFrame)::AbstractDataFrame
     duration_map = Dict{String, Union{Number, Missing}("NAD" => missing, "DFT" => missing, "MIS" => missing, "R"=> "missing",
     "DAY" => 1, "WEE" => 7, "MON" => 30, "YEA" => 365, "U" => missing,
@@ -184,6 +185,7 @@ function convert_durations(variables::AbstractDataFrame, data::AbstractDataFrame
     end
 
 end
+=#
 """
     read_variablemap(path,file)::AbstractDataFrame
 
