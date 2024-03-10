@@ -20,14 +20,31 @@ start_time = now()
 #endregion
 
 try
-    path = ENV["MAPPING_PATH"]
-    @info "Mapping path: $path"
-    global df = read_variablemap(path,"2012WHO_to_InSilicoVA.csv")
+    mappath = ENV["MAPPING_PATH"]
+    @info "Mapping path: $mappath"
+    outputdir = joinpath(ENV["DATA_PATH"])
+    @info "Output path: $outputdir"
+    #map each source in vadata
+    for source in ["VAQ", "VAP", "VAW"]
+        #read va data
+        mapfile = joinpath(mappath, "$(source)_to_InSilicoVA.csv")
+        if isfile(mapfile)
+            map = read_variablemap(mapfile)
+            source_cols = unique(map.from_variable)
+            @info "Number of unique source variables: $(length(source_cols)) in $source"
+            flush(io)
+            source_data = Arrow.Table(joinpath(outputdir, "arrowfiles", "VAData_$source.arrow")) |> DataFrame
+            df = map_dataframe(source_data, map, :IIntID)
+            flat_output = unstack(df, :row_id, :variable, :value)
+            Arrow.write(joinpath(outputdir, "arrowfiles", "VAData_converted_$(source).arrow"), flat_output)
+            CSV.write(joinpath(outputdir, "csvfiles", "VAData_converted_$(source).csv"), flat_output)
+        end
+    end
 finally
     elapsed = now() - start_time
     @info "===== Completed $(Dates.format(now(), "yyyy-mm-dd HH:MM")) duration $(canonicalize(Dates.CompoundPeriod(elapsed)))"
     flush(io)
     global_logger(old_logger)
     close(io)
-  end
+end
 

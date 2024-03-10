@@ -32,8 +32,7 @@ try
   @info "VA Deaths $(nrow(vadeaths)) rows\n"
   @info "VA Variables $(nrow(vavariables)) rows\n"
   pretty_table(io, vavariables; alignment=[:l, :l, :l, :l, :r], show_subheader=false)
-  #convert durations to days
-  #vadata = convert_durations(vavariables, vadata)
+
   #summarise rows for each source
   sources = combine(groupby(vadata, :Source), nrow => :n)
   pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
@@ -54,8 +53,12 @@ try
   CSV.write(joinpath(outputdir, "VAVariableDomains.csv"), vadomains)
   #output va data as flat csv files
   for source in unique(vadata.Source)
+    @info "Processing source $source"
     source_data = filter(row -> row.Source == source, vadata)
     flat_data = unstack(source_data, :IIntID, :Variable, :Value)
+    CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
+    f = convert_durations!(flat_data)
+    Arrow.write(joinpath(ENV["DATA_PATH"], "arrowfiles", "VAData_$source.arrow"), f)
     CSV.write(joinpath(outputdir, "VAData_$source.csv"), flat_data)
   end
 finally

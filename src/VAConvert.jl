@@ -8,8 +8,8 @@ using DataFrames
 using CSV
 using Logging
 # Write your package code here.
-export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains, 
-        read_variablemap
+export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
+    read_variablemap, convert_durations!, map_dataframe
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -99,7 +99,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
             QSessionID,
             Variable,
-            CAST(VarValue AS varchar) Value
+            TRIM(VarValue) Value
         FROM dbo.QVarValuesCode
         WHERE QSessionID = ?
         UNION
@@ -127,7 +127,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
         QSessionID,
             Variable,
-            CAST(VarValue AS varchar) Value
+            TRIM(VarValue) Value
             FROM dbo.QVarValuesStr
         WHERE QSessionID = ?
         UNION
@@ -154,13 +154,13 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         if i <= nrow(df)
             params = fill(df[i, col], 7)
             rf = DBInterface.execute(stmt, params) |> DataFrame
-            insertcols!(rf, :QSessionID, :IIntID => df[i, :IIntID], :Source => String(col))
+            insertcols!(rf, :QSessionID, :IIntID => df[i, :IIntID], :Source => string(col))
             i += 1
             for j in i:nrow(df)
                 if !ismissing(df[j, col])
                     params = fill(df[j, col], 7)
                     f = DBInterface.execute(stmt, params) |> DataFrame
-                    insertcols!(f, :QSessionID, :IIntID => df[j, :IIntID], :Source => String(col))
+                    insertcols!(f, :QSessionID, :IIntID => df[j, :IIntID], :Source => string(col))
                     append!(rf, f)
                 end
             end
@@ -169,23 +169,37 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
     end
     return DataFrame()
 end
-#=
-function convert_durations(variables::AbstractDataFrame, data::AbstractDataFrame)::AbstractDataFrame
-    duration_map = Dict{String, Union{Number, Missing}("NAD" => missing, "DFT" => missing, "MIS" => missing, "R"=> "missing",
-    "DAY" => 1, "WEE" => 7, "MON" => 30, "YEA" => 365, "U" => missing,
-    "H" => 1/24, "M" => 30, "D" => 1, "Y" => 365, "W" => 7)}
-    duration_domains = ["VA_Units","VAPUnits","VAWUnit1","VAWUnit2","VAWUnit3"]
-    duration_variables = subset(variables, in.(variables[!, :VarDomain], duration_domains))[:, :Variable]
-    for row in eachrow(subset(data, in.(data[!, :Variable], duration_variables)))
-        if row[:Value] != missing
-            if row[:Variable] in duration_variables
-                data[row, :Value] = row[:Value] * duration_map[row[:Variable]]
+#
+"""
+    convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
+
+Take a verbal autopsy file in flat format and normalise the duration variables to days.
+"""
+function convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
+    duration_lookup = Dict{String,Union{Number,Missing}}("NAD" => missing, "DFT" => missing, "MIS" => missing, "R" => missing,
+        "DAY" => 1, "WEE" => 7, "MON" => 30, "YEA" => 365, "U" => missing, "QRY" => missing, "MIN" => 1 / 1440, "HOR" => 1 / 24,
+        "H" => 1 / 24, "M" => 30, "D" => 1, "Y" => 365, "W" => 7, "HRS" => 1 / 24, "YRS" => 365, "DKN" => missing, "HOU" => 1 / 24)
+    duration_data = CSV.read(joinpath(ENV["MAPPING_PATH"], "VA_Duration_Unit_equivalence.csv"), DataFrame)
+    duration_map = Dict{String,String}(zip(duration_data[!, :Variable_numeric], duration_data[!, :Variable_unit]))
+    for row in eachrow(data)
+        for (k, v) in duration_map
+            if hasproperty(row, k) && !ismissing(row[k]) && !ismissing(row[v])
+                if haskey(duration_lookup, row[v])
+                    #println("$k $v")
+                    nvalue = parse(Int, row[k]) * duration_lookup[row[v]]
+                    row[k] = string(nvalue)
+                    row[v] = "DAY"
+                    #println(nvalue)
+                else
+                    @warn "Unknown duration unit: '$(row[v])' $k $v"
+                end
             end
         end
     end
-
+    return data
 end
-=#
+
+#
 """
     read_variablemap(path,file)::AbstractDataFrame
 
@@ -199,13 +213,12 @@ Renames the columns to match the variablemappings table:
     * Condition = operants - the operants to be used with the operator
     * Prerequisite = prerequisite_variable - the variable name of the prerequisite
 """
-function read_variablemap(path, file)::AbstractDataFrame
-    filepath = joinpath(path, file)
-    if !isfile(filepath)
+function read_variablemap(file)::AbstractDataFrame
+    if !isfile(file)
         @error "File not found: $filepath"
         return DataFrame()
     end
-    df = CSV.read(joinpath(path, file), DataFrame)
+    df = CSV.read(file, DataFrame)
     rename!(df, Dict("New Column Name" => "destination_variable",
         "New Column Documentation" => "destination_description",
         "Source Column ID" => "from_variable",
@@ -225,11 +238,121 @@ end
   * contains: contains the substring
   * between: is between 2 numbers, inclusive
 =#
-eq(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(isequal(x, y), "y", "n"))
-gt(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(x > y, "y", "n"))
-ge(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(x >= y, "y", "n"))
-lt(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(isless(x,y), "y", "n"))
-le(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(x <= y, "y", "n"))
+# 
+
+"""
+    eq(x, y)
+
+    First try to convert x & y to Int or Float64 if they are strings.
+    Then compare x and y and return "y" if they are equal, "n" if they are not, and "-" if either is missing.
+"""
+function eq(x, y)
+    if ismissing(x) || ismissing(y)
+        return "-"
+    end
+    if isequal(x, "missing") || isequal(y, "missing")
+        return "-"
+    end
+    if tryparse(Int, x) !== nothing && tryparse(Int, y) !== nothing
+        x = parse(Int, x)
+        y = parse(Int, y)
+    elseif tryparse(Float64, x) !== nothing && tryparse(Float64, y) !== nothing
+        x = parse(Float64, x)
+        y = parse(Float64, y)
+    end
+    return ifelse(isequal(x, y), "y", "n")
+end
+
+"""
+    gt(x, y)
+
+First try to convert x & y to Int or Float64 if they are strings.
+Then compare x and y and return "y" if x is greater than y, "n" if it is not, and "-" if either is missing.
+"""
+function gt(x, y)
+    if ismissing(x) || ismissing(y)
+        return "-"
+    end
+    if isequal(x, "missing") || isequal(y, "missing")
+        return "-"
+    end
+    if tryparse(Int, x) !== nothing && tryparse(Int, y) !== nothing
+        x = parse(Int, x)
+        y = parse(Int, y)
+    elseif tryparse(Float64, x) !== nothing && tryparse(Float64, y) !== nothing
+        x = parse(Float64, x)
+        y = parse(Float64, y)
+    end
+    return ifelse(x > y, "y", "n")
+end
+
+"""
+    ge(x,y)
+
+First try to convert x & y to Int or Float64 if they are strings.
+Then compare x and y and return "y" if x is greater than or equal to y, "n" if it is not, and "-" if either is missing.
+"""
+function ge(x, y)
+    if ismissing(x) || ismissing(y)
+        return "-"
+    end
+    if isequal(x, "missing") || isequal(y, "missing")
+        return "-"
+    end
+    if tryparse(Int, x) !== nothing && tryparse(Int, y) !== nothing
+        x = parse(Int, x)
+        y = parse(Int, y)
+    elseif tryparse(Float64, x) !== nothing && tryparse(Float64, y) !== nothing
+        x = parse(Float64, x)
+        y = parse(Float64, y)
+    end
+    return ifelse(x >= y, "y", "n")
+end
+
+"""
+    lt(x, y)
+
+First try to convert x & y to Int or Float64 if they are strings.
+Then compare x and y and return "y" if x is less than y, "n" if it is not, and "-" if either is missing.
+"""
+function lt(x, y)
+    if ismissing(x) || ismissing(y)
+        return "-"
+    end
+    if isequal(x, "missing") || isequal(y, "missing")
+        return "-"
+    end
+    if tryparse(Int, x) !== nothing && tryparse(Int, y) !== nothing
+        x = parse(Int, x)
+        y = parse(Int, y)
+    elseif tryparse(Float64, x) !== nothing && tryparse(Float64, y) !== nothing
+        x = parse(Float64, x)
+        y = parse(Float64, y)
+    end
+    return ifelse(x < y, "y", "n")
+end
+"""
+    le(x, y)
+
+    First try to convert x & y to Int or Float64 if they are strings.
+    Then compare x and y and return "y" if x is less or equal than y, "n" if it is not, and "-" if either is missing.
+"""
+function le(x, y)
+    if ismissing(x) || ismissing(y)
+        return "-"
+    end
+    if isequal(x, "missing") || isequal(y, "missing")
+        return "-"
+    end
+    if tryparse(Int, x) !== nothing && tryparse(Int, y) !== nothing
+        x = parse(Int, x)
+        y = parse(Int, y)
+    elseif tryparse(Float64, x) !== nothing && tryparse(Float64, y) !== nothing
+        x = parse(Float64, x)
+        y = parse(Float64, y)
+    end
+    return ifelse(x <= y, "y", "n")
+end
 contains(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(Base.contains(x, y), "y", "n"))
 
 """
@@ -241,18 +364,20 @@ x will be converted to an integer if it is a string.
 function between(x, y)
     if ismissing(x) || ismissing(y)
         return "-"
+    end
+    if isequal(x, "missing") || isequal(y, "missing")
+        return "-"
+    end
+    r = split(y, "to")
+    if length(r) != 2
+        error("Invalid range: $y")
     else
-        r = split(y, "to")
-        if length(r) != 2
-            error("Invalid range: $y")
-        else
-            if isa(x, AbstractString)
-                x = parse(Int64, x)
-            end
-            a = parse(Int64, r[1])
-            b = parse(Int64, r[2])
-            return x >= a && x <= b ? "y" : "n"
+        if isa(x, AbstractString)
+            x = parse(Float64, x)
         end
+        a = parse(Int64, r[1])
+        b = parse(Int64, r[2])
+        return ifelse(x >= a && x <= b, "y", "n")
     end
 end
 
@@ -285,5 +410,67 @@ function AND(x, y)
         return "n"
     end
 end
+function prepare(x)
+    if !ismissing(x)
+        return strip(lowercase(x))
+    else
+        return x
+    end
+end
+"""
+    map_dataframe(fromdf::AbstractDataFrame, map::AbstractDataFrame, source_columns::AbstractDataFrame, row_identifier)::AbstractDataFrame
+
+Convert fromdf (must be in wide format) to an output dataframe using the variablemap.
+The output dataframe is in long format suitable for insertion into the data table.
+
+Change the approach to converting line by line for mapping table, add support for prerequisite.
+TODO: currently assume multiple conditions are OR. But can add column in mapping file to allow AND relationships. 
+"""
+function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, row_identifier::Symbol)::AbstractDataFrame
+
+    sort!(map_table, [:from_variable, :destination_variable]) #order matters for prerequisites
+    N = size(fromdf, 1)
+
+    #Create a new dataframe to store the output
+    outdf = select(fromdf, [] => Returns(1:N) => :row_id, [] => Returns(string(row_identifier)) => :variable, row_identifier => ByRow(x -> string(x)) => :value)
+#
+    for maprow in eachrow(map_table)
+
+        if in(maprow.from_variable, names(fromdf))
+            sourcevalue = fromdf[!, Symbol(maprow.from_variable)]
+        else
+            sourcevalue = fill(missing, N)
+            @info "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
+        end
+        sourcevalue = [prepare(x) for x in sourcevalue]
+        operant = strip(lowercase(maprow.operants))
+
+        # Construct the conversion expression and get converted values
+        value = [eval(Expr(:call, Symbol(maprow.operator), x, operant)) for x in sourcevalue]
+
+        # If destination id already exists in output, meaning mapping is based on multiple conditions 
+        if in(maprow.destination_variable, outdf.variable)
+            # Update existing values
+            prevvalue = filter(row -> row.variable .== maprow.destination_variable, outdf)
+            sort!(prevvalue, :row_id)
+            value = OR.(prevvalue.value, value)
+            # Remove existing values
+            filter!(row -> row.variable .!= maprow.destination_variable, outdf)
+        end
+
+        # Check whether prerequisites are met and adjust values
+        if !ismissing(maprow.prerequisite_variable)
+            prereq = filter(row -> row.variable .== maprow.prerequisite_variable, outdf)
+            value = ifelse.(prereq.value .== "y", value, "-")
+        end
+
+        append!(outdf, DataFrame(row_id=1:N,  #temporary row id for each row in fromdf
+            variable=maprow.destination_variable,
+            value=value))
+    end
+    #
+    return outdf
+end
+
 
 end
