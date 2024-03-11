@@ -40,7 +40,7 @@ try
             @info "Number of deaths: $(nrow(flat_output)) in $source output"
             Arrow.write(joinpath(outputdir, "arrowfiles", "VAData_converted_$(source).arrow"), flat_output)
             CSV.write(joinpath(outputdir, "csvfiles", "VAData_converted_$(source).csv"), flat_output)
-            fluch(io)
+            flush(io)
         end
     end
 finally
