@@ -34,7 +34,7 @@ try
             @info "Number of unique source variables: $(length(source_cols)) in $source"
             flush(io)
             source_data = Arrow.Table(joinpath(outputdir, "arrowfiles", "VAData_$source.arrow")) |> DataFrame
-            @info "Number of deaths: $(nrow(flat_output)) in $source input"
+            @info "Number of deaths: $(nrow(source_data)) in $source input"
             df = map_dataframe(source_data, map, :IIntID)
             flat_output = unstack(df, :row_id, :variable, :value)
             @info "Number of deaths: $(nrow(flat_output)) in $source output"
