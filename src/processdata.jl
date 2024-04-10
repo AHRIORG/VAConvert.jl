@@ -55,11 +55,13 @@ try
   for source in unique(vadata.Source)
     @info "Processing source $source"
     source_data = filter(row -> row.Source == source, vadata)
+    source_data = stripcrlf(source_data) # remove carriage return and line feed in text fields
     flat_data = unstack(source_data, :IIntID, :Variable, :Value)
     CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
     f = convert_durations!(flat_data)
+    f = add_individual_dates(f, vadeaths)
     Arrow.write(joinpath(ENV["DATA_PATH"], "arrowfiles", "VAData_$source.arrow"), f)
-    CSV.write(joinpath(outputdir, "VAData_$source.csv"), flat_data)
+    CSV.write(joinpath(outputdir, "VAData_$source.csv"), f)
   end
 finally
   elapsed = now() - start_time

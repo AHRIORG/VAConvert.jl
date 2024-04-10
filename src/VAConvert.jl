@@ -7,9 +7,10 @@ using ODBC
 using DataFrames
 using CSV
 using Logging
+using Dates
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
-    read_variablemap, convert_durations!, map_dataframe
+    read_variablemap, convert_durations!, map_dataframe, stripcrlf, add_individual_dates
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -106,7 +107,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
             QSessionID,
             Variable,
-            CAST(VarValue AS varchar) Value
+            CONVERT(VARCHAR, VarValue, 23) Value
         FROM dbo.QVarValuesDate
         WHERE QSessionID = ?
         UNION
@@ -141,7 +142,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
             QSessionID,
             Variable,
-            CAST(VarValue AS varchar) Value
+            CONVERT(VARCHAR, AssignedDate, 23) Value
         FROM dbo.QVarValuesVPDate
         WHERE QSessionID = ?;
     """
@@ -472,5 +473,14 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
     return outdf
 end
 
+function stripcrlf(df::AbstractDataFrame)::AbstractDataFrame
+    return transform(df, :Value => ByRow(x -> !ismissing(x) ? replace(x, r"\r\n|\r|\n" => ";") : x) => :Value)
+end
+
+function add_individual_dates(df::AbstractDataFrame, deaths::AbstractDataFrame)::AbstractDataFrame
+    s = select(deaths, :IIntID, :DoB => ByRow(x -> Dates.Date(x)) =>:acdis_dob, :DoD => ByRow(x -> Dates.Date(x)) => :acdis_dod, 
+    [:DoB, :DoD] => ByRow((x,y) -> !ismissing(x) && !ismissing(y) ? Dates.value(Dates.Date(y) - Dates.Date(x)) : missing) => :acdis_ageindays) #fix age calculation to get days
+    return innerjoin(s, df, on=:IIntID)
+end
 
 end
