@@ -411,9 +411,13 @@ function AND(x, y)
         return "n"
     end
 end
-function prepare(x)
+function prepare(x) # prepare strings to put them in lowercase
     if !ismissing(x)
-        return strip(lowercase(x))
+        if isa(x, String)
+            return strip(lowercase(x))
+        else
+            return x # if it is an integer
+        end
     else
         return x
     end
@@ -429,13 +433,14 @@ TODO: currently assume multiple conditions are OR. But can add column in mapping
 """
 function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, row_identifier::Symbol)::AbstractDataFrame
 
-    sort!(map_table, [:from_variable, :destination_variable]) #order matters for prerequisites
+    # sort!(map_table, [:from_variable, :destination_variable]) #order matters for prerequisites #this has been commented out because ordered in a way that did not make sense
     N = size(fromdf, 1)
 
     #Create a new dataframe to store the output
     outdf = select(fromdf, [] => Returns(1:N) => :row_id, [] => Returns(string(row_identifier)) => :variable, row_identifier => ByRow(x -> string(x)) => :value)
 #
     for maprow in eachrow(map_table)
+        # println("Processing: ", maprow)
 
         if in(maprow.from_variable, names(fromdf))
             sourcevalue = fromdf[!, Symbol(maprow.from_variable)]
@@ -447,6 +452,7 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
         operant = strip(lowercase(maprow.operants))
 
         # Construct the conversion expression and get converted values
+        # println("Processing: Construct the conversion expression and get converted values ")
         value = [eval(Expr(:call, Symbol(maprow.operator), x, operant)) for x in sourcevalue]
 
         # If destination id already exists in output, meaning mapping is based on multiple conditions 
@@ -460,11 +466,15 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
         end
 
         # Check whether prerequisites are met and adjust values
+        
         if !ismissing(maprow.prerequisite_variable)
+            #println("Processing: Check whether prerequisites are met and adjust values")
+            #println("row.variable:", unique(outdf.variable), "// maprow.prerequisite_variable:", maprow.prerequisite_variable)
             prereq = filter(row -> row.variable .== maprow.prerequisite_variable, outdf)
             value = ifelse.(prereq.value .== "y", value, "-")
         end
 
+        #println("Processing: Append")
         append!(outdf, DataFrame(row_id=1:N,  #temporary row id for each row in fromdf
             variable=maprow.destination_variable,
             value=value))
