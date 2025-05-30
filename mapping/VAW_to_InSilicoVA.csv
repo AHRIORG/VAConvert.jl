@@ -1,5 +1,5 @@
 New Column Name,New Column Documentation,Source Column ID,Source Column Documentation,Relationship,Condition,Prerequisite,RelationshipPyCrossVA,ConditionPyCrossVA,PrerequisitePyCrossVA,Hint_WHO2016,Notes,Matching_source,Source Column IDPyCrossVA,Source Column DocumentationPyCrossVA,Meta: Notes
-i019a,Was he male? (male),,What was the sex of the deceased?,eq,MAL,,eq,male,,,NA,VAW_Variables merged with PyCrossVA example,Id10019,What was the sex of the deceased?,NA
+i019a,Was he male? (male),wvb_sex,What was the sex of the deceased?,eq,MAL,,eq,male,,,NA,VAW_Variables merged with PyCrossVA example,Id10019,What was the sex of the deceased?,NA
 i019b,Was she female? (female),wvb_sex,What was the sex of the deceased?,eq,FEM,,eq,female,,,NA,VAW_Variables merged with PyCrossVA example,Id10019,What was the sex of the deceased?,NA
 i022b,Was s(he) aged 50 to 64 years at death? (50 to 64),acdis_ageindays,Age in days,between,18250 to 23724,,between,50 to 64,,,NA,acdis,ageInYears, Calculated as: int(${ageInDays} div 365.25),NA
 i022c,Was s(he) aged 15 to 49 years at death? (15 to 49),acdis_ageindays,Age in days,between,5475 to 18249,,between,15 to 49,,,NA,acdis,age_adult,[Enter adult's age in years:],NA
