@@ -440,38 +440,46 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
     outdf = select(fromdf, [] => Returns(1:N) => :row_id, [] => Returns(string(row_identifier)) => :variable, row_identifier => ByRow(x -> string(x)) => :value)
 #
     for maprow in eachrow(map_table)
-        # println("Processing: ", maprow)
-
-        if in(maprow.from_variable, names(fromdf))
-            sourcevalue = fromdf[!, Symbol(maprow.from_variable)]
-        else
-            sourcevalue = fill(missing, N)
-            @info "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
-        end
-        sourcevalue = [prepare(x) for x in sourcevalue]
-        operant = strip(lowercase(maprow.operants))
-
-        # Construct the conversion expression and get converted values
-        # println("Processing: Construct the conversion expression and get converted values ")
-        value = [eval(Expr(:call, Symbol(maprow.operator), x, operant)) for x in sourcevalue]
-
-        # If destination id already exists in output, meaning mapping is based on multiple conditions 
-        if in(maprow.destination_variable, outdf.variable)
-            # Update existing values
-            prevvalue = filter(row -> row.variable .== maprow.destination_variable, outdf)
-            sort!(prevvalue, :row_id)
-            value = OR.(prevvalue.value, value)
-            # Remove existing values
-            filter!(row -> row.variable .!= maprow.destination_variable, outdf)
-        end
-
-        # Check whether prerequisites are met and adjust values
+         println("Processing: ", maprow)
         
-        if !ismissing(maprow.prerequisite_variable)
-            #println("Processing: Check whether prerequisites are met and adjust values")
-            #println("row.variable:", unique(outdf.variable), "// maprow.prerequisite_variable:", maprow.prerequisite_variable)
-            prereq = filter(row -> row.variable .== maprow.prerequisite_variable, outdf)
-            value = ifelse.(prereq.value .== "y", value, "-")
+        if ismissing(maprow.from_variable) # if the from_variable is empty (there is no corresponding variable in the questionnaire) then we set the variable to missing "-"
+           println("Processing: ", "Missing from_variable")
+           value = "-"
+        
+        else  # else we apply the transformation
+
+            if in(maprow.from_variable, names(fromdf))
+                sourcevalue = fromdf[!, Symbol(maprow.from_variable)]
+            else
+                sourcevalue = fill(missing, N)
+                @info "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
+            end
+            sourcevalue = [prepare(x) for x in sourcevalue]
+            operant = strip(lowercase(maprow.operants))
+
+            # Construct the conversion expression and get converted values
+            # println("Processing: Construct the conversion expression and get converted values ")
+            value = [eval(Expr(:call, Symbol(maprow.operator), x, operant)) for x in sourcevalue]
+
+            # If destination id already exists in output, meaning mapping is based on multiple conditions 
+            if in(maprow.destination_variable, outdf.variable)
+                # Update existing values
+                prevvalue = filter(row -> row.variable .== maprow.destination_variable, outdf)
+                sort!(prevvalue, :row_id)
+                value = OR.(prevvalue.value, value)
+                # Remove existing values
+                filter!(row -> row.variable .!= maprow.destination_variable, outdf)
+            end
+
+            # Check whether prerequisites are met and adjust values
+            
+            if !ismissing(maprow.prerequisite_variable)
+                #println("Processing: Check whether prerequisites are met and adjust values")
+                #println("row.variable:", unique(outdf.variable), "// maprow.prerequisite_variable:", maprow.prerequisite_variable)
+                prereq = filter(row -> row.variable .== maprow.prerequisite_variable, outdf)
+                value = ifelse.(prereq.value .== "y", value, "-")
+            end
+        
         end
 
         #println("Processing: Append")
@@ -494,3 +502,6 @@ function add_individual_dates(df::AbstractDataFrame, deaths::AbstractDataFrame):
 end
 
 end
+
+
+
