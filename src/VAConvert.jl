@@ -8,9 +8,11 @@ using DataFrames
 using CSV
 using Logging
 using Dates
+using DuckDB
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
-    read_variablemap, convert_durations!, map_dataframe, stripcrlf, add_individual_dates
+    read_variablemap, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
+    encodemissing
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -19,8 +21,20 @@ function readtable(server, database, table)
 end
 
 function connectdb(server, database)
-    conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
-    con = ODBC.Connection(conStr)
+    if Sys.isapple()
+        ODBC.setunixODBC(; ODBCSYSINI="/opt/homebrew/etc", ODBCINSTINI="odbcinst.ini", ODBCINI="odbc.ini")
+    end
+    if Sys.iswindows()
+        connStr = "Driver=ODBC Driver 18 for SQL Server; SERVER=$server; DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes;AutoTranslate=no"
+    end
+    if Sys.islinux()
+        connStr = "Driver={/opt/microsoft/msodbcsql18/lib64/libmsodbcsql-18.4.so.1.1};Server=SERVER=$server;Database=$database;UID=$(ENV["ServerUser"]);PWD=$(ENV["ServerPW"]);TrustServerCertificate=yes;AutoTranslate=no;"
+    end
+    if Sys.isapple()
+        connStr = "Driver={/opt/homebrew/Cellar/msodbcsql18/18.5.1.1/lib/libmsodbcsql.18.dylib};Server=$server; DATABASE=$database;
+Uid=$(ENV["ServerUser"]);Pwd=$(ENV["ServerPW"]);TrustServerCertificate=yes;Encrypt=yes;AutoTranslate=no;"
+    end
+    con = ODBC.Connection(connStr)
     return con
 end
 
@@ -99,14 +113,17 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
     sql = """
         SELECT
             QSessionID,
-            Variable,
+            vc.Variable,
+            v.VarDomain,
             TRIM(VarValue) Value
-        FROM dbo.QVarValuesCode
+        FROM dbo.QVarValuesCode vc
+          LEFT JOIN dbo.Variables v ON (vc.Variable = v.Variable)
         WHERE QSessionID = ?
         UNION
         SELECT
             QSessionID,
             Variable,
+            NULL AS VarDomain,
             CONVERT(VARCHAR, VarValue, 23) Value
         FROM dbo.QVarValuesDate
         WHERE QSessionID = ?
@@ -114,6 +131,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
             QSessionID,
             Variable,
+            NULL AS VarDomain,
             CAST(VarValue AS varchar) Value
         FROM dbo.QVarValuesFloat
         WHERE QSessionID = ?
@@ -121,6 +139,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
             QSessionID,
             Variable,
+            NULL AS VarDomain,
             CAST(VarValue AS varchar) Value
         FROM dbo.QVarValuesInt
         WHERE QSessionID = ?
@@ -128,13 +147,15 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
         QSessionID,
             Variable,
+            NULL AS VarDomain,
             TRIM(VarValue) Value
-            FROM dbo.QVarValuesStr
+        FROM dbo.QVarValuesStr
         WHERE QSessionID = ?
         UNION
         SELECT
             QSessionID,
             Variable,
+            NULL AS VarDomain,
             CAST(VarValue AS varchar) Value
         FROM dbo.QVarValuesText
         WHERE QSessionID = ?
@@ -142,6 +163,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         SELECT
             QSessionID,
             Variable,
+            NULL AS VarDomain,
             CONVERT(VARCHAR, AssignedDate, 23) Value
         FROM dbo.QVarValuesVPDate
         WHERE QSessionID = ?;
@@ -438,14 +460,14 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
 
     #Create a new dataframe to store the output
     outdf = select(fromdf, [] => Returns(1:N) => :row_id, [] => Returns(string(row_identifier)) => :variable, row_identifier => ByRow(x -> string(x)) => :value)
-#
+    #
     for maprow in eachrow(map_table)
-         println("Processing: ", maprow)
-        
+        println("Processing: ", maprow)
+
         if ismissing(maprow.from_variable) # if the from_variable is empty (there is no corresponding variable in the questionnaire) then we set the variable to missing "-"
-           println("Processing: ", "Missing from_variable")
-           value = "-"
-        
+            println("Processing: ", "Missing from_variable")
+            value = "-"
+
         else  # else we apply the transformation
 
             if in(maprow.from_variable, names(fromdf))
@@ -472,14 +494,14 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
             end
 
             # Check whether prerequisites are met and adjust values
-            
+
             if !ismissing(maprow.prerequisite_variable)
                 #println("Processing: Check whether prerequisites are met and adjust values")
                 #println("row.variable:", unique(outdf.variable), "// maprow.prerequisite_variable:", maprow.prerequisite_variable)
                 prereq = filter(row -> row.variable .== maprow.prerequisite_variable, outdf)
                 value = ifelse.(prereq.value .== "y", value, "-")
             end
-        
+
         end
 
         #println("Processing: Append")
@@ -496,12 +518,72 @@ function stripcrlf(df::AbstractDataFrame)::AbstractDataFrame
 end
 
 function add_individual_dates(df::AbstractDataFrame, deaths::AbstractDataFrame)::AbstractDataFrame
-    s = select(deaths, :IIntID, :DoB => ByRow(x -> Dates.Date(x)) =>:acdis_dob, :DoD => ByRow(x -> Dates.Date(x)) => :acdis_dod, 
-    [:DoB, :DoD] => ByRow((x,y) -> !ismissing(x) && !ismissing(y) ? Dates.value(Dates.Date(y) - Dates.Date(x)) : missing) => :acdis_ageindays) #fix age calculation to get days
+    s = select(deaths, :IIntID, :DoB => ByRow(x -> Dates.Date(x)) => :acdis_dob, :DoD => ByRow(x -> Dates.Date(x)) => :acdis_dod,
+        [:DoB, :DoD] => ByRow((x, y) -> !ismissing(x) && !ismissing(y) ? Dates.value(Dates.Date(y) - Dates.Date(x)) : missing) => :acdis_ageindays,
+        :Sex => ByRow(x -> x == "MAL" ? 1 : x == "FEM" ? 2 : 3) => :acdis_sex) #fix age calculation to get days
     return innerjoin(s, df, on=:IIntID)
 end
 
+"""
+    add_marriage(df::AbstractDataFrame)::AbstractDataFrame
+
+Add partner status to the dataframe from the SurveillanceEpisodesYrAge_Partners table.
+This function connects to the DuckDB database specified in the environment variable `EpisodesDb`
+    1 = No partnership
+    2 = Married
+    3 = Regular partnership
+    4 = Casual partnership
+"""
+function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
+    db = DuckDB.DB(ENV["EpisodesDb"])
+    @info "Opening $(db.handle.file)"
+    conn = DBInterface.connect(db)
+    try
+        sql = """
+        SELECT
+        im.IndividualUid,
+        CASE
+            WHEN e.PartnerStatus = 0 THEN NULL
+            ELSE e.PartnerStatus
+        END PartnerStatus
+        FROM main.SurveillanceEpisodesYrAge_Partners e
+        JOIN main.IndividualMap im ON e.IndividualId = im.IndividualId
+        WHERE Episodes = Episode
+          AND NOT PartnerStatus IS NULL;
+        """
+        partnerstatus = DuckDB.query(db, sql) |> DataFrame
+        file = joinpath(ENV["DATA_PATH"], "csvfiles", "IndividualMap.csv")
+        map = CSV.read(file, DataFrame)
+        mapped = innerjoin(partnerstatus, map, on=:IndividualUid)
+        select!(mapped, :IIntId => :IIntID, :PartnerStatus)
+        return leftjoin(df, mapped, on=:IIntID)
+    finally
+        DBInterface.close(conn)
+        DBInterface.close!(db)
+    end
+    return df
 end
 
+function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::AbstractDataFrame
+    transform!(domainvalues, :Code => ByRow(x -> strip(x)) => :Code)
+    values = copy(df)
+    domain_dict = Dict(
+        d[1, :VarDomain] => Dict(row[:Code] => row[:SetMissing] for row in eachrow(d))
+        for d in groupby(domainvalues, :VarDomain)
+    )
+    for row in eachrow(values)
+        if !ismissing(row.VarDomain) && !ismissing(row.Value)
+            domain = get(domain_dict, row.VarDomain, Dict())
+            if haskey(domain, row.Value)
+                if domain[row.Value] == 1 || (ismissing(row.Value) || strip(row.Value) == "")
+                    row.Value = missing
+                end
+            else
+                @info "Variable $(row.Variable) Value $(row.Value) not found in domain $(row.VarDomain)"
+            end
+        end
+    end
+    return values
+end
 
-
+end # module VAConvert

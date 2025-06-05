@@ -1,0 +1,814 @@
+VarDomain;n;Code;Caption;Sequence;SetMissing
+DurationType;12;HRS;Hours;0;0
+DurationType;12;DAY;Days;1;0
+DurationType;12;MON;Months;2;0
+DurationType;12;YRS;Years;3;0
+Sex;2;MAL;Male;0;0
+Sex;2;FEM;Female;1;0
+VACLYesNo;101;Y  ;Yes;1;0
+VACLYesNo;101;N  ;No;2;0
+VAPAccidentRole;1;PED;pedestrian;1;0
+VAPAccidentRole;1;DPL;driver or passenger in car or light vehicle;2;0
+VAPAccidentRole;1;DPH;driver or passenger in bus or heavy vehicle;3;0
+VAPAccidentRole;1;DPM;driver or passenger on a motorcycle;4;0
+VAPAccidentRole;1;DPP;driver or passenger on a pedal cycle;5;0
+VAPAgeGroup;1;N  ;neonate 0-28;1;0
+VAPAgeGroup;1;C  ;child 29days-11yrs;2;0
+VAPAgeGroup;1;A  ;adult above 11years;3;0
+VAPAnimal;1;DOG;dog;1;0
+VAPAnimal;1;SNK;snake;2;0
+VAPAnimal;1;ISC;insect or scorpion;3;0
+VAPAnimal;1;OTH;other;96;0
+VAPBelPainUpper;1;UAB;upper abdomen;1;0
+VAPBelPainUpper;1;LAB;lower abdomen;2;0
+VAPBelPainUpper;1;ULA;upper and lower abdomen;3;0
+VAPBelPotRapid;1;R  ;rapidly;1;0
+VAPBelPotRapid;1;S  ;slowly;2;0
+VAPBreathSound;1;S  ;stridor;1;0
+VAPBreathSound;1;N  ;no;2;0
+VAPBreathSound;1;W  ;wheezing;3;0
+VAPBreathSound;1;G  ;grunting;4;0
+VAPChestPainUnit;1;MIN;Minutes;1;0
+VAPChestPainUnit;1;HRS;Hours;2;0
+VAPChildOrder;1;FIR;first;1;0
+VAPChildOrder;1;SOL;second or later;2;0
+VAPCounterPart;1;PED;pedestrian;1;0
+VAPCounterPart;1;SOL;stationary object,car or light vehicle;2;0
+VAPCounterPart;1;BHV;bus or heavy vehicle;3;0
+VAPCounterPart;1;MPC;motorcycle,pedal cycle;4;0
+VAPDdifswalSolid;1;S  ;Solids;1;0
+VAPDdifswalSolid;1;L  ;Liquids;2;0
+VAPDdifswalSolid;1;B  ;Both;3;0
+VAPDeliver;1;DOC;Doctor;1;0
+VAPDeliver;1;MID;Midwife;2;0
+VAPDeliver;1;NUR;Nurse;3;0
+VAPDeliver;1;REL;Relative;4;0
+VAPDeliver;1;SEL;Self (the mother);5;0
+VAPDeliver;1;TBA;Traditional birth attendant;6;0
+VAPDeliver;1;OTH;Other;96;0
+VAPFailCare;1;NSE;Did not seem sick enough;1;0
+VAPFailCare;1;TIW;Thought illness would get better on its own;2;0
+VAPFailCare;1;NTT;Sudden death, no time for treatment;3;0
+VAPFailCare;1;NKD;Did not know what to do;4;0
+VAPFailCare;1;NTB;No time, too busy;5;0
+VAPFailCare;1;NEM;Not enough money for consultation;6;0
+VAPFailCare;1;TTE;Transport too expensive;7;0
+VAPFailCare;1;TFT;Too far to travel;8;0
+VAPFailCare;1;NPP;Needed permission of another person;9;0
+VAPFailCare;1;NGC;Nobody to go with the child;10;0
+VAPFailCare;1;NCC;Nobody to care for other children at home;11;0
+VAPFailCare;1;NDH;No drugs at health care facility;12;0
+VAPFailCare;1;SAP;Staff attitudes poor;13;0
+VAPFailCare;1;NEP;Not enough privacy;14;0
+VAPFailCare;1;LTH;Too little time with health worker;15;0
+VAPFailCare;1;QTL;Queue too long/wait too long;16;0
+VAPFailCare;1;WNI;Western care could do nothing for illness;17;0
+VAPFailPlace;1;DBA;Died before arrival;1;0
+VAPFailPlace;1;TNN;Thought it was not necessary;2;0
+VAPFailPlace;1;HWI;Hoped/waited for an improvement;3;0
+VAPFailPlace;1;LOM;Lack of money;4;0
+VAPFailPlace;1;LOT;Lack of transport;5;0
+VAPFailPlace;1;OTH;Other;96;0
+VAPFevPattern;2;CON;continuous;1;0
+VAPFevPattern;2;OAO;on and off;2;0
+VAPFevPattern;2;OAN;only at night;3;0
+VAPFeverSevere;1;MIL;mild;1;0
+VAPFeverSevere;1;MOD;moderate;2;0
+VAPFeverSevere;1;SEV;severe;3;0
+VAPOnNarr1;1;CKD;Chronic kidney disease;1;0
+VAPOnNarr1;1;DIA;Dialysis;2;0
+VAPOnNarr1;1;FVR;Fever;3;0
+VAPOnNarr1;1;HAK;Heart attack;4;0
+VAPOnNarr1;1;HPM;Heart problem;5;0
+VAPOnNarr1;1;JAU;Jaundice;6;0
+VAPOnNarr1;1;LFL;Liver failure;7;0
+VAPOnNarr1;1;MAL;Malaria;8;0
+VAPOnNarr1;1;PNE;Pneumonia;9;0
+VAPOnNarr1;1;REN;Renal (kidney) failure;10;0
+VAPOnNarr1;1;SUI;Suicide;11;0
+VAPOnNarr1;1;NON;None of the above words were mentioned;12;0
+VAPOnNarr2;1;ABD;Abdomen;1;0
+VAPOnNarr2;1;CAN;Cancer;2;0
+VAPOnNarr2;1;DEH;Dehydration;3;0
+VAPOnNarr2;1;DEN;Dengue fever;4;0
+VAPOnNarr2;1;DIA;Diarrhoea;5;0
+VAPOnNarr2;1;FVR;Fever;6;0
+VAPOnNarr2;1;HPM;Heart problems;7;0
+VAPOnNarr2;1;JAU;Jaundice (yellow skin or eyes);8;0
+VAPOnNarr2;1;PNE;Pneumonia;9;0
+VAPOnNarr2;1;RAS;Rash;10;0
+VAPOnNarr2;1;NON;None of the above words were mentioned;12;0
+VAPParalysLimb;1;RHS;right side;1;0
+VAPParalysLimb;1;LFS;left side;2;0
+VAPParalysLimb;1;LPB;lower part of body;3;0
+VAPParalysLimb;1;UPB;upper part of body;4;0
+VAPParalysLimb;1;OLO;one leg only;5;0
+VAPParalysLimb;1;OAO;one arm only;6;0
+VAPParalysLimb;1;WLB;whole body;7;0
+VAPPlaceBirth;3;HOS;Hospital;1;0
+VAPPlaceBirth;3;OHF;Other Health facility;2;0
+VAPPlaceBirth;3;HOM;Home;3;0
+VAPPlaceBirth;3;RHF;On route to hospital or facility;4;0
+VAPProviderType;5;TRH;traditional healer;1;0
+VAPProviderType;5;HMO;homeopath;2;0
+VAPProviderType;5;REL;religious leader;3;0
+VAPProviderType;5;GOH;government hospital;4;0
+VAPProviderType;5;GHC;government health center or clinic;5;0
+VAPProviderType;5;PRH;private hospital;6;0
+VAPProviderType;5;CPA;community-based practitioner associated with health system trained birth attendant;7;0
+VAPProviderType;5;PRP;private physician;8;0
+VAPProviderType;5;PEF;Relative friend (outside household);9;0
+VAPProviderType;5;PHA;pharmacy;10;0
+VAPRashWhere;1;FAC;face;1;0
+VAPRashWhere;1;TAB;trunk or abdomen;2;0
+VAPRashWhere;1;EXT;extremities;3;0
+VAPRashWhere;1;EVW;everywhere;4;0
+VAPRefPlace;1;HOS;Hospital;1;0
+VAPRefPlace;1;HEC;Health Centre;2;0
+VAPRefPlace;1;CLC;Clinic;3;0
+VAPRefPlace;1;CHE;Chemist/Pharmacy;4;0
+VAPRefPlace;1;TRH;Traditional Healer;5;0
+VAPReferralrsn;1;LEQ;Lack of equipment;1;0
+VAPReferralrsn;1;FBC;For better care;2;0
+VAPReferralrsn;1;LOB;Lack of blood;3;0
+VAPReferralrsn;1;LOD;Lack of drugs;4;0
+VAPReferralrsn;1;LOO;Lack of oxygen;5;0
+VAPRespRel;1;PAR;parent;1;0
+VAPRespRel;1;CHD;child;2;0
+VAPRespRel;1;FMR;family member(Household member);3;0
+VAPRespRel;1;FRD;friend;4;0
+VAPRespRel;1;HWR;health worker;5;0
+VAPRespRel;1;PWR;public_official;6;0
+VAPRespRel;1;ARP;another relationship;7;0
+VAPRespRel;1;OTH;other;8;0
+VAPSex;1;FEM;female;1;0
+VAPSex;1;MAL;male;2;0
+VAPTobType;1;CIG;cigarettes;1;0
+VAPTobType;1;PIP;pipe;2;0
+VAPTobType;1;CHT;chewing tobacco;3;0
+VAPTobType;1;LFT;local form of tobacco;4;0
+VAPTxDuration;1;I  ;Immediately;1;0
+VAPTxDuration;1;H  ;Hours;2;0
+VAPUnits;7;H  ;Hours;2;0
+VAPUnits;7;D  ;Days;3;0
+VAPUnits;7;W  ;Weeks;4;0
+VAPUnits;7;M  ;Months;5;0
+VAPUnits;7;Y  ;Years;6;0
+VAPYesNo;268;YES;Yes;1;0
+VAPYesNo;268;NO ;No;2;0
+VAPmotherDieDel;1;DUD;during delivery;1;0
+VAPmotherDieDel;1;AFD;after delivery;2;0
+VAPwatBrokeCol;1;GOB;Green or brown;1;0
+VAPwatBrokeCol;1;CLR;Clear (normal);2;0
+VAWAgeGroup;1;N  ;Neonate 0-28;1;0
+VAWAgeGroup;1;C  ;Child 29days-11yrs;2;0
+VAWAgeGroup;1;A  ;Adult above 11years;3;0
+VAWBelPotRapid;1;RAP;Rapidly;1;0
+VAWBelPotRapid;1;SLO;Slowly;2;0
+VAWBellynLoc;1;UPR;Upper right;1;0
+VAWBellynLoc;1;UPL;Upper left;2;0
+VAWBellynLoc;1;LOR;Lower right;3;0
+VAWBellynLoc;1;LOL;Lower left;4;0
+VAWBellynLoc;1;ALL;All over;99;0
+VAWBreathSound;1;S  ;Stridor;1;0
+VAWBreathSound;1;N  ;None of the above;2;0
+VAWBreathSound;1;W  ;Wheezing;3;0
+VAWBreathSound;1;G  ;Grunting;4;0
+VAWConfirmP12m;1;CON;I confirm this was not a maternal death;1;0
+VAWCovidResult;1;POS;Positive;1;0
+VAWCovidResult;1;NEG;Negative;2;0
+VAWDeliver;1;DOC;Doctor;1;0
+VAWDeliver;1;MID;Midwife;2;0
+VAWDeliver;1;NUR;Nurse;3;0
+VAWDeliver;1;REL;Relative;4;0
+VAWDeliver;1;SEL;Self (the mother);5;0
+VAWDeliver;1;TBA;Traditional birth attendant;6;0
+VAWFevPattern;2;CON;Continuous;1;0
+VAWFevPattern;2;OAO;On and off;2;0
+VAWFevPattern;2;OAN;Only at night;3;0
+VAWFeverSevere;1;MIL;Mild;1;0
+VAWFeverSevere;1;MOD;Moderate;2;0
+VAWFeverSevere;1;SEV;Severe;3;0
+VAWParalysLimb;1;RHS;Right side;1;0
+VAWParalysLimb;1;LFS;Left side;2;0
+VAWParalysLimb;1;LPB;Lower part of body;3;0
+VAWParalysLimb;1;UPB;Upper part of body;4;0
+VAWParalysLimb;1;OLO;One leg only;5;0
+VAWParalysLimb;1;OAO;One arm only;6;0
+VAWParalysLimb;1;WLB;Whole body;7;0
+VAWParalysLimb;1;OTH;Other;96;0
+VAWPlaceBirth;2;HOS;Hospital;1;0
+VAWPlaceBirth;2;OHF;Other Health facility;2;0
+VAWPlaceBirth;2;HOM;Home;3;0
+VAWPlaceBirth;2;RHF;On route to hospital or facility;4;0
+VAWPlaceBirth;2;OTH;Other;5;0
+VAWPregAmount;1;SIN;Singleton;1;0
+VAWPregAmount;1;TWI;Twins;2;0
+VAWPregAmount;1;TRI;Triplets;3;0
+VAWRashWhere;1;FAC;Face;1;0
+VAWRashWhere;1;TAB;Trunk or Abdomen;2;0
+VAWRashWhere;1;EXT;Extremities;3;0
+VAWRashWhere;1;EVW;Everywhere;4;0
+VAWRespRel;1;PAR;Parent;1;0
+VAWRespRel;1;CHD;Child;2;0
+VAWRespRel;1;FMR;Family Member (Household member);3;0
+VAWRespRel;1;FRD;Friend;4;0
+VAWRespRel;1;HWR;Health Worker;5;0
+VAWRespRel;1;PWR;Public Official;6;0
+VAWRespRel;1;ARP;Another Relationship;7;0
+VAWRespRel;1;OTH;Other;8;0
+VAWSex;1;FEM;Female;1;0
+VAWSex;1;MAL;Male;2;0
+VAWTimedeath;1;LES;Less or equal to 7 days;1;0
+VAWTimedeath;1;MOR;More than 7 days;2;0
+VAWUnit1;18;D  ;Days;1;0
+VAWUnit1;18;M  ;Months;2;0
+VAWUnit2;2;M  ;Months;1;0
+VAWUnit2;2;Y  ;Years;2;0
+VAWUnit3;3;H  ;Hours;1;0
+VAWUnit3;3;D  ;Days;2;0
+VAWUnit3;3;M  ;Months;3;0
+VAWYesNo;246;YES;Yes;1;0
+VAWYesNo;246;NO ;No;2;0
+VAWYesNo2;1;NO ;No;0;0
+VAWYesNo2;1;YES;Yes;1;0
+VAWwatBrokeCol;1;GOB;Green or brown;1;0
+VAWwatBrokeCol;1;CLR;Clear (normal);2;0
+VAWwatBrokeCol;1;OTH;Other;96;0
+VA_Accident;1;DRI;Driver in car;1;0
+VA_Accident;1;OnF;On foot;2;0
+VA_Accident;1;PAS;Passenger in car;3;0
+VA_AccidentType;1;ROL;Car rolled;1;0
+VA_AccidentType;1;COL;Collision of 2 cars;2;0
+VA_AccidentType;1;CLI;Car went off cliff;3;0
+VA_AccidentType;1;OTH;Other;4;0
+VA_Age;1;LES;45 years or younger;1;0
+VA_Age;1;MOR;> 45 years;2;0
+VA_Anaemia;1;YVP;Yes, very pale;1;0
+VA_Anaemia;1;YMP;Yes, mildly pale;2;0
+VA_Anaemia;1;NOT;No;3;0
+VA_Anaemia;1;NO;No;3;0
+VA_AssualtType;1;GUN;Gunshot;0;0
+VA_AssualtType;1;HIT;Hit;1;0
+VA_AssualtType;1;STA;Stabbed;2;0
+VA_AssualtType;1;STR;Strangulation;3;0
+VA_AssualtType;1;OTH;Other;4;0
+VA_BShortness;1;RAP;Rapidly over hours;1;0
+VA_BShortness;1;SLW;Slowly over days;2;0
+VA_BShortness;1;SOM;Slowly over months;3;0
+VA_BabyPart;1;HEA;Head first;1;0
+VA_BabyPart;1;BOT;Bottom first;2;0
+VA_BabyPart;1;HAN;Hand first;3;0
+VA_BabyPart;1;FOO;Foot first;4;0
+VA_Bleeding;1;BLB;before labour started;1;0
+VA_Bleeding;1;DLB;before delivery;2;0
+VA_Bleeding;1;ADL;after delivery;3;0
+VA_Bleeding;1;DAY;> 1 day after delivery;4;0
+VA_BreathUnits;3;HOU;Hours;1;0
+VA_BreathUnits;3;DAY;Days;2;0
+VA_BreathUnits;3;WEE;Weeks;3;0
+VA_BreathUnits;3;MON;Months;4;0
+VA_Car;2;TAX;Taxi;1;0
+VA_Car;2;BUS;Bus;2;0
+VA_Car;2;PRI;Private car;3;0
+VA_Car;2;OTH;Other;4;0
+VA_ChildSize;1;SMA;Smaller than usual;1;0
+VA_ChildSize;1;VSM;Very small;2;0
+VA_ChildSize;1;NOR;Normal;3;0
+VA_ChildSize;1;LAR;Larger than usual;4;0
+VA_ConcChange;2;SUD;Suddenly;0;0
+VA_ConcChange;2;RAP;Rapidly within 2 days;1;0
+VA_ConcChange;2;SLO;Slowly over more than 2d;2;0
+VA_Consc;1;SUD;Suddenly;0;0
+VA_Consc;1;SLO;Slowly over more than 1 d;1;0
+VA_Consciousness;1;UNC;Unconscious;1;0
+VA_Consciousness;1;AWK;Awake;2;0
+VA_Convulsion;1;WHO;Jerking of whole body;1;0
+VA_Convulsion;1;PAR;Part of the body jerking;2;0
+VA_Convulsion;1;OTH;Others;3;0
+VA_Convulsions;1;BEF;Before delivery;1;0
+VA_Convulsions;1;AFT;After delivery;2;0
+VA_DeathPlace;1;HOM;Home;0;0
+VA_DeathPlace;1;HOS;Hospital;1;0
+VA_DeathPlace;1;CLI;Clinic;2;0
+VA_Delivery;1;HOM;Home;1;0
+VA_Delivery;1;CLI;Clinic;2;0
+VA_Delivery;1;HOS;Hospital;3;0
+VA_Delivery;1;ELS;Elsewhere;4;0
+VA_DeliveryType;1;SVD;Spontaneous vaginal;1;0
+VA_DeliveryType;1;IND;Instrumental delivery;2;0
+VA_DeliveryType;1;OXY;Oxytocica assisted;3;0
+VA_DeliveryType;1;CAE;Caesarean section;4;0
+VA_DeliveryType;1;DIL;Dilatation & Curetage;5;0
+VA_Distension;1;RAP;Rapidly over days;1;0
+VA_Distension;1;SLO;Slowly over weeks;2;0
+VA_Distension;1;SOM;Slowly over months;3;0
+VA_Education;1;PRI;Primary;1;0
+VA_Education;1;SEC;Secondary;2;0
+VA_Education;1;TER;Tertiary;3;0
+VA_Education;1;NON;None;4;0
+VA_FamIllSpec;1;TB ;Tuberculosis;0;0
+VA_FamIllSpec;1;HIV;HIV/AIDS;1;0
+VA_FamIllSpec;1;OTH;Other;2;0
+VA_FamIllness;1;WVI;Was very ill;0;0
+VA_FamIllness;1;DIE;Died;1;0
+VA_FamIllness;1;IVI;Is very ill;2;0
+VA_FamIllness;1;NO ;No;3;0
+VA_FamIllness;1;WII;Was and is very ill;4;0
+VA_FamIllness;1;WID;Was very ill and died;5;0
+VA_FamIllness;1;IID;Is very ill and died;6;0
+VA_FamIllness;1;IWI;Is and was very ill;7;0
+VA_FeverPattern;2;CON;Continuous;0;0
+VA_FeverPattern;2;OAO;On and off;1;0
+VA_FeverSeverity;3;SEV;Severe;0;0
+VA_FeverSeverity;3;MOD;Moderate;1;0
+VA_FeverSeverity;3;MIL;Mild;2;0
+VA_Informant;1;NOB;Nobody;0;0
+VA_Informant;1;NUR;Nurse;1;0
+VA_Informant;1;PGP;Private GP;2;0
+VA_Informant;1;FAM;Family members;3;0
+VA_Informant;1;HDR;Doctor in hospital;4;0
+VA_Informant;1;MED;Media;5;0
+VA_Informant;1;NEI;Neighbours;6;0
+VA_Informant;1;TRH;Traditional healer;7;0
+VA_Informant;1;DEC;Deceased;8;0
+VA_InjuryCause;1;ANI;Animal bite;0;0
+VA_InjuryCause;1;TRA;Traffic accident;1;0
+VA_InjuryCause;1;POI;Poisoning;2;0
+VA_InjuryCause;1;FIR;Fire accident;3;0
+VA_InjuryCause;1;ASS;Assault;4;0
+VA_InjuryCause;1;BUR;Burns;5;0
+VA_InjuryCause;1;DRO;Drowning;6;0
+VA_InjuryCause;1;FAL;Fall;7;0
+VA_InjuryCause;1;OTH;Other;9;0
+VA_InjuryDeathPl;1;INJ;Where the injury occurred;0;0
+VA_InjuryDeathPl;1;HOS;Hospital;1;0
+VA_InjuryDeathPl;1;OTH;Elsewhere;2;0
+VA_InjuryDeathPl;1;AMB;In the ambulance;3;0
+VA_InjuryDeathPl;1;HOM;At home;4;0
+VA_InjuryType;1;INT;Intentional;0;0
+VA_InjuryType;1;ACC;Accidental;1;0
+VA_MassLocation;1;RUA;Right upper abdomen;1;0
+VA_MassLocation;1;LUA;Left upper abdomen;2;0
+VA_MassLocation;1;LOW;Lower abdomen;3;0
+VA_MassLocation;1;OTH;Others;4;0
+VA_Medication;1;PIL;Yes, pills;1;0
+VA_Medication;1;INJ;Yes, injections;2;0
+VA_Medication;1;NOT;No;3;0
+VA_Mouth;1;WSP;Yes, like white spots;0;0
+VA_Mouth;1;ULC;Yes, small ulcers;1;0
+VA_Mouth;1;HSS;Yes, hairy smelly sores;2;0
+VA_Mouth;1;OTH;Others;3;0
+VA_Mouth;1;NO ;No;4;0
+VA_Mucus;1;BLO;Yes, blood;1;0
+VA_Mucus;1;MUC;Yes, mucus;2;0
+VA_Mucus;1;NOT;No;3;0
+VA_PainLasted;1;LES;< 30 min;1;0
+VA_PainLasted;1;ABO;> 30 min but < 24 hrs;2;0
+VA_PainLasted;1;HRS;> 24 hrs;3;0
+VA_PainLoc;1;LOW;Lower abdomen;1;0
+VA_PainLoc;1;UPP;Upper abdomen;2;0
+VA_PainLoc;1;ALL;All over abdomen;3;0
+VA_PainLoc;1;OTH;Other;4;0
+VA_PainSeverity;4;SEV;Severe;1;0
+VA_PainSeverity;4;MOD;Moderate;2;0
+VA_PainSeverity;4;MIL;Mild;3;0
+VA_PainType;1;CRA;Cramps;1;0
+VA_PainType;1;BUR;Burning pain;2;0
+VA_PainType;1;DUL;Dull ache;3;0
+VA_PainType;1;OTH;Other;4;0
+VA_Paralysis;1;RAR;right arm;1;0
+VA_Paralysis;1;LAR;left arm;2;0
+VA_Paralysis;1;RLE;right leg;3;0
+VA_Paralysis;1;LLE;left leg;4;0
+VA_Paralysis;1;RSF;right side of face;5;0
+VA_Paralysis;1;LSF;left side of face;6;0
+VA_Paralysis;1;RSB;right side of body;7;0
+VA_Paralysis;1;LSB;left side of body;8;0
+VA_PassingStool;3;CON;Continuous;1;0
+VA_PassingStool;3;OAO;On and off;2;0
+VA_RabiesTetanus;1;RAB;Rabies;0;0
+VA_RabiesTetanus;1;TET;Tetanus;1;0
+VA_RabiesTetanus;1;NO ;No;2;0
+VA_Rash;1;MEA;Like measles;0;0
+VA_Rash;1;CLE;Rash with a clear fluid;1;0
+VA_Rash;1;PUS;Rash with pus;2;0
+VA_Rash;1;OTH;Others;3;0
+VA_Relationship;1;SPO;Spouse;1;0
+VA_Relationship;1;CHI;Child;2;0
+VA_Relationship;1;SON;Son-in-law;3;0
+VA_Relationship;1;DAU;Daughter-in-law;4;0
+VA_Relationship;1;GRC;Grandchild;5;0
+VA_Relationship;1;PAR;Parent;6;0
+VA_Relationship;1;FAT;Father-in-law;7;0
+VA_Relationship;1;MOT;Mother-in-law;8;0
+VA_Relationship;1;GRP;Grandparent;9;0
+VA_Relationship;1;SIB;Sibling;10;0
+VA_Relationship;1;OTR;Other relative;11;0
+VA_Relationship;1;OTN;Other non-relative;12;0
+VA_Resident;1;RES;Resident;0;0
+VA_Resident;1;NRE;Non-resident;1;0
+VA_Retention;1;PLA;retention of placenta;1;0
+VA_Retention;1;PPL;parts of placenta;2;0
+VA_Retention;1;MEM;retention of membranes;3;0
+VA_Retention;1;NOT;no retention;4;0
+VA_Signs;1;SWA;First swallowing problems;1;0
+VA_Signs;1;BRE;First breathing problems;2;0
+VA_Signs;1;BOT;At the same time;3;0
+VA_Skin;1;RAS;Like a rash;0;0
+VA_Skin;1;EGS;Dark elevated growing ...;1;0
+VA_Skin;1;ULC;Like ulcers or sores;2;0
+VA_Skin;1;OTH;Others;3;0
+VA_Stool;3;WAT;Watery;0;0
+VA_Stool;3;LOS;Loose, not watery;1;0
+VA_Stool;3;BLO;Bloody;2;0
+VA_Stool;3;MUC;With mucus;3;0
+VA_StoolPattern;1;CON;Continuous;0;0
+VA_StoolPattern;1;OAO;On and off;1;0
+VA_SuicideType;1;HAN;Hanging;0;0
+VA_SuicideType;1;BUR;Burns;1;0
+VA_SuicideType;1;POI;Poisoning;2;0
+VA_SuicideType;1;OTH;Other;3;0
+VA_Swelling;2;ARM;Yes, armpit;0;0
+VA_Swelling;2;GRO;Yes, groin;1;0
+VA_Swelling;2;NO ;No;2;0
+VA_Swelling;2;NEC;Yes, neck;3;0
+VA_Swelling;2;EAR;Yes, near the ear;4;0
+VA_Time;3;MIN;Minutes;1;0
+VA_Time;3;HOR;Hours;2;0
+VA_Time;3;DAY;Days;3;0
+VA_UnconLevel;1;CON;Confused;0;0
+VA_UnconLevel;1;UNC;Unconcious;1;0
+VA_UnconLevel;1;OTH;Others;3;0
+VA_Units;35;DAY;Days;1;0
+VA_Units;35;WEE;Weeks;2;0
+VA_Units;35;MON;Months;3;0
+VA_Units;35;YEA;Years;4;0
+VA_UrineCol;1;DAR;dark yellow;1;0
+VA_UrineCol;1;COF;coffee like;2;0
+VA_UrineCol;1;BLO;blood stained;3;0
+VA_UrineCol;1;VRE;Very reddish;4;0
+VA_UrineCol;1;ORA;Orange;5;0
+VA_UrineCol;1;OTH;Other;6;0
+VA_UrineDif;1;UNA;Unable to pass urine;1;0
+VA_UrineDif;1;CON;Continuous dribbling;2;0
+VA_UrineDif;1;BUR;Burning sensation;3;0
+VA_UrineDif;1;INT;Intense pain;4;0
+VA_UrineDif;1;OTH;Other;5;0
+VA_UrineQty;1;TOM;too much;1;0
+VA_UrineQty;1;TOL;too litle;2;0
+VA_UrineQty;1;NOU;no urine at all;3;0
+VA_VaginalDisch;1;SME;With bad smell;0;0
+VA_VaginalDisch;1;BLO;Bloody;1;0
+VA_VaginalDisch;1;PUS;Pus-like;2;0
+VA_VaginalDisch;1;OTH;Others;3;0
+VA_Vomitus;1;YEL;Yellowish fluid;1;0
+VA_Vomitus;1;COF;Coffee coloured fluid;2;0
+VA_Vomitus;1;WAT;Watery fluid;3;0
+VA_Vomitus;1;BLO;Blood;4;0
+VA_Vomitus;1;FAE;Faecal matter;5;0
+VA_Vomitus;1;FOO;Food;6;0
+VA_Vomitus;1;OTH;Other;7;0
+VA_WeightLoss;1;SEV;Severe;0;0
+VA_WeightLoss;1;MOD;Moderate;1;0
+VA_WeightLoss;1;LIT;Light;2;0
+VA_Where;1;STE;Over the stemum;1;0
+VA_Where;1;HEA;Over the heart;2;0
+VA_Where;1;OTH;Others;3;0
+YesNoSimple;200;YES;Yes;0;0
+YesNoSimple;200;NO ;No;1;0
+YesNoStd;5;YES;Yes;3;0
+YesNoStd;5;NO ;No;4;0
+YesNoStd;5;N;No;4;0
+YesNoStd;5;NON;No;4;0
+YesNoStd;5;Y;Yes;3;0
+YesNoStd;5;MIS;Yes;3;1
+DurationType;12;DFT;_default;-6;1
+DurationType;12;MIS;_missing;-5;1
+DurationType;12;QRY;_query;-4;1
+DurationType;12;NAD;_not applicable;-3;1
+DurationType;12;RFS;_refused;-2;1
+DurationType;12;DKN;_don't know;-1;1
+Sex;2;DFT;_default;-6;1
+Sex;2;MIS;_missing;-5;1
+Sex;2;QRY;_query;-4;1
+Sex;2;NAD;_not applicable;-3;1
+Sex;2;RFS;_refused;-2;1
+Sex;2;DKN;_don't know;-1;1
+Sex;2;OTH;_other;2;1
+VACLYesNo;101;U  ;_don't know;3;1
+VACLYesNo;101;X  ;_not applicable;4;1
+VAPAccidentRole;1;RFS;_refused;93;1
+VAPAccidentRole;1;OTH;_other;96;1
+VAPAccidentRole;1;DKN;_don't know;98;1
+VAPAnimal;1;RFS;_refused;93;1
+VAPAnimal;1;DKN;_don't know;98;1
+VAPBelPainUpper;1;RFS;_refused;93;1
+VAPBelPainUpper;1;DKN;_don't know;98;1
+VAPBelPotRapid;1;U  ;_don't know;98;1
+VAPBreathSound;1;R  ;_refused;93;1
+VAPBreathSound;1;U  ;_don't know;98;1
+VAPChildOrder;1;RFS;_refused;93;1
+VAPChildOrder;1;DKN;_don't know;98;1
+VAPCounterPart;1;RFS;_refused;93;1
+VAPCounterPart;1;OTH;_other;96;1
+VAPCounterPart;1;DKN;_don't know;98;1
+VAPDdifswalSolid;1;R  ;_refused;93;1
+VAPDdifswalSolid;1;U  ;_don't know;98;1
+VAPDeliver;1;RFS;_refused;93;1
+VAPDeliver;1;DKN;_don't know;98;1
+VAPFailCare;1;OTH;_other;93;1
+VAPFailCare;1;DKN;_don't know;98;1
+VAPFailPlace;1;RFS;_refused;93;1
+VAPFailPlace;1;DKN;_don't know;98;1
+VAPFevPattern;2;RFS;_refused;93;1
+VAPFevPattern;2;DKN;_don't know;98;1
+VAPFeverSevere;1;RFS;_refused;93;1
+VAPFeverSevere;1;DKN;_don't know;98;1
+VAPOnNarr1;1;DKN;Don't know;98;1
+VAPOnNarr2;1;DKN;Don't know;98;1
+VAPParalysLimb;1;RFS;_refused;93;1
+VAPParalysLimb;1;OTH;_other;96;1
+VAPParalysLimb;1;DKN;_don't know;98;1
+VAPPlaceBirth;3;OTH;_other;5;1
+VAPPlaceBirth;3;RFS;_refused;93;1
+VAPPlaceBirth;3;DKN;_don't know;98;1
+VAPProviderType;5;RFS;_refused;93;1
+VAPProviderType;5;DKN;_don't know;98;1
+VAPRashWhere;1;RFS;_refused;93;1
+VAPRashWhere;1;DKN;_don't know;98;1
+VAPRefPlace;1;RFS;_refused;93;1
+VAPRefPlace;1;OTH;_other;96;1
+VAPRefPlace;1;DKN;_don't know;98;1
+VAPReferralrsn;1;RFS;_refused;93;1
+VAPReferralrsn;1;OTH;_other;96;1
+VAPReferralrsn;1;DKN;_don't know;98;1
+VAPTobType;1;RFS;_refused;93;1
+VAPTobType;1;OTH;_other;96;1
+VAPTobType;1;DKN;_don't know;98;1
+VAPTxDuration;1;U  ;_don't know;98;1
+VAPYesNo;268;RFS;_refused;93;1
+VAPYesNo;268;DKN;_don't know;98;1
+VAPmotherDieDel;1;RFS;_refused;93;1
+VAPmotherDieDel;1;DKN;_don't know;98;1
+VAPwatBrokeCol;1;RFS;_refused;93;1
+VAPwatBrokeCol;1;OTH;_other;96;1
+VAPwatBrokeCol;1;DKN;_don't know;98;1
+VAWBelPotRapid;1;RFS;Refused;93;1
+VAWBelPotRapid;1;DKN;Don't know;98;1
+VAWBreathSound;1;R  ;Refused;93;1
+VAWBreathSound;1;U  ;Don't know;98;1
+VAWCovidResult;1;UNC;Unclear;3;1
+VAWCovidResult;1;RFS;Refused;93;1
+VAWCovidResult;1;DKN;Don't know;98;1
+VAWDeliver;1;RFS;Refused;93;1
+VAWDeliver;1;OTH;Other;96;1
+VAWDeliver;1;DKN;Don't know;98;1
+VAWFevPattern;2;RFS;Refused;93;1
+VAWFevPattern;2;DKN;Don't know;98;1
+VAWFeverSevere;1;RFS;Refused;93;1
+VAWFeverSevere;1;DKN;Don't know;98;1
+VAWParalysLimb;1;RFS;Refused;93;1
+VAWParalysLimb;1;DKN;Don't know;98;1
+VAWPlaceBirth;2;RFS;Refused;93;1
+VAWPlaceBirth;2;DKN;Don't know;98;1
+VAWRashWhere;1;RFS;Refused;93;1
+VAWRashWhere;1;DKN;Don't know;98;1
+VAWTimedeath;1;RFS;Refused;93;1
+VAWTimedeath;1;DKN;Don't know;98;1
+VAWUnit1;18;R  ;Refused;93;1
+VAWUnit1;18;U  ;Don't know;98;1
+VAWUnit2;2;R  ;Refused;93;1
+VAWUnit2;2;U  ;Don't know;98;1
+VAWUnit3;3;R  ;Refused;93;1
+VAWUnit3;3;U  ;Don't know;98;1
+VAWYesNo;246;RFS;Refused;93;1
+VAWYesNo;246;DKN;Don't know;98;1
+VAWwatBrokeCol;1;RFS;Refused;93;1
+VAWwatBrokeCol;1;DKN;Don't know;98;1
+VA_Accident;1;DKN;_don't know;-1;1
+VA_Accident;1;NA ;NA;4;1
+VA_Accident;1;MIS;NA;4;1
+VA_AccidentType;1;NA ;NA;5;1
+VA_Age;1;DKN;_don't know;-1;1
+VA_Age;1;NA;_not applicable;-3;1
+VA_Anaemia;1;NA;_not applicable;-3;1
+VA_Anaemia;1;DKN;_don't know;-1;1
+VA_AssualtType;1;NAD;_not applicable;-3;1
+VA_AssualtType;1;DFT;_default;-6;1
+VA_BShortness;1;DKN;_don't know;-1;1
+VA_BShortness;1;NA ;_not applicable;-3;1
+VA_BabyPart;1;NAD;_not applicable;-3;1
+VA_BabyPart;1;DKN;_don't know;-1;1
+VA_Bleeding;1;NAD;_not applicable;-3;1
+VA_Bleeding;1;DKN;_don't know;-1;1
+VA_BreathUnits;3;NAD;_not applicable;-3;1
+VA_Car;2;MIS;_missing;-5;1
+VA_Car;2;DKN;_don't know;-1;1
+VA_Car;2;NA ;NA;5;1
+VA_ConcChange;2;DFT;_default;-6;1
+VA_ConcChange;2;MIS;_missing;-5;1
+VA_ConcChange;2;QRY;_query;-4;1
+VA_ConcChange;2;NAD;_not applicable;-3;1
+VA_ConcChange;2;RFS;_refused;-2;1
+VA_ConcChange;2;DKN;_don't know;-1;1
+VA_Consc;1;DFT;_default;-6;1
+VA_Consc;1;MIS;_missing;-5;1
+VA_Consc;1;QRY;_query;-4;1
+VA_Consc;1;NAD;_not applicable;-3;1
+VA_Consc;1;RFS;_refused;-2;1
+VA_Consc;1;DKN;_don't know;-1;1
+VA_Consciousness;1;NAD;_not applicable;-3;1
+VA_Consciousness;1;DKN;_don't know;-1;1
+VA_Convulsion;1;NAD;_not applicable;-3;1
+VA_Convulsions;1;NAD;_not applicable;-3;1
+VA_DeathPlace;1;DFT;_default;-6;1
+VA_DeathPlace;1;MIS;_missing;-5;1
+VA_DeathPlace;1;QRY;_query;-4;1
+VA_DeathPlace;1;NAD;_not applicable;-3;1
+VA_DeathPlace;1;RFS;_refused;-2;1
+VA_DeathPlace;1;DKN;_don't know;-1;1
+VA_DeathPlace;1;OTH;_other;3;1
+VA_Delivery;1;NAD;_not applicable;-3;1
+VA_Delivery;1;DKN;_don't know;-1;1
+VA_DeliveryType;1;NAD;_not applicable;-3;1
+VA_Distension;1;NAD;_not applicable;-3;1
+VA_Distension;1;DKN;_don't know;-1;1
+VA_Education;1;MIS;_missing;-5;1
+VA_Education;1;RFS;_refused;-2;1
+VA_Education;1;DKN;_don't know;-1;1
+VA_FamIllSpec;1;DFT;_default;-6;1
+VA_FamIllSpec;1;MIS;_missing;-5;1
+VA_FamIllSpec;1;QRY;_query;-4;1
+VA_FamIllSpec;1;NAD;_not applicable;-3;1
+VA_FamIllSpec;1;RFS;_refused;-2;1
+VA_FamIllSpec;1;DKN;_don't know;-1;1
+VA_FamIllness;1;DFT;_default;-6;1
+VA_FamIllness;1;MIS;_missing;-5;1
+VA_FamIllness;1;QRY;_query;-4;1
+VA_FamIllness;1;NAD;_not applicable;-3;1
+VA_FamIllness;1;RFS;_refused;-2;1
+VA_FamIllness;1;DKN;_don't know;-1;1
+VA_FeverPattern;2;DFT;_default;-6;1
+VA_FeverPattern;2;MIS;_missing;-5;1
+VA_FeverPattern;2;QRY;_query;-4;1
+VA_FeverPattern;2;NAD;_not applicable;-3;1
+VA_FeverPattern;2;RFS;_refused;-2;1
+VA_FeverPattern;2;DKN;_don't know;-1;1
+VA_FeverSeverity;3;DFT;_default;-6;1
+VA_FeverSeverity;3;MIS;_missing;-5;1
+VA_FeverSeverity;3;QRY;_query;-4;1
+VA_FeverSeverity;3;NAD;_not applicable;-3;1
+VA_FeverSeverity;3;RFS;_refused;-2;1
+VA_FeverSeverity;3;DKN;_don't know;-1;1
+VA_Informant;1;DFT;_default;-6;1
+VA_Informant;1;MIS;_missing;-5;1
+VA_Informant;1;QRY;_query;-4;1
+VA_Informant;1;NAD;_not applicable;-3;1
+VA_Informant;1;RFS;_refused;-2;1
+VA_Informant;1;DKN;_don't know;-1;1
+VA_InjuryCause;1;DFT;_default;-6;1
+VA_InjuryCause;1;MIS;_missing;-5;1
+VA_InjuryCause;1;QRY;_query;-4;1
+VA_InjuryCause;1;NAD;_not applicable;-3;1
+VA_InjuryCause;1;RFS;_refused;-2;1
+VA_InjuryCause;1;DKN;_don't know;-1;1
+VA_InjuryDeathPl;1;DFT;_default;-6;1
+VA_InjuryDeathPl;1;MIS;_missing;-5;1
+VA_InjuryDeathPl;1;QRY;_query;-4;1
+VA_InjuryDeathPl;1;NAD;_not applicable;-3;1
+VA_InjuryDeathPl;1;RFS;_refused;-2;1
+VA_InjuryDeathPl;1;DKN;_don't know;-1;1
+VA_InjuryType;1;DFT;_default;-6;1
+VA_InjuryType;1;MIS;_missing;-5;1
+VA_InjuryType;1;QRY;_query;-4;1
+VA_InjuryType;1;NAD;_not applicable;-3;1
+VA_InjuryType;1;RFS;_refused;-2;1
+VA_InjuryType;1;DKN;_don't know;-1;1
+VA_MassLocation;1;NAD;_not applicable;-3;1
+VA_MassLocation;1;DKN;_don't know;-1;1
+VA_Medication;1;NAD;_not applicable;-3;1
+VA_Medication;1;DKN;_don't know;-1;1
+VA_Mouth;1;DFT;_default;-6;1
+VA_Mouth;1;MIS;_missing;-5;1
+VA_Mouth;1;QRY;_query;-4;1
+VA_Mouth;1;NAD;_not applicable;-3;1
+VA_Mouth;1;RFS;_refused;-2;1
+VA_Mouth;1;DKN;_don't know;-1;1
+VA_Mucus;1;NAD;_not applicable;-3;1
+VA_Mucus;1;DKN;_don't know;-1;1
+VA_PainLasted;1;DKN;_don't know;-1;1
+VA_PainLasted;1;NA ;NA;4;1
+VA_PainLoc;1;MIS;_missing;-5;1
+VA_PainLoc;1;NAD;_not applicable;-3;1
+VA_PainSeverity;4;NAD;_not applicable;-3;1
+VA_PainSeverity;4;DKN;_don't know;-1;1
+VA_PainType;1;MIS;_missing;-5;1
+VA_PainType;1;DKN;_don't know;-1;1
+VA_PainType;1;NA ;NA;5;1
+VA_Paralysis;1;NA ;NA;9;1
+VA_PassingStool;3;NAD;_not applicable;-3;1
+VA_PassingStool;3;DKN;_don't know;-1;1
+VA_RabiesTetanus;1;DFT;_default;-6;1
+VA_RabiesTetanus;1;MIS;_missing;-5;1
+VA_RabiesTetanus;1;QRY;_query;-4;1
+VA_RabiesTetanus;1;NAD;_not applicable;-3;1
+VA_RabiesTetanus;1;RFS;_refused;-2;1
+VA_RabiesTetanus;1;DKN;_don't know;-1;1
+VA_Rash;1;DFT;_default;-6;1
+VA_Rash;1;MIS;_missing;-5;1
+VA_Rash;1;QRY;_query;-4;1
+VA_Rash;1;NAD;_not applicable;-3;1
+VA_Rash;1;RFS;_refused;-2;1
+VA_Rash;1;DKN;_don't know;-1;1
+VA_Relationship;1;DFT;_default;-6;1
+VA_Relationship;1;MIS;_missing;-5;1
+VA_Relationship;1;QRY;_query;-4;1
+VA_Relationship;1;NAD;_not applicable;-3;1
+VA_Relationship;1;RFS;_refused;-2;1
+VA_Relationship;1;DKN;_don't know;-1;1
+VA_Resident;1;DFT;_default;-6;1
+VA_Resident;1;MIS;_missing;-5;1
+VA_Resident;1;QRY;_query;-4;1
+VA_Resident;1;NAD;_not applicable;-3;1
+VA_Resident;1;RFS;_refused;-2;1
+VA_Resident;1;DKN;_don't know;-1;1
+VA_Retention;1;NAD;_not applicable;-3;1
+VA_Retention;1;DKN;_don't know;-1;1
+VA_Signs;1;NAD;_not applicable;-3;1
+VA_Signs;1;DKN;_don't know;-1;1
+VA_Skin;1;DFT;_default;-6;1
+VA_Skin;1;MIS;_missing;-5;1
+VA_Skin;1;QRY;_query;-4;1
+VA_Skin;1;NAD;_not applicable;-3;1
+VA_Skin;1;RFS;_refused;-2;1
+VA_Skin;1;DKN;_don't know;-1;1
+VA_Stool;3;DFT;_default;-6;1
+VA_Stool;3;MIS;_missing;-5;1
+VA_Stool;3;QRY;_query;-4;1
+VA_Stool;3;NAD;_not applicable;-3;1
+VA_Stool;3;RFS;_refused;-2;1
+VA_Stool;3;DKN;_don't know;-1;1
+VA_StoolPattern;1;DFT;_default;-6;1
+VA_StoolPattern;1;MIS;_missing;-5;1
+VA_StoolPattern;1;QRY;_query;-4;1
+VA_StoolPattern;1;NAD;_not applicable;-3;1
+VA_StoolPattern;1;RFS;_refused;-2;1
+VA_StoolPattern;1;DKN;_don't know;-1;1
+VA_SuicideType;1;DFT;_default;-6;1
+VA_SuicideType;1;MIS;_missing;-5;1
+VA_SuicideType;1;QRY;_query;-4;1
+VA_SuicideType;1;NAD;_not applicable;-3;1
+VA_SuicideType;1;RFS;_refused;-2;1
+VA_SuicideType;1;DKN;_don't know;-1;1
+VA_Swelling;2;DFT;_default;-6;1
+VA_Swelling;2;MIS;_missing;-5;1
+VA_Swelling;2;QRY;_query;-4;1
+VA_Swelling;2;NAD;_not applicable;-3;1
+VA_Swelling;2;RFS;_refused;-2;1
+VA_Swelling;2;DKN;_don't know;-1;1
+VA_Time;3;NAD;_not applicable;-3;1
+VA_UnconLevel;1;DFT;_default;-6;1
+VA_UnconLevel;1;MIS;_missing;-5;1
+VA_UnconLevel;1;QRY;_query;-4;1
+VA_UnconLevel;1;NAD;_not applicable;-3;1
+VA_UnconLevel;1;RFS;_refused;-2;1
+VA_UnconLevel;1;DKN;_don't know;-1;1
+VA_Units;35;NAD;_not applicable;-3;1
+VA_Units;35;DFT;_default;-6;1
+VA_UrineCol;1;NAD;_not applicable;-3;1
+VA_UrineCol;1;DKN;_don't know;-1;1
+VA_UrineDif;1;DKN;_don't know;-1;1
+VA_UrineDif;1;NA ;NA;6;1
+VA_UrineQty;1;NAD;_not applicable;-3;1
+VA_UrineQty;1;DKN;_don't know;-1;1
+VA_VaginalDisch;1;DFT;_default;-6;1
+VA_VaginalDisch;1;MIS;_missing;-5;1
+VA_VaginalDisch;1;QRY;_query;-4;1
+VA_VaginalDisch;1;NAD;_not applicable;-3;1
+VA_VaginalDisch;1;RFS;_refused;-2;1
+VA_VaginalDisch;1;DKN;_don't know;-1;1
+VA_Vomitus;1;NAD;_not applicable;-3;1
+VA_Vomitus;1;DKN;_don't know;-1;1
+VA_WeightLoss;1;DFT;_default;-6;1
+VA_WeightLoss;1;MIS;_missing;-5;1
+VA_WeightLoss;1;QRY;_query;-4;1
+VA_WeightLoss;1;NAD;_not applicable;-3;1
+VA_WeightLoss;1;RFS;_refused;-2;1
+VA_WeightLoss;1;DKN;_don't know;-1;1
+VA_Where;1;DKN;_don't know;-1;1
+VA_Where;1;NA ;NA;4;1
+YesNoSimple;200;MIS;_Missing;-5;1
+YesNoSimple;200;QRY;_query;-4;1
+YesNoSimple;200;NAD;_not applicable;-3;1
+YesNoSimple;200;RFS;_refused;-2;1
+YesNoSimple;200;DKN;_don't know;-1;1
+YesNoSimple;200;  ;_missing;-1;1
+YesNoStd;200;  ;_missing;-1;1
+VA_PassingStool;200;  ;_missing;-1;1
+VA_Where;200;  ;_missing;-1;1
+VA_PainLasted;200;  ;_missing;-1;1
+VA_Anaemia;200;  ;_missing;-1;1
+VA_Medication;200;  ;_missing;-1;1
+VA_PainType;200;  ;_missing;-1;1
+VA_PainLoc;200;  ;_missing;-1;1

@@ -52,6 +52,8 @@ try
   #output variable domains
   CSV.write(joinpath(outputdir, "VAVariableDomains.csv"), vadomains)
   #output va data as flat csv files
+  domainvalues = CSV.read("mapping/VAVariableDomains_with_missing.csv", DataFrame)
+  vadata = encodemissing(vadata, domainvalues)
   for source in unique(vadata.Source)
     @info "Processing source $source"
     source_data = filter(row -> row.Source == source, vadata)
@@ -60,6 +62,7 @@ try
     CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
     f = convert_durations!(flat_data)
     f = add_individual_dates(f, vadeaths)
+    f = add_marriage(f)
     Arrow.write(joinpath(ENV["DATA_PATH"], "arrowfiles", "VAData_$source.arrow"), f)
     CSV.write(joinpath(outputdir, "VAData_$source.csv"), f)
   end
