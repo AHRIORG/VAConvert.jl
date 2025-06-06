@@ -587,17 +587,17 @@ function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::
 end
 
 function encodenumeric(df::AbstractDataFrame, numericvalues::AbstractDataFrame)::AbstractDataFrame
-    numeric_dict = Dict(row[:Variable_numeric] => row[:Variable_numeric_type] for row in eachrow(numericvalues))
+    numeric_dict = Dict(row[:VariableName] => row[:Condition] for row in eachrow(numericvalues))
     values = copy(df)
     for row in eachrow(values)
         if haskey(numeric_dict, row.Variable)
-            if numeric_dict[row.Variable] == "int"
-                row.Value = tryparse(Int, row.Value)
-            elseif numeric_dict[row.Variable] == "float"
-                row.Value = tryparse(Float64, row.Value)
+            value = tryparse(Int64, row.Value)
+            if !isnothing(value) && value >= numeric_dict[row.Variable]
+                row.Value = missing
             end
         end
     end
     return values
 end
+
 end # module VAConvert
