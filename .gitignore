@@ -7,3 +7,4 @@ docs/site/
 logs
 .vscode/
 *.DStore
+.DS_Store
