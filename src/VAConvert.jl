@@ -462,10 +462,10 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
     outdf = select(fromdf, [] => Returns(1:N) => :row_id, [] => Returns(string(row_identifier)) => :variable, row_identifier => ByRow(x -> string(x)) => :value)
     #
     for maprow in eachrow(map_table)
-        println("Processing: ", maprow)
+        @info "Processing: ", maprow
 
         if ismissing(maprow.from_variable) # if the from_variable is empty (there is no corresponding variable in the questionnaire) then we set the variable to missing "-"
-            println("Processing: ", "Missing from_variable")
+            @info "Processing: ", "Missing from_variable"
             value = "-"
 
         else  # else we apply the transformation

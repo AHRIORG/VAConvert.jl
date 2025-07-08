@@ -17,7 +17,7 @@ using VAConvert
 dotenv()
 
 #region Setup Logging
-l = open("logs/mapping_log.log", "w")
+l = open("logs/mapping_log_tests.log", "w")
 io = IOContext(l, :displaysize => (100, 100))
 logger = SimpleLogger(io)
 old_logger = global_logger(logger)
@@ -51,6 +51,11 @@ try
             flush(io)
         end
     end
+catch e
+    # log or handle error
+    @error "Error caught" exception=e stacktrace=catch_backtrace()
+    # optionally rethrow or handle
+    
 finally
     elapsed = now() - start_time
     @info "===== Completed $(Dates.format(now(), "yyyy-mm-dd HH:MM")) duration $(canonicalize(Dates.CompoundPeriod(elapsed)))"

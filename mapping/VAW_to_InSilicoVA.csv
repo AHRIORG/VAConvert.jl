@@ -12,3 +12,4 @@ i022k,"Was s(he) a baby who died after the first week, but within the first mont
 i022l,Was she a woman aged 12-19 years at death? (f 12-19),acdis_ageindays,Age in days,between,4380 to 7299,i019b,between,12 to 19,i019b,,NA,NA,ageInYears,Calculated field: int(${ageInDays} div 365.25),NA
 i022m,Was she a woman aged 20-34 years at death? (f 20-34),acdis_ageindays,Age in days,between,7300 to 12774,i019b,between,20 to 34,i019b,,NA,NA,ageInYears,Calculated field: int(${ageInDays} div 365.25),NA
 i022n,Was she a woman aged 35 to 49 years at death? (f 30-49),acdis_ageindays,Age in days,between,12775 to 18249,i019b,between,35 to 49,i019b,,NA,NA,ageInYears,Calculated field: int(${ageInDays} div 365.25),NA
+i022a,Was s(he) aged 65 years or more at death? (65+),acdis_ageindays,"Age in days (1 year = 365 days, 1 month = 30 days)",ge,23725,,,,,,,,,,
