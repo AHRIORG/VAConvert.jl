@@ -12,7 +12,7 @@ using DuckDB
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
     read_variablemap, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
-    encodemissing
+    encodemissing, encodenumeric
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -580,6 +580,20 @@ function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::
                 end
             else
                 @info "Variable $(row.Variable) Value $(row.Value) not found in domain $(row.VarDomain)"
+            end
+        end
+    end
+    return values
+end
+
+function encodenumeric(df::AbstractDataFrame, numericvalues::AbstractDataFrame)::AbstractDataFrame
+    numeric_dict = Dict(row[:VariableName] => row[:Condition] for row in eachrow(numericvalues))
+    values = copy(df)
+    for row in eachrow(values)
+        if haskey(numeric_dict, row.Variable)
+            value = tryparse(Int64, row.Value)
+            if !isnothing(value) && value >= numeric_dict[row.Variable]
+                row.Value = missing
             end
         end
     end

@@ -54,6 +54,8 @@ try
   #output va data as flat csv files
   domainvalues = CSV.read("mapping/VAVariableDomains_with_missing.csv", DataFrame)
   vadata = encodemissing(vadata, domainvalues)
+  numericvalues = CSV.read("mapping/NumericVariables_with_missing.csv", DataFrame)
+  vadata = encodenumeric(vadata, numericvalues)
   for source in unique(vadata.Source)
     @info "Processing source $source"
     source_data = filter(row -> row.Source == source, vadata)
