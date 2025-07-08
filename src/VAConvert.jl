@@ -438,7 +438,7 @@ function prepare(x) # prepare strings to put them in lowercase
         if isa(x, String)
             return strip(lowercase(x))
         else
-            return x # if it is an integer
+            return string(x) # if it is an integer, we transform it into a string as it will be transformed again
         end
     else
         return x
@@ -481,7 +481,7 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
 
             # Construct the conversion expression and get converted values
             # println("Processing: Construct the conversion expression and get converted values ")
-            value = [eval(Expr(:call, Symbol(maprow.operator), x, operant)) for x in sourcevalue]
+            value = [eval(Expr(:call, Symbol(strip(maprow.operator)), x, operant)) for x in sourcevalue] #strip(maprow.operator) - to make sure operator clean
 
             # If destination id already exists in output, meaning mapping is based on multiple conditions 
             if in(maprow.destination_variable, outdf.variable)
