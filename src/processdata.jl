@@ -68,6 +68,12 @@ try
     Arrow.write(joinpath(ENV["DATA_PATH"], "arrowfiles", "VAData_$source.arrow"), f)
     CSV.write(joinpath(outputdir, "VAData_$source.csv"), f)
   end
+
+catch e
+    # log or handle error
+    @error "Error caught" exception=e stacktrace=catch_backtrace()
+    rethrow()  # so the error also appears in terminal as usual
+
 finally
   elapsed = now() - start_time
   @info "===== Completed $(Dates.format(now(), "yyyy-mm-dd HH:MM")) duration $(canonicalize(Dates.CompoundPeriod(elapsed)))"
