@@ -8,7 +8,7 @@ using DataFrames
 using CSV
 using Logging
 using Dates
-using DuckDB
+using TidierFiles
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
     read_variablemap, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
@@ -535,34 +535,21 @@ This function connects to the DuckDB database specified in the environment varia
     4 = Casual partnership
 """
 function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
-    db = DuckDB.DB(ENV["EpisodesDb"])
-    @info "Opening $(db.handle.file)"
-    conn = DBInterface.connect(db)
-    try
-        sql = """
-        SELECT
-        im.IndividualUid,
-        CASE
-            WHEN e.PartnerStatus = 0 THEN NULL
-            ELSE e.PartnerStatus
-        END PartnerStatus
-        FROM main.SurveillanceEpisodesYrAge_Partners e
-        JOIN main.IndividualMap im ON e.IndividualId = im.IndividualId
-        WHERE Episodes = Episode
-          AND NOT PartnerStatus IS NULL;
-        """
-        partnerstatus = DuckDB.query(db, sql) |> DataFrame
-        file = joinpath(ENV["DATA_PATH"], "csvfiles", "IndividualMap.csv")
-        map = CSV.read(file, DataFrame)
-        mapped = innerjoin(partnerstatus, map, on=:IndividualUid)
-        select!(mapped, :IIntId => :IIntID, :PartnerStatus)
-        return leftjoin(df, mapped, on=:IIntID)
-    finally
-        DBInterface.close(conn)
-        DBInterface.close!(db)
-    end
-    return df
-end
+    partnerepisodes = read_dta(ENV["PARTNER_DTA"])
+    p = combine(groupby(partnerepisodes, [:IndividualId]), :Episode => maximum => :Episodes)
+    p = innerjoin(partnerepisodes, p, on=[:IndividualId])
+    # Get just the most recent episode
+    subset!(p, [:Episode, :Episodes] => ByRow((x, y) -> x == y))
+    map = read_dta(ENV["INDIVIDUAL_MAP"])
+    p = innerjoin(p, map, on=:IndividualId)
+    select!(p, :IndividualUid, :PartnerStatus)
+#
+    file = joinpath(ENV["DATA_PATH"], "csvfiles", "IndividualMap.csv")
+    map = CSV.read(file, DataFrame)
+    mapped = innerjoin(p, map, on=:IndividualUid)
+    select!(mapped, :IIntId => :IIntID, :PartnerStatus)
+    return leftjoin(df, mapped, on=:IIntID)
+ end
 
 function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::AbstractDataFrame
     transform!(domainvalues, :Code => ByRow(x -> strip(x)) => :Code)
