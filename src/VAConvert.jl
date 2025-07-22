@@ -241,7 +241,7 @@ function read_variablemap(file)::AbstractDataFrame
         @error "File not found: $filepath"
         return DataFrame()
     end
-    df = CSV.read(file, DataFrame)
+    df = CSV.read(file, DataFrame; missingstrings=["NA", ""])
     rename!(df, Dict("New Column Name" => "destination_variable",
         "New Column Documentation" => "destination_description",
         "Source Column ID" => "from_variable",
@@ -398,8 +398,8 @@ function between(x, y)
         if isa(x, AbstractString)
             x = parse(Float64, x)
         end
-        a = parse(Int64, r[1])
-        b = parse(Int64, r[2])
+        a = parse(Float64, r[1])
+        b = parse(Float64, r[2])
         return ifelse(x >= a && x <= b, "y", "n")
     end
 end
@@ -499,6 +499,7 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
                 #println("Processing: Check whether prerequisites are met and adjust values")
                 #println("row.variable:", unique(outdf.variable), "// maprow.prerequisite_variable:", maprow.prerequisite_variable)
                 prereq = filter(row -> row.variable .== maprow.prerequisite_variable, outdf)
+                
                 value = ifelse.(prereq.value .== "y", value, "-")
             end
 

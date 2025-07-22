@@ -55,7 +55,8 @@ catch e
     # log or handle error
     @error "Error caught" exception=e stacktrace=catch_backtrace()
     # optionally rethrow or handle
-    
+    rethrow()
+
 finally
     elapsed = now() - start_time
     @info "===== Completed $(Dates.format(now(), "yyyy-mm-dd HH:MM")) duration $(canonicalize(Dates.CompoundPeriod(elapsed)))"
