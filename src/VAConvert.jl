@@ -202,14 +202,21 @@ function convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
     duration_lookup = Dict{String,Union{Number,Missing}}("NAD" => missing, "DFT" => missing, "MIS" => missing, "R" => missing,
         "DAY" => 1, "WEE" => 7, "MON" => 30, "YEA" => 365, "U" => missing, "QRY" => missing, "MIN" => 1 / 1440, "HOR" => 1 / 24,
         "H" => 1 / 24, "M" => 30, "D" => 1, "Y" => 365, "W" => 7, "HRS" => 1 / 24, "YRS" => 365, "DKN" => missing, "HOU" => 1 / 24)
+    default_duration = Dict{String,Integer}("NAD" => 0, "DFT" => 0, "MIS" => 0, "R" => 0, "DAY" => 5, "WEE" => 3, "MON" => 5, "YEA" => 3,
+        "U" => 0, "QRY" => 0, "MIN" => 30, "HOR" => 6, "H" => 6, "M" => 5, "D" => 5, "Y" => 3, "W" => 3, "HRS" => 6, "YRS" => 3,
+        "DKN" => 0, "HOU" => 6)
     duration_data = CSV.read(joinpath(ENV["MAPPING_PATH"], "VA_Duration_Unit_equivalence.csv"), DataFrame)
     duration_map = Dict{String,String}(zip(duration_data[!, :Variable_numeric], duration_data[!, :Variable_unit]))
     for row in eachrow(data)
         for (k, v) in duration_map
-            if hasproperty(row, k) && !ismissing(row[k]) && !ismissing(row[v])
+            if hasproperty(row, k) && !ismissing(row[v]) # && !ismissing(row[k]) # check if the variable exists and duration unitis not missing
                 if haskey(duration_lookup, row[v])
                     #println("$k $v")
-                    nvalue = parse(Int, row[k]) * duration_lookup[row[v]]
+                    if ismissing(row[k])
+                        nvalue = default_duration[row[v]]
+                    else
+                        nvalue = parse(Int, row[k]) * duration_lookup[row[v]]
+                    end
                     row[k] = string(nvalue)
                     row[v] = "DAY"
                     #println(nvalue)
@@ -222,7 +229,6 @@ function convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
     return data
 end
 
-#
 """
     read_variablemap(path,file)::AbstractDataFrame
 
