@@ -214,11 +214,12 @@ function convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
                     #println("$k $v")
                     if ismissing(row[k])
                         nvalue = default_duration[row[v]]
+                    row[v] = "DAY"*"_non_specific__inputed"
                     else
                         nvalue = parse(Int, row[k]) * duration_lookup[row[v]]
+                        row[v] = "DAY"
                     end
                     row[k] = string(nvalue)
-                    row[v] = "DAY"
                     #println(nvalue)
                 else
                     @warn "Unknown duration unit: '$(row[v])' $k $v"
