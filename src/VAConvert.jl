@@ -249,6 +249,14 @@ function read_variablemap(file)::AbstractDataFrame
         return DataFrame()
     end
     df = CSV.read(file, DataFrame; missingstrings=["NA", ""])
+
+    # Strip leading and trailing whitespace from all String values in the DataFrame
+    for col in names(df)
+        if eltype(df[!, col]) <: AbstractString
+        df[!, col] = strip.(df[!, col])
+        end
+    end
+    
     rename!(df, Dict("New Column Name" => "destination_variable",
         "New Column Documentation" => "destination_description",
         "Source Column ID" => "from_variable",
