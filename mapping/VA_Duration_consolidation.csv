@@ -1,3 +1,2 @@
-"Version";"New_Variable_unit_consolidated";"Question";"Variable_unit";"Variable_numeric_day";"Variable_numeric_month";"Variable_numeric_year"
-"VAW";"wsi_cough_durati_consolidated";"For how long did (s)he have a cough?";"wsi_cough_durati";"wsi_cough_days";"wsi_cough_month";
-"VAW";"wbd_brth_dff_un_consolidated";"For how long did the difficulty breathing last?";"wbd_brth_dff_un";"wbd_brth_dff_dr";"wbd_brth_dff_mn";"wbd_brth_dff_yr"
+Version,Consolidated_variable,Question,Unit_variable,Numeric_var_days,Numeric_var_month,Numeric_var_year
+VAW,wsi_cough_durati_consolidated,For how long did (s)he have a cough?,wsi_cough_durati,wsi_cough_days,wsi_cough_month,
