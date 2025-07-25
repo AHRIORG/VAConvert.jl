@@ -63,6 +63,9 @@ try
     source_data = stripcrlf(source_data) # remove carriage return and line feed in text fields
     flat_data = unstack(source_data, :IIntID, :Variable, :Value)
     CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
+      if source == "VAW" #add other sources that need consolidation
+        consolidate_duration_variables!(flat_data)
+      end
     f = convert_durations!(flat_data)
     f = add_individual_dates(f, vadeaths)
     f = add_marriage(f)
