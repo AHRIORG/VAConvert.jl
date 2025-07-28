@@ -238,7 +238,8 @@ function consolidate_duration_variables!(df::AbstractDataFrame)::AbstractDataFra
             elseif length(nonmissing_values) > 1
                 # More than one value: warn and leave as missing
                 rowVA[consolidated_var] = missing
-                @warn "Multiple numeric values found for $(consolidated_var) at row $i: $(nonmissing_values). Consolidated value not assigned."
+                i = rowVA[:IIntID]
+                @warn "Multiple numeric values found for $(consolidated_var) at individual IIntId $i : $(nonmissing_values). Consolidated value assigned as missing."
             end
         end
     end
