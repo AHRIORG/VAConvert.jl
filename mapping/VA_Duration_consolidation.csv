@@ -1,2 +1,22 @@
-Version,Consolidated_variable,Question,Unit_variable,Numeric_var_days,Numeric_var_month,Numeric_var_year
-VAW,wsi_cough_durati_consolidated,For how long did (s)he have a cough?,wsi_cough_durati,wsi_cough_days,wsi_cough_month,
+"Version";"Problem";"Note";"Consolidated_variable";"Question";"Unit_variable";"Numeric_var_hours";"Numeric_var_days1";"Numeric_var_days2";"Numeric_var_month";"Numeric_var_year"
+"VAW";;;"wih_duration_consolidated";"For how long was (s)he ill before death?";"wih_duration";;"wih_days";"wih_unitsdays";"wih_unitsmon";"wih_unitsyr"
+"VAW";;;"wsi_feverdura_consolidated";"How long did the fever last?";"wsi_feverdura";;"wsi_feverdays";;"wsi_fevermon";
+"VAW";;;"wsi_cough_durati_consolidated";"For how long did (s)he have a cough?";"wsi_cough_durati";;"wsi_cough_days";;"wsi_cough_month";
+"VAW";;;"wbd_brth_dff_un_consolidated";"For how long did the difficulty breathing last?";"wbd_brth_dff_un";;"wbd_brth_dff_dr";;"wbd_brth_dff_mn";"wbd_brth_dff_yr"
+"VAW";;;"wbd_fst_brth_dr_consolidated";"For how long did the fast breathing last?";"wbd_fst_brth_dr";;"wbd_fst_brth_l";"wbd_fst_brth_d";"wbd_fst_brth_mn";
+"VAW";;;"wbd_chst_pn_dr_consolidated";"How long did the chest pain last ?";"wbd_chst_pn_dr";"wbd_chest_pain_h";"wbd_chst_pn_d";;;
+"VAW";2;"General question for all age group";"was_diarr_dur_consolidated";"How long did (s)he have diarrhoea?";"was_diarr_dur";;"was_diarr_days";;"was_diarr_mon";
+"VAW";"Missing the month variable";"Follow up question only for children";"was_drr_dth_dr_consolidated";"How long before death did the diarrhoea start?";"was_drr_dth_dr";;"was_drr_dth_d";"was_diarr_death";;
+"VAW";;;"was_vomit_death__consolidated";"How long before death did (s)he vomit?";"was_vomit_death_";;"was_vomit_days";;"was_vomit_mon";
+"VAW";;;"wap_bellypain_du_consolidated";"For how long did (s)he have abdominal pain?";"wap_bellypain_du";"wbp_bellypain_hr";"wbp_bellypain_da";;"wbp_bellypain_mo";
+"VAW";;;"wap_bllyptrd_dr_consolidated";"For how long before death did (s)he have a more than usually protruding abdomen?";"wap_bllyptrd_dr";;"wap_bllyptrd_d";;"wap_bllyptrd_mn";
+"VAW";;;"wap_bellymass_du_consolidated";"For how long did (s)he have a mass in the abdomen?";"wap_bellymass_du";;"wap_bellymass_da";;"wap_bellymass_mo";
+"VAW";;;"wap_stiffneck_du_consolidated";"How long before death did (s)he have stiff neck?";"wap_stiffneck_du";;"wap_stiffneck_da";;"wap_stiffneck_mo";
+"VAW";;;"wap_mntlcnf_dr_consolidated";"How long did (s)he have mental confusion?";"wap_mntlcnf_dr";;"wap_mntlcnf_d";;"wap_mentalconf_m";
+"VAW";;;"wap_unconsc_dur_consolidated";"How long before death did unconsciousness start?";"wap_unconsc_dur";"wap_unconsc_hour";"wap_unconsc_days";;;
+"VAW";;;"wap_ulcerfoot_du_consolidated";"How long did the ulcer on the foot have pus?";"wap_ulcerfoot_du";;"wap_ulcers_days";;"wap_ulcers_mon";
+"VAW";;;"wap_fcpufnss_dr_consolidated";"How long did (s)he have puffiness of the face?";"wap_fcpufnss_dr";;"wap_fcpufnss_d";;"wap_fcpufnss_mn";
+"VAW";;;"wap_swollegs_dur_consolidated";"How long did the swelling last?";"wap_swollegs_dur";;"wap_swollegs_day";;"wap_swollegs_mon";
+"VAW";;;"wap_dffswllw_dr_consolidated";"For how long before death did (s)he have difficulty swallowing?";"wap_dffswllw_dr";;"wap_dffswllw_d";;"wap_dffswllw_mn";
+"VAW";;;"wap_ylldsclr_dr_consolidated";"For how long did (s)he have the yellow discoloration?";"wap_ylldsclr_dr";;"wap_ylldsclr_d";;"wap_ylldsclr_mn";
+"VAW";"Missing day variable";;"wap_stpsckl_dr_consolidated";"How long after birth did the baby stop suckling?";"wap_stpsckl_dr";;;;"wap_stopsuckle_m";

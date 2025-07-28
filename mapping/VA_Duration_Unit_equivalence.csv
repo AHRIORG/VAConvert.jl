@@ -1,61 +1,82 @@
-﻿Version;Questionnaire;Variable_numeric;Variable_unit;Question
-VAP;WHO2016;ap_bellymass_dur;cp_bellymass_uni;For how long before death did (s)he have a mass in the belly (abdomen)? (Days/Months)
-VAP;WHO2016;ap_bellypotrud_d;cp_bellypotrud_u;For how long did (s)he have a more than usually protruding belly (abdomen)?(Days/Months)
-VAP;WHO2016;bd_breath_diff_d;bd_breath_diff_u;For how long did the difficultly breathing last ? (Days/Months/Years)
-VAP;WHO2016;bd_chest_pain_du;bd_chest_pain_un;For how long did the chest pain last ? (Minutes/Hours)
-VAP;WHO2016;cp_bellypain_dur;cp_bellypain_uni;For how long before death did (s)he have belly (abdominal) pain? (Hours/Days/Weeks/Months)
-VAP;WHO2016;nd_mthr_dthm_dur;nd_mthr_dthm_unt;How long after the delivery did the mother die? (Days/Months)
-VAP;WHO2016;nd_move_duration;nd_move_units;How long before labour did you or the mother last feel the baby move?
-VAP;WHO2016;ih_duration_1;ih_units_1; For how long was (s)he ill before death?
-VAQ;Verbal Autopsy;VA_C1S01V11;VA_C1S01V11b;For how long was s/he ill before s/he died?
-VAQ;Verbal Autopsy;VA_C2S01V03;VA_C2S01V03b;How long after the injury did s/he die?
-VAQ;Verbal Autopsy;VA_C2S02V03;VA_C2S02V03b;For how long was s/he inconscious?
-VAQ;Verbal Autopsy;VA_C2S02V08;VA_C2S02V08b;How long did the stiffness of the body last?
-VAQ;Verbal Autopsy;VA_C2S02V10;VA_C2S02V10b;For how long did s/he have problem with breathing?
-VAQ;Verbal Autopsy;VA_C3S02V02;VA_C3S02V02b;For how long did s/he have a cough?
-VAQ;Verbal Autopsy;VA_C3S02V04;VA_C3S02V04b;For how long did s/he have a cough with sputum?
-VAQ;Verbal Autopsy;VA_C3S03V02;VA_C3S03V02b;For how long did s/he have that skin condition?
-VAQ;Verbal Autopsy;VA_C3S04V03;VA_C3S04V03b;For how long did s/he have loose or liquid stool or diarrhoea?
-VAQ;Verbal Autopsy;VA_C3S05V02;VA_C3S05V02b;For how long did s/he have the swelling in the neck?
-VAQ;Verbal Autopsy;VA_C3S06V05;VA_C3S06V05b;If confused or unconscious for how long was s/he confused or unconcious before s/he died?
-VAQ;Verbal Autopsy;VA_C3S07V02;VA_C3S07V02b;How long did s/he have fever?
-VAQ;Verbal Autopsy;VA_C3S08V03;VA_C3S08V03b;How long did s/he have the swelling?
-VAQ;Verbal Autopsy;VA_C3S09V02;VA_C3S09V02b;How long did she have the swelling or ulcer?
-VAQ;Verbal Autopsy;VAC3_S10V02;VAC3_S10V02a;For how long did s/he have this problem to swallow?
-VAQ;Verbal Autopsy;VAC3_S10V05;VAC3_S10V05a;Unit of measure
-VAQ;Verbal Autopsy;VAC3_S11V02;VAC3_S11v02a;For how long did s/he have diffculty passing stool?
-VAQ;Verbal Autopsy;VAC3_S12V03;VAC3_S12V03a;For how long did s/he have the pain?
-VAQ;Verbal Autopsy;VAC3_S12V08;VAC3_S12V08a;For how long did s/he suffer from vomitting?
-VAQ;Verbal Autopsy;VAC3_S13V02;VAC3_S13V02a;For how long did s/he have the mass?
-VAQ;Verbal Autopsy;VAC3_S14V02;VAC3_S14V02a;How many days did s/he have this Jaundice?
-VAQ;Verbal Autopsy;VAC3_S15V03;VAC3_S15V03a;For how long did s/he have this abdominal distension
-VAQ;Verbal Autopsy;VAC3_S16V02;VAC3_S16V02a;For how long did s/he have the swelling of ankles?
-VAQ;Verbal Autopsy;VAC3_S17V03;VAC3_S17V03a;If s/he had it on and off, how long did such period of shortness of breath last usually?
-VAQ;Verbal Autopsy;VAC3_S17V04;VAC3_S17V04a;How long did s/he have this shortness of breath for the first time?
-VAQ;Verbal Autopsy;VAC3_S18V03;VAC3_S18V03a;For how long did s/he have this paralysis before s/he died?
-VAQ;Verbal Autopsy;VAC3_S20V01;VAC3_S20V01a;If s/he had diarrhoea or liquid or loose stool before s/he died, how long did it last?
-VAQ;Verbal Autopsy;VAC3_S23V02;VAC3_S23V02a;How long did the cough with sputum last?
-VAQ;Verbal Autopsy;VAC3_S23V05;VAC3_S23V05a;How long did the shortness of breath last?
-VAQ;Verbal Autopsy;VAC3_S24V02;VAC3_S24V02a;For how long did s/he have problems passing urine?
-VAQ;Verbal Autopsy;VAC3_S26V03;VAC3_S26V03a;For how long did s/he have this change in the amount of urine?
-VAQ;Verbal Autopsy;VAC3_S26V06;VAC3_S26V06a;For how long did s/he have this change in the colour of the urine?
-VAQ;Verbal Autopsy;VAC3_S31V02;VAC3_S31V02a;How long did s/he have headache?
-VAQ;Verbal Autopsy;VAC4_S01V02;VAC4_S01V03;How many months was she pregnant when she died?
-VAQ;Verbal Autopsy;VAC4_S01V04;VAC4_S01V05;How many months was she pregnant when the pregnancy ended?
-VAQ;Verbal Autopsy;VAC4_S02V03;VAC4_S02V04;How long did the bleeding last?
-VAQ;Verbal Autopsy;VAC4_S02V05;VAC4_S02V06;How long after the start of the bleeding did she die?
-VAQ;Verbal Autopsy;VAC4_S03V04;VAC4_S03V05;How many months was she pregnant when the convulsions started?
-VAQ;Verbal Autopsy;VAC4_S03V06;VAC4_S03V07;How long after the start of the convulsions did she die?
-VAQ;Verbal Autopsy;VAC4_S04V04;VAC4_S04V04a;How long after the bleeding started did she die?
-VAQ;Verbal Autopsy;VAC4_S04V05;VAC4_S04V05a;How long after the delivery of the child was the placents delivered?
-VAQ;Verbal Autopsy;VAC4_S04V07;VAC4_S04V07a;How long after the delivery of the child were the placenta or these retained parts of the placenta or membranes delivered?
-VAQ;Verbal Autopsy;VAC4_S05V01;VAC4_S05V02;How long did the labour pain last?
-VAQ;Verbal Autopsy;VAC4_S05V06;VAC4_S05V07;If the woman had an assisted delivery how long after the delivery did she die?
-VAQ;Verbal Autopsy;VAC4_S06V02;VAC4_S06V03;How long did the fever last?
-VAQ;Verbal Autopsy;VAC4_S06V04;VAC4_S06V05;How long after delivery of the child did she die?
-VAQ;Verbal Autopsy;VAC5_S01V04;VAC5_S01V04a;How many months was the mother pregnant when she delivered?
-VAQ;Verbal Autopsy;VAC6_S01V14;VAC6_S01V14a;If liquid or loose stool or from diarrhoea, how long did it last?
-VAQ;Verbal Autopsy;VAC6_S01V17;VAC6_S01V17a;If fever, how long did the fever last?
-VAQ;Verbal Autopsy;VAC6_S01V19;VAC6_S01V19a;If cough, how long did the cough last?
-VAQ;Verbal Autopsy;VAC6_S01V21a;VAC6_S01V21c;If yes, how did the difficult or fast breathing last?
-VAQ;Verbal Autopsy;VA_Age;VA_AgeUnit;Age
+﻿Version,Questionnaire,Variable_numeric,Variable_unit,Question,
+VAP,WHO2016,ap_bellymass_dur,cp_bellymass_uni,For how long before death did (s)he have a mass in the belly (abdomen)? (Days/Months),
+VAP,WHO2016,ap_bellypotrud_d,cp_bellypotrud_u,For how long did (s)he have a more than usually protruding belly (abdomen)?(Days/Months),
+VAP,WHO2016,bd_breath_diff_d,bd_breath_diff_u,For how long did the difficultly breathing last ? (Days/Months/Years),
+VAP,WHO2016,bd_chest_pain_du,bd_chest_pain_un,For how long did the chest pain last ? (Minutes/Hours),
+VAP,WHO2016,cp_bellypain_dur,cp_bellypain_uni,For how long before death did (s)he have belly (abdominal) pain? (Hours/Days/Weeks/Months),
+VAP,WHO2016,nd_mthr_dthm_dur,nd_mthr_dthm_unt,How long after the delivery did the mother die? (Days/Months),
+VAP,WHO2016,nd_move_duration,nd_move_units,How long before labour did you or the mother last feel the baby move?,
+VAP,WHO2016,ih_duration_1,ih_units_1, For how long was (s)he ill before death?,
+VAQ,Verbal Autopsy,VA_C1S01V11,VA_C1S01V11b,For how long was s/he ill before s/he died?,
+VAQ,Verbal Autopsy,VA_C2S01V03,VA_C2S01V03b,How long after the injury did s/he die?,
+VAQ,Verbal Autopsy,VA_C2S02V03,VA_C2S02V03b,For how long was s/he inconscious?,
+VAQ,Verbal Autopsy,VA_C2S02V08,VA_C2S02V08b,How long did the stiffness of the body last?,
+VAQ,Verbal Autopsy,VA_C2S02V10,VA_C2S02V10b,For how long did s/he have problem with breathing?,
+VAQ,Verbal Autopsy,VA_C3S02V02,VA_C3S02V02b,For how long did s/he have a cough?,
+VAQ,Verbal Autopsy,VA_C3S02V04,VA_C3S02V04b,For how long did s/he have a cough with sputum?,
+VAQ,Verbal Autopsy,VA_C3S03V02,VA_C3S03V02b,For how long did s/he have that skin condition?,
+VAQ,Verbal Autopsy,VA_C3S04V03,VA_C3S04V03b,For how long did s/he have loose or liquid stool or diarrhoea?,
+VAQ,Verbal Autopsy,VA_C3S05V02,VA_C3S05V02b,For how long did s/he have the swelling in the neck?,
+VAQ,Verbal Autopsy,VA_C3S06V05,VA_C3S06V05b,If confused or unconscious for how long was s/he confused or unconcious before s/he died?,
+VAQ,Verbal Autopsy,VA_C3S07V02,VA_C3S07V02b,How long did s/he have fever?,
+VAQ,Verbal Autopsy,VA_C3S08V03,VA_C3S08V03b,How long did s/he have the swelling?,
+VAQ,Verbal Autopsy,VA_C3S09V02,VA_C3S09V02b,How long did she have the swelling or ulcer?,
+VAQ,Verbal Autopsy,VAC3_S10V02,VAC3_S10V02a,For how long did s/he have this problem to swallow?,
+VAQ,Verbal Autopsy,VAC3_S10V05,VAC3_S10V05a,Unit of measure,
+VAQ,Verbal Autopsy,VAC3_S11V02,VAC3_S11v02a,For how long did s/he have diffculty passing stool?,
+VAQ,Verbal Autopsy,VAC3_S12V03,VAC3_S12V03a,For how long did s/he have the pain?,
+VAQ,Verbal Autopsy,VAC3_S12V08,VAC3_S12V08a,For how long did s/he suffer from vomitting?,
+VAQ,Verbal Autopsy,VAC3_S13V02,VAC3_S13V02a,For how long did s/he have the mass?,
+VAQ,Verbal Autopsy,VAC3_S14V02,VAC3_S14V02a,How many days did s/he have this Jaundice?,
+VAQ,Verbal Autopsy,VAC3_S15V03,VAC3_S15V03a,For how long did s/he have this abdominal distension,
+VAQ,Verbal Autopsy,VAC3_S16V02,VAC3_S16V02a,For how long did s/he have the swelling of ankles?,
+VAQ,Verbal Autopsy,VAC3_S17V03,VAC3_S17V03a,If s/he had it on and off, how long did such period of shortness of breath last usually?
+VAQ,Verbal Autopsy,VAC3_S17V04,VAC3_S17V04a,How long did s/he have this shortness of breath for the first time?,
+VAQ,Verbal Autopsy,VAC3_S18V03,VAC3_S18V03a,For how long did s/he have this paralysis before s/he died?,
+VAQ,Verbal Autopsy,VAC3_S20V01,VAC3_S20V01a,If s/he had diarrhoea or liquid or loose stool before s/he died, how long did it last?
+VAQ,Verbal Autopsy,VAC3_S23V02,VAC3_S23V02a,How long did the cough with sputum last?,
+VAQ,Verbal Autopsy,VAC3_S23V05,VAC3_S23V05a,How long did the shortness of breath last?,
+VAQ,Verbal Autopsy,VAC3_S24V02,VAC3_S24V02a,For how long did s/he have problems passing urine?,
+VAQ,Verbal Autopsy,VAC3_S26V03,VAC3_S26V03a,For how long did s/he have this change in the amount of urine?,
+VAQ,Verbal Autopsy,VAC3_S26V06,VAC3_S26V06a,For how long did s/he have this change in the colour of the urine?,
+VAQ,Verbal Autopsy,VAC3_S31V02,VAC3_S31V02a,How long did s/he have headache?,
+VAQ,Verbal Autopsy,VAC4_S01V02,VAC4_S01V03,How many months was she pregnant when she died?,
+VAQ,Verbal Autopsy,VAC4_S01V04,VAC4_S01V05,How many months was she pregnant when the pregnancy ended?,
+VAQ,Verbal Autopsy,VAC4_S02V03,VAC4_S02V04,How long did the bleeding last?,
+VAQ,Verbal Autopsy,VAC4_S02V05,VAC4_S02V06,How long after the start of the bleeding did she die?,
+VAQ,Verbal Autopsy,VAC4_S03V04,VAC4_S03V05,How many months was she pregnant when the convulsions started?,
+VAQ,Verbal Autopsy,VAC4_S03V06,VAC4_S03V07,How long after the start of the convulsions did she die?,
+VAQ,Verbal Autopsy,VAC4_S04V04,VAC4_S04V04a,How long after the bleeding started did she die?,
+VAQ,Verbal Autopsy,VAC4_S04V05,VAC4_S04V05a,How long after the delivery of the child was the placents delivered?,
+VAQ,Verbal Autopsy,VAC4_S04V07,VAC4_S04V07a,How long after the delivery of the child were the placenta or these retained parts of the placenta or membranes delivered?,
+VAQ,Verbal Autopsy,VAC4_S05V01,VAC4_S05V02,How long did the labour pain last?,
+VAQ,Verbal Autopsy,VAC4_S05V06,VAC4_S05V07,If the woman had an assisted delivery how long after the delivery did she die?,
+VAQ,Verbal Autopsy,VAC4_S06V02,VAC4_S06V03,How long did the fever last?,
+VAQ,Verbal Autopsy,VAC4_S06V04,VAC4_S06V05,How long after delivery of the child did she die?,
+VAQ,Verbal Autopsy,VAC5_S01V04,VAC5_S01V04a,How many months was the mother pregnant when she delivered?,
+VAQ,Verbal Autopsy,VAC6_S01V14,VAC6_S01V14a,If liquid or loose stool or from diarrhoea, how long did it last?
+VAQ,Verbal Autopsy,VAC6_S01V17,VAC6_S01V17a,If fever, how long did the fever last?
+VAQ,Verbal Autopsy,VAC6_S01V19,VAC6_S01V19a,If cough, how long did the cough last?
+VAQ,Verbal Autopsy,VAC6_S01V21a,VAC6_S01V21c,If yes, how did the difficult or fast breathing last?
+VAQ,Verbal Autopsy,VA_Age,VA_AgeUnit,Age,
+VAW,WHO2022,wih_duration_consolidated,wih_duration,For how long was (s)he ill before death?,
+VAW,WHO2023,wsi_feverdura_consolidated,wsi_feverdura,How long did the fever last?,
+VAW,WHO2024,wsi_cough_durati_consolidated,wsi_cough_durati,For how long did (s)he have a cough?,
+VAW,WHO2025,wbd_brth_dff_un_consolidated,wbd_brth_dff_un,For how long did the difficulty breathing last?,
+VAW,WHO2026,wbd_fst_brth_dr_consolidated,wbd_fst_brth_dr,For how long did the fast breathing last?,
+VAW,WHO2027,wbd_chst_pn_dr_consolidated,wbd_chst_pn_dr,How long did the chest pain last ?,
+VAW,WHO2028,was_diarr_dur_consolidated,was_diarr_dur,How long did (s)he have diarrhoea?,
+VAW,WHO2029,was_drr_dth_dr_consolidated,was_drr_dth_dr,How long before death did the diarrhoea start?,
+VAW,WHO2030,was_vomit_death__consolidated,was_vomit_death_,How long before death did (s)he vomit?,
+VAW,WHO2031,wap_bellypain_du_consolidated,wap_bellypain_du,For how long did (s)he have abdominal pain?,
+VAW,WHO2032,wap_bllyptrd_dr_consolidated,wap_bllyptrd_dr,For how long before death did (s)he have a more than usually protruding abdomen?,
+VAW,WHO2033,wap_bellymass_du_consolidated,wap_bellymass_du,For how long did (s)he have a mass in the abdomen?,
+VAW,WHO2034,wap_stiffneck_du_consolidated,wap_stiffneck_du,How long before death did (s)he have stiff neck?,
+VAW,WHO2035,wap_mntlcnf_dr_consolidated,wap_mntlcnf_dr,How long did (s)he have mental confusion?,
+VAW,WHO2036,wap_unconsc_dur_consolidated,wap_unconsc_dur,How long before death did unconsciousness start?,
+VAW,WHO2037,wap_ulcerfoot_du_consolidated,wap_ulcerfoot_du,How long did the ulcer on the foot have pus?,
+VAW,WHO2038,wap_fcpufnss_dr_consolidated,wap_fcpufnss_dr,How long did (s)he have puffiness of the face?,
+VAW,WHO2039,wap_swollegs_dur_consolidated,wap_swollegs_dur,How long did the swelling last?,
+VAW,WHO2040,wap_dffswllw_dr_consolidated,wap_dffswllw_dr,For how long before death did (s)he have difficulty swallowing?,
+VAW,WHO2041,wap_ylldsclr_dr_consolidated,wap_ylldsclr_dr,For how long did (s)he have the yellow discoloration?,
+VAW,WHO2042,wap_stpsckl_dr_consolidated,wap_stpsckl_dr,How long after birth did the baby stop suckling?,
