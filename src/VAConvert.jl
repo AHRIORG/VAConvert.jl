@@ -11,7 +11,7 @@ using Dates
 using TidierFiles
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
-    read_variablemap, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
+    read_variablemap, consolidate_duration_variables!, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
     encodemissing, encodenumeric
 
 function readtable(server, database, table)
@@ -268,12 +268,12 @@ function convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
             if hasproperty(row, k) && !ismissing(row[v]) # && !ismissing(row[k]) # check if the variable exists and duration unitis not missing
                 if haskey(duration_lookup, row[v])
                     #println("$k $v")
-                    if ismissing(row[k])
-                        nvalue = default_duration[row[v]]
-                    row[v] = "DAY"*"_non_specific__inputed"
+                    if ismissing(row[k]) # if the numeric value is missing but the duration unit is present, we impute the numeric value using default
+                        nvalue = default_duration[row[v]] * duration_lookup[row[v]]
+                        row[v] = row[v]*"_non_specific__imputed"
                     else
                         nvalue = parse(Int, row[k]) * duration_lookup[row[v]]
-                        row[v] = "DAY"
+                        #row[v] = "DAY"
                     end
                     row[k] = string(nvalue)
                     #println(nvalue)
@@ -604,10 +604,11 @@ end
 
 Add partner status to the dataframe from the SurveillanceEpisodesYrAge_Partners table.
 This function connects to the DuckDB database specified in the environment variable `EpisodesDb`
-    1 = No partnership
-    2 = Married
-    3 = Regular partnership
-    4 = Casual partnership
+    Married = Married
+    Regular = Regular partnership
+    Casual = Casual relationship
+    Widowed/Seperated = Widowed or seperated
+    No partner = No partner
 """
 function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
     partnerepisodes = read_dta(ENV["PARTNER_DTA"])
