@@ -21,6 +21,7 @@ function readtable(server, database, table)
 end
 
 function connectdb(server, database)
+    @info "Connecting to database $database on server $server"
     if Sys.isapple()
         ODBC.setunixODBC(; ODBCSYSINI="/opt/homebrew/etc", ODBCINSTINI="odbcinst.ini", ODBCINI="odbc.ini")
     end
@@ -28,11 +29,19 @@ function connectdb(server, database)
         connStr = "Driver=ODBC Driver 18 for SQL Server; SERVER=$server; DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes;AutoTranslate=no"
     end
     if Sys.islinux()
-        connStr = "Driver={/opt/microsoft/msodbcsql18/lib64/libmsodbcsql-18.4.so.1.1};Server=SERVER=$server;Database=$database;UID=$(ENV["ServerUser"]);PWD=$(ENV["ServerPW"]);TrustServerCertificate=yes;AutoTranslate=no;"
+        connStr = "Driver={/opt/microsoft/msodbcsql18/lib64/libmsodbcsql-18.4.so.1.1};Server=$server;Database=$database;UID=$(ENV["ServerUser"]);PWD=$(ENV["ServerPW"]);TrustServerCertificate=yes;AutoTranslate=no;"
     end
     if Sys.isapple()
-        connStr = "Driver={/opt/homebrew/Cellar/msodbcsql18/18.5.1.1/lib/libmsodbcsql.18.dylib};Server=$server; DATABASE=$database;
-Uid=$(ENV["ServerUser"]);Pwd=$(ENV["ServerPW"]);TrustServerCertificate=yes;Encrypt=yes;AutoTranslate=no;"
+        connStr = """
+                    Driver={ODBC Driver 18 for SQL Server};
+                    Server=$server;
+                    DATABASE=$database;
+                    Uid=$(ENV["ServerUser"]);
+                    Pwd=$(ENV["ServerPW"]);
+                    TrustServerCertificate=yes;
+                    Encrypt=yes;
+                    AutoTranslate=no;
+                """
     end
     con = ODBC.Connection(connStr)
     return con
@@ -40,9 +49,10 @@ end
 
 function getvariables(con)
     sql = """
-    SELECT
-      Variable, Prompt, VarDomain, VarGroup
-    FROM dbo.Variables;
+        SELECT
+            Variable, Prompt, VarDomain, VarGroup
+        FROM dbo.Variables
+        WHERE VarGroup IN ('VA Checklist','VA Narrative','Verbal Autopsy','WHO 2016','WHO 2022');
     """
     df = DBInterface.execute(con, sql) |> DataFrame
     return df
@@ -50,9 +60,11 @@ end
 
 function getdomains(con)
     sql = """
-    SELECT
-      VarDomain,Code,Caption,Sequence
-    FROM dbo.VarDomainCodes;
+    SELECT DISTINCT
+        vc.VarDomain,vc.Code,vc.Caption,vc.Sequence
+    FROM dbo.VarDomainCodes vc
+    JOIN dbo.Variables v ON v.VarDomain = vc.VarDomain
+    WHERE v.VarGroup IN ('VA Checklist','VA Narrative','Verbal Autopsy','WHO 2016','WHO 2022');
     """
     df = DBInterface.execute(con, sql) |> DataFrame
     return df
@@ -95,15 +107,17 @@ end
 function individual_deaths(con)
     sql = """
     SELECT
-        I.IntID IIntID,
-        I.Sex,
-        SE.AssignedDate DoB,
-        EE.AssignedDate DoD,
-        YEAR(EE.AssignedDate) DoDYr
-    FROM dbo.RegisteredIndividuals I
-        JOIN dbo.Events SE ON (I.Delivery=SE.IntID)
-        JOIN dbo.Events EE ON (I.EndEvent=EE.IntID)
-    WHERE EE.Type = 'DTH'
+        CAST(i.IndividualUid AS VARCHAR(36)) IndividualUid,
+        p.IntID IIntID,
+        i.Sex,
+        b.EventDate DoB,
+        e.EventDate DoD,
+        YEAR(e.EventDate) DoDYr
+    FROM AHRI_STG.dbo.Individuals i
+        JOIN AHRI_STG.dbo.Events e ON i.EndEventUid = e.EventUid
+        JOIN AHRI_STG.dbo.Events b ON i.BirthEventUid = b.EventUid
+        LEFT JOIN ACDIS_STG.dbo.ProtectedIndividuals p ON i.IndividualUid = p.uuid
+    WHERE e.EventTypeId = 7;
     """
     df = DBInterface.execute(con, sql) |> DataFrame
     return df
@@ -208,7 +222,7 @@ function consolidate_duration_variables!(df::AbstractDataFrame)::AbstractDataFra
     for row in eachrow(consolidation_info)
         # Name of the output consolidated variable 
         consolidated_var = Symbol(row[:Consolidated_variable])
-    
+
         # Gather all numeric variable columns listed 
         Numeric_vars = [
             row[c] for c in propertynames(row)
@@ -217,7 +231,7 @@ function consolidate_duration_variables!(df::AbstractDataFrame)::AbstractDataFra
 
         # Creates the consolidated variable if it doesn't yet exist
         if !(:consolidated_var in names(df))
-            df[!, consolidated_var] = Vector{Union{Missing, String}}(missing, nrow(df))
+            df[!, consolidated_var] = Vector{Union{Missing,String}}(missing, nrow(df))
         end
 
         # Iterate through each row in the main data
@@ -271,7 +285,7 @@ function convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
                     #println("$k $v")
                     if ismissing(row[k]) # if the numeric value is missing but the duration unit is present, we impute the numeric value using default
                         nvalue = default_duration[row[v]] * duration_lookup[row[v]]
-                        row[v] = row[v]*"_non_specific__imputed"
+                        row[v] = row[v] * "_non_specific__imputed"
                     else
                         nvalue = parse(Int, row[k]) * duration_lookup[row[v]]
                         #row[v] = "DAY"
@@ -310,7 +324,7 @@ function read_variablemap(file)::AbstractDataFrame
     # Strip leading and trailing whitespace from all String values in the DataFrame
     for col in names(df)
         if eltype(df[!, col]) <: AbstractString
-        df[!, col] = strip.(df[!, col])
+            df[!, col] = strip.(df[!, col])
         end
     end
 
@@ -571,7 +585,7 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
                 #println("Processing: Check whether prerequisites are met and adjust values")
                 #println("row.variable:", unique(outdf.variable), "// maprow.prerequisite_variable:", maprow.prerequisite_variable)
                 prereq = filter(row -> row.variable .== maprow.prerequisite_variable, outdf)
-                
+
                 value = ifelse.(prereq.value .== "y", value, "-")
             end
 
@@ -591,8 +605,8 @@ function stripcrlf(df::AbstractDataFrame)::AbstractDataFrame
 end
 
 function add_individual_dates(df::AbstractDataFrame, deaths::AbstractDataFrame)::AbstractDataFrame
-    s = select(deaths, 
-        :IIntID, :DoB => ByRow(x -> Dates.Date(x)) => :acdis_dob, 
+    s = select(deaths,
+        :IIntID, :DoB => ByRow(x -> Dates.Date(x)) => :acdis_dob,
         :DoD => ByRow(x -> Dates.Date(x)) => :acdis_dod,
         :DoD => ByRow(x -> month(Dates.Date(x))) => :acdis_dod_month, #add month of death to determine season
         [:DoB, :DoD] => ByRow((x, y) -> !ismissing(x) && !ismissing(y) ? Dates.value(Dates.Date(y) - Dates.Date(x)) : missing) => :acdis_ageindays,
@@ -620,13 +634,13 @@ function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
     map = read_dta(ENV["INDIVIDUAL_MAP"])
     p = innerjoin(p, map, on=:IndividualId)
     select!(p, :IndividualUid, :PartnerStatus)
-#
+    #
     file = joinpath(ENV["DATA_PATH"], "csvfiles", "IndividualMap.csv")
     map = CSV.read(file, DataFrame)
     mapped = innerjoin(p, map, on=:IndividualUid)
     select!(mapped, :IIntId => :IIntID, :PartnerStatus)
     return leftjoin(df, mapped, on=:IIntID)
- end
+end
 
 function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::AbstractDataFrame
     transform!(domainvalues, :Code => ByRow(x -> strip(x)) => :Code)

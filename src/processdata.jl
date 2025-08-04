@@ -33,7 +33,10 @@ try
   @info "VA Deaths $(nrow(vadeaths)) rows\n"
   @info "VA Variables $(nrow(vavariables)) rows\n"
   pretty_table(io, vavariables; alignment=[:l, :l, :l, :l, :r], show_subheader=false)
-
+  # combine VCL into VAQ
+  transform!(vadata, :Source => ByRow(x -> x == "VCL" ? "VAQ" : x) => :Source)
+  # combine VAN into VAQ
+  transform!(vadata, :Source => ByRow(x -> x == "VAN" ? "VAQ" : x) => :Source)
   #summarise rows for each source
   sources = combine(groupby(vadata, :Source), nrow => :n)
   pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
