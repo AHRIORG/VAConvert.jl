@@ -560,11 +560,11 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
                 sourcevalue = fromdf[!, Symbol(maprow.from_variable)]
             else
                 sourcevalue = fill(missing, N)
-                @info "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
+                @warning "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
             end
             sourcevalue = [prepare(x) for x in sourcevalue]
             operant = strip(lowercase(maprow.operants))
-
+                
             # Construct the conversion expression and get converted values
             # println("Processing: Construct the conversion expression and get converted values ")
             value = [eval(Expr(:call, Symbol(strip(maprow.operator)), x, operant)) for x in sourcevalue] #strip(maprow.operator) - to make sure operator clean
