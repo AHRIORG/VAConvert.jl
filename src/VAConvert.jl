@@ -560,7 +560,7 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
                 sourcevalue = fromdf[!, Symbol(maprow.from_variable)]
             else
                 sourcevalue = fill(missing, N)
-                @warning "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
+                @info "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
             end
             sourcevalue = [prepare(x) for x in sourcevalue]
             operant = strip(lowercase(maprow.operants))
@@ -610,7 +610,7 @@ function add_individual_dates(df::AbstractDataFrame, deaths::AbstractDataFrame):
         :DoD => ByRow(x -> Dates.Date(x)) => :hdss_dod,
         :DoD => ByRow(x -> month(Dates.Date(x))) => :hdss_dod_month, #add month of death to determine season
         [:DoB, :DoD] => ByRow((x, y) -> !ismissing(x) && !ismissing(y) ? Dates.value(Dates.Date(y) - Dates.Date(x)) : missing) => :hdss_ageindays,
-        :Sex => ByRow(x -> x == "MAL" ? 1 : x == "FEM" ? 2 : 3) => :hdss_sex) #fix age calculation to get days
+        :Sex => :hdss_sex) #fix age calculation to get days
     return innerjoin(s, df, on=:IIntID)
 end
 
