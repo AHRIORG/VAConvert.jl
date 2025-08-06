@@ -67,7 +67,7 @@ try
     w = sessionvalues(acq, deaths, :VAW)
     @info "$(nrow(w)) values written for source $(:VAW)"
     n = sessionvalues(acq, deaths, :VAN)
-    Arrow.write(joinpath(outputdir, "VANValues.arrow"), n, compress=:zstd)
+    # Arrow.write(joinpath(outputdir, "VANValues.arrow"), n, compress=:zstd)
     @info "$(nrow(n)) values written for source $(:VAN)"
     values = vcat(v, l, p, w, n)
     flush(io)

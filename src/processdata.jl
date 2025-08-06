@@ -42,8 +42,10 @@ try
   pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
   #summarise variables for each source
   va_variables = combine(groupby(vadata, [:Source, :Variable]), nrow => :n)
-  pretty_table(io, va_variables; alignment=[:c, :l, :r], show_subheader=false)
-  va_variables = leftjoin(va_variables, vavariables, on=:Variable, makeunique=true)
+  va_variables = outerjoin(va_variables, vavariables, on=:Variable, makeunique=true)
+  transform!(va_variables, :Source => ByRow(x -> ismissing(x) ? "VAW" : x) => :Source)
+  @info "VA Variables $(names(va_variables)) columns\n"
+  pretty_table(io, va_variables; alignment=[:c, :l, :r, :l, :l, :l], show_subheader=false)
   # output csv files for each source variables
   outputdir = joinpath(ENV["DATA_PATH"], "csvfiles")
   if !isdir(outputdir)

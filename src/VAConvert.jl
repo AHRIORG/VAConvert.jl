@@ -60,11 +60,29 @@ end
 
 function getdomains(con)
     sql = """
-    SELECT DISTINCT
-        vc.VarDomain,vc.Code,vc.Caption,vc.Sequence
-    FROM dbo.VarDomainCodes vc
-    JOIN dbo.Variables v ON v.VarDomain = vc.VarDomain
-    WHERE v.VarGroup IN ('VA Checklist','VA Narrative','Verbal Autopsy','WHO 2016','WHO 2022');
+    WITH varvalues AS (
+    SELECT v.VarDomain, q.VarValue Code, COUNT(*) n FROM dbo.QVarValuesCode q
+        JOIN dbo.Variables v ON q.Variable = v.Variable
+    WHERE v.VarGroup IN ('VA Checklist','VA Narrative','Verbal Autopsy','WHO 2016','WHO 2022')
+    GROUP BY v.VarDomain, q.VarValue
+    ),
+    domains AS (
+        SELECT DISTINCT
+            vc.VarDomain,vc.Code,vc.Caption,vc.Sequence
+        FROM dbo.VarDomainCodes vc
+        JOIN dbo.Variables v ON v.VarDomain = vc.VarDomain
+        WHERE v.VarGroup IN ('VA Checklist','VA Narrative','Verbal Autopsy','WHO 2016','WHO 2022')
+    )
+    SELECT
+    COALESCE(v.VarDomain,d.VarDomain) VarDomain,
+    COALESCE(v.Code,d.Code) Code,
+    d.Caption,
+    d.Sequence,
+    v.n
+    FROM varvalues v
+    FULL JOIN domains d ON v.VarDomain = d.VarDomain AND v.Code = d.Code
+    WHERE NOT COALESCE(v.Code,d.Code) IS NULL
+    ORDER BY VarDomain, Sequence, Code;
     """
     df = DBInterface.execute(con, sql) |> DataFrame
     return df
