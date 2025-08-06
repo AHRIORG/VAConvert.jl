@@ -319,12 +319,12 @@ function read_variablemap(file)::AbstractDataFrame
         @error "File not found: $filepath"
         return DataFrame()
     end
-    df = CSV.read(file, DataFrame; missingstrings=["NA", ""])
+    df = CSV.read(file, DataFrame; missingstring=["NA", ""])
 
     # Strip leading and trailing whitespace from all String values in the DataFrame
     for col in names(df)
-        if eltype(df[!, col]) <: AbstractString
-            df[!, col] = strip.(df[!, col])
+        if eltype(df[!, col]) <: AbstractString || eltype(df[!, col]) <: Union{Missing, AbstractString}
+        df[!, col] = [ismissing(x) ? missing : strip(String(x)) for x in df[!, col]]
         end
     end
 
@@ -606,11 +606,11 @@ end
 
 function add_individual_dates(df::AbstractDataFrame, deaths::AbstractDataFrame)::AbstractDataFrame
     s = select(deaths,
-        :IIntID, :DoB => ByRow(x -> Dates.Date(x)) => :acdis_dob,
-        :DoD => ByRow(x -> Dates.Date(x)) => :acdis_dod,
-        :DoD => ByRow(x -> month(Dates.Date(x))) => :acdis_dod_month, #add month of death to determine season
-        [:DoB, :DoD] => ByRow((x, y) -> !ismissing(x) && !ismissing(y) ? Dates.value(Dates.Date(y) - Dates.Date(x)) : missing) => :acdis_ageindays,
-        :Sex => ByRow(x -> x == "MAL" ? 1 : x == "FEM" ? 2 : 3) => :acdis_sex) #fix age calculation to get days
+        :IIntID, :DoB => ByRow(x -> Dates.Date(x)) => :hdss_dob,
+        :DoD => ByRow(x -> Dates.Date(x)) => :hdss_dod,
+        :DoD => ByRow(x -> month(Dates.Date(x))) => :hdss_dod_month, #add month of death to determine season
+        [:DoB, :DoD] => ByRow((x, y) -> !ismissing(x) && !ismissing(y) ? Dates.value(Dates.Date(y) - Dates.Date(x)) : missing) => :hdss_ageindays,
+        :Sex => ByRow(x -> x == "MAL" ? 1 : x == "FEM" ? 2 : 3) => :hdss_sex) #fix age calculation to get days
     return innerjoin(s, df, on=:IIntID)
 end
 
