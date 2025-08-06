@@ -24,6 +24,10 @@ acq = connectdb(ENV["SERVER"], ENV["DATABASE"])
 hdss = connectdb(ENV["HDSS_SERVER"], ENV["HDSS"])
 flush(io)
 try
+    outputdir = joinpath(ENV["DATA_PATH"], "arrowfiles")
+    if !isdir(outputdir)
+        mkpath(outputdir)
+    end
     df1 = sessions(acq, "VAQ") # read old questionnaire sessions
     df2 = sessions(acq, "VAP") # read new questionnaire sessions
     df3 = sessions(acq, "VCL") # read checklist sessions
@@ -63,16 +67,13 @@ try
     w = sessionvalues(acq, deaths, :VAW)
     @info "$(nrow(w)) values written for source $(:VAW)"
     n = sessionvalues(acq, deaths, :VAN)
+    Arrow.write(joinpath(outputdir, "VANValues.arrow"), n, compress=:zstd)
     @info "$(nrow(n)) values written for source $(:VAN)"
     values = vcat(v, l, p, w, n)
     flush(io)
     variables = getvariables(acq)
     domains = getdomains(acq)
     # write arrow files
-    outputdir = joinpath(ENV["DATA_PATH"], "arrowfiles")
-    if !isdir(outputdir)
-        mkpath(outputdir)
-    end
     Arrow.write(joinpath(outputdir, "VAVariables.arrow"), variables, compress=:zstd)
     @info "Variables $(nrow(variables)) written"
     Arrow.write(joinpath(outputdir, "VAVariableValues.arrow"), values, compress=:zstd)

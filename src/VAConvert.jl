@@ -129,7 +129,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
             QSessionID,
             vc.Variable,
             v.VarDomain,
-            TRIM(VarValue) Value
+            CAST(TRIM(VarValue) AS varchar(MAX)) Value
         FROM dbo.QVarValuesCode vc
           LEFT JOIN dbo.Variables v ON (vc.Variable = v.Variable)
         WHERE QSessionID = ?
@@ -138,7 +138,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
             QSessionID,
             Variable,
             NULL AS VarDomain,
-            CONVERT(VARCHAR, VarValue, 23) Value
+            CAST(CONVERT(VARCHAR, VarValue, 23) AS varchar(MAX)) Value --CONVERT(VARCHAR, VarValue, 23) Value
         FROM dbo.QVarValuesDate
         WHERE QSessionID = ?
         UNION
@@ -146,7 +146,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
             QSessionID,
             Variable,
             NULL AS VarDomain,
-            CAST(VarValue AS varchar) Value
+            CAST(VarValue AS varchar(MAX)) Value
         FROM dbo.QVarValuesFloat
         WHERE QSessionID = ?
         UNION
@@ -154,7 +154,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
             QSessionID,
             Variable,
             NULL AS VarDomain,
-            CAST(VarValue AS varchar) Value
+            CAST(VarValue AS varchar(MAX)) Value
         FROM dbo.QVarValuesInt
         WHERE QSessionID = ?
         UNION
@@ -162,7 +162,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
         QSessionID,
             Variable,
             NULL AS VarDomain,
-            TRIM(VarValue) Value
+            CAST(TRIM(VarValue) AS varchar(MAX)) Value
         FROM dbo.QVarValuesStr
         WHERE QSessionID = ?
         UNION
@@ -170,7 +170,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
             QSessionID,
             Variable,
             NULL AS VarDomain,
-            CAST(VarValue AS varchar) Value
+            CAST(VarValue AS varchar(MAX)) Value
         FROM dbo.QVarValuesText
         WHERE QSessionID = ?
         UNION
@@ -178,7 +178,7 @@ function sessionvalues(con, df::AbstractDataFrame, col::Symbol)::DataFrame
             QSessionID,
             Variable,
             NULL AS VarDomain,
-            CONVERT(VARCHAR, AssignedDate, 23) Value
+            CAST(CONVERT(VARCHAR, AssignedDate, 23) AS varchar(MAX)) Value --CONVERT(VARCHAR, AssignedDate, 23) Value
         FROM dbo.QVarValuesVPDate
         WHERE QSessionID = ?;
     """
@@ -633,13 +633,8 @@ function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
     subset!(p, [:Episode, :Episodes] => ByRow((x, y) -> x == y))
     map = read_dta(ENV["INDIVIDUAL_MAP"])
     p = innerjoin(p, map, on=:IndividualId)
-    select!(p, :IndividualUid, :PartnerStatus)
-    #
-    file = joinpath(ENV["DATA_PATH"], "csvfiles", "IndividualMap.csv")
-    map = CSV.read(file, DataFrame)
-    mapped = innerjoin(p, map, on=:IndividualUid)
-    select!(mapped, :IIntId => :IIntID, :PartnerStatus)
-    return leftjoin(df, mapped, on=:IIntID)
+    select!(p, :IIntId, :PartnerStatus)
+    return p
 end
 
 function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::AbstractDataFrame
