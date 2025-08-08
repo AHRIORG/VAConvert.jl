@@ -6,7 +6,7 @@ VAP,WHO2016,bd_chest_pain_du,bd_chest_pain_un,For how long did the chest pain la
 VAP,WHO2016,cp_bellypain_dur,cp_bellypain_uni,For how long before death did (s)he have belly (abdominal) pain? (Hours/Days/Weeks/Months),
 VAP,WHO2016,nd_mthr_dthm_dur,nd_mthr_dthm_unt,How long after the delivery did the mother die? (Days/Months),
 VAP,WHO2016,nd_move_duration,nd_move_units,How long before labour did you or the mother last feel the baby move?,
-VAP,WHO2016,ih_duration_1,ih_units_1, For how long was (s)he ill before death?,
+VAP,WHO2016,ih_duration_1,ih_units_1,For how long was (s)he ill before death?,
 VAQ,Verbal Autopsy,VA_C1S01V11,VA_C1S01V11b,For how long was s/he ill before s/he died?,
 VAQ,Verbal Autopsy,VA_C2S01V03,VA_C2S01V03b,How long after the injury did s/he die?,
 VAQ,Verbal Autopsy,VA_C2S02V03,VA_C2S02V03b,For how long was s/he inconscious?,
