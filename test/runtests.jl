@@ -32,8 +32,9 @@ try
     outputdir = joinpath(ENV["DATA_PATH"])
     @info "Output path: $outputdir"
     #map each source in vadata
-    #for source in ["VAQ", "VAP", "VAW"]
-    for source in ["VAW"]
+    for source in ["VAP", "VAW"#, "VAQ"
+        ]
+    #for source in ["VAW"]
         #read va data
         mapfile = joinpath(mappath, "$(source)_to_InSilicoVA.csv")
         if isfile(mapfile)
