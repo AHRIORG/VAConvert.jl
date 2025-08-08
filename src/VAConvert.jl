@@ -664,6 +664,8 @@ end
 function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::AbstractDataFrame
     transform!(domainvalues, :Code => ByRow(x -> strip(x)) => :Code)
     values = copy(df)
+    #Change all empty strings to missing
+    values = transform(values, :Value => ByRow(x -> !ismissing(x) && x == "" ? missing : x) => :Value)
     domain_dict = Dict(
         d[1, :VarDomain] => Dict(row[:Code] => row[:SetMissing] for row in eachrow(d))
         for d in groupby(domainvalues, :VarDomain)
