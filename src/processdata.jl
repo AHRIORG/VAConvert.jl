@@ -12,7 +12,7 @@ using CSV
 dotenv()
 
 #region Setup Logging
-l = open("logs/process_log.log", "w")
+l = open("logs/process_log2.log", "w")
 io = IOContext(l, :displaysize => (100, 100))
 logger = SimpleLogger(io)
 old_logger = global_logger(logger)

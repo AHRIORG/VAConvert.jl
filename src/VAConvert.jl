@@ -651,8 +651,14 @@ function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
     subset!(p, [:Episode, :Episodes] => ByRow((x, y) -> x == y))
     map = read_dta(ENV["INDIVIDUAL_MAP"])
     p = innerjoin(p, map, on=:IndividualId)
-    select!(p, :IIntId, :PartnerStatus)
-    return p
+    select!(p, :IIntId => :IIntID, :PartnerStatus)
+    @info "Partner status $(nrow(p)) rows, columns: $(names(p))"
+    #
+    # file = joinpath(ENV["DATA_PATH"], "csvfiles", "IndividualMap.csv")
+    # map = CSV.read(file, DataFrame)
+    # mapped = innerjoin(p, map, on=:IndividualUid)
+    # select!(mapped, :IIntId => :IIntID, :PartnerStatus)
+    return leftjoin(df, p, on=:IIntID)
 end
 
 function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::AbstractDataFrame
