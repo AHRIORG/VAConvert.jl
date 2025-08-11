@@ -10,7 +10,17 @@ using Arrow
 using CSV
 #get environment variables
 dotenv()
-
+ function combine_values(values)
+    if all(ismissing, values)
+        return missing
+    end
+    cleaned_vector = collect(skipmissing(values))
+    if length(cleaned_vector) == 0
+        return missing
+    elseif length(cleaned_vector) >= 1
+        return cleaned_vector[1]
+    end
+end
 #region Setup Logging
 l = open("logs/process_log2.log", "w")
 io = IOContext(l, :displaysize => (100, 100))
@@ -33,10 +43,23 @@ try
   @info "VA Deaths $(nrow(vadeaths)) rows\n"
   @info "VA Variables $(nrow(vavariables)) rows\n"
   pretty_table(io, vavariables; alignment=[:l, :l, :l, :l, :r], show_subheader=false)
+  transform!(vadata, :Source => ByRow(x -> x) => :Questionnaire)
   # combine VCL into VAQ
   transform!(vadata, :Source => ByRow(x -> x == "VCL" ? "VAQ" : x) => :Source)
+  # combine VAC into VAQ
+  transform!(vadata, :Source => ByRow(x -> x == "VAC" ? "VAQ" : x) => :Source)
   # combine VAN into VAQ
   transform!(vadata, :Source => ByRow(x -> x == "VAN" ? "VAQ" : x) => :Source)
+  # Get the questionnaire(s) and source for each individual
+  individualsources = combine(
+      groupby(vadata, :IIntID),
+      :Source => first => :Source,
+      :Questionnaire => (v -> begin
+          qs = collect(skipmissing(v))
+          qs = unique(qs)                # keep first occurrence order
+          isempty(qs) ? missing : join(qs, ';')
+      end) => :Questionnaire
+  )
   #summarise rows for each source
   sources = combine(groupby(vadata, :Source), nrow => :n)
   pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
@@ -66,7 +89,9 @@ try
     @info "Processing source $source"
     source_data = filter(row -> row.Source == source, vadata)
     source_data = stripcrlf(source_data) # remove carriage return and line feed in text fields
-    flat_data = unstack(source_data, :IIntID, :Variable, :Value)
+    flat_data = unstack(source_data, :IIntID, :Variable, :Value; combine = combine_values)
+    # add the source and questionnaire for each individual
+    flat_data = leftjoin(flat_data, individualsources, on=:IIntID, matchmissing=:error)
     CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
       if source == "VAW" #add other sources that need consolidation
         consolidate_duration_variables!(flat_data)

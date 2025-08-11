@@ -33,7 +33,8 @@ try
     df3 = sessions(acq, "VCL") # read checklist sessions
     df4 = sessions(acq, "VAW") # read WHO2020 sessions
     df5 = sessions(acq, "VAN") # read narrative sessions
-    df = vcat(df1, df2, df3, df4, df5)
+    df6 = sessions(acq, "VAC") # read old checklist
+    df = vcat(df1, df2, df3, df4, df5, df6)
     @info "Sources\n"
     flush(io)
     sources = combine(groupby(df, :Source), nrow => :n)
@@ -48,15 +49,17 @@ try
         :VAP => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAP,
         :VCL => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVCL,
         :VAW => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAW,
-        :VAN => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAN)
+        :VAN => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAN,
+        :VAC => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAC)
     dyr = combine(groupby(deaths, :DoDYr; sort=true), 
         :hasVAQ => sum => :nVAQ,
         :hasVAP => sum => :nVAP,
         :hasVCL => sum => :nVCL,
         :hasVAW => sum => :nVAW,
         :hasVAN => sum => :nVAN,
+        :hasVAC => sum => :nVAC,
         nrow => :nDeaths)
-    pretty_table(io, dyr; alignment=[:c, :r, :r, :r, :r, :r, :r], show_subheader=false)
+    pretty_table(io, dyr; alignment=[:c, :r, :r, :r, :r, :r, :r, :r], show_subheader=false)
     flush(io)
     v = sessionvalues(acq, deaths, :VAQ)
     @info "$(nrow(v)) values written for source $(:VAQ)"
@@ -67,9 +70,10 @@ try
     w = sessionvalues(acq, deaths, :VAW)
     @info "$(nrow(w)) values written for source $(:VAW)"
     n = sessionvalues(acq, deaths, :VAN)
-    # Arrow.write(joinpath(outputdir, "VANValues.arrow"), n, compress=:zstd)
     @info "$(nrow(n)) values written for source $(:VAN)"
-    values = vcat(v, l, p, w, n)
+    c = sessionvalues(acq, deaths, :VAC)
+    @info "$(nrow(n)) values written for source $(:VAC)"
+    values = vcat(v, l, p, w, n, c)
     flush(io)
     variables = getvariables(acq)
     domains = getdomains(acq)
