@@ -480,6 +480,7 @@ function le(x, y)
     end
     return ifelse(x <= y, "y", "n")
 end
+
 contains(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(Base.contains(x, y), "y", "n"))
 
 """
@@ -537,6 +538,8 @@ function AND(x, y)
         return "n"
     end
 end
+
+
 function prepare(x) # prepare strings to put them in lowercase
     if !ismissing(x)
         if isa(x, String)
@@ -637,11 +640,19 @@ end
 
 Add partner status to the dataframe from the SurveillanceEpisodesYrAge_Partners table.
 This function connects to the DuckDB database specified in the environment variable `EpisodesDb`
+    Values in dta
+    1 = No partnership
+    2 = Married
+    3 = Regular partnership
+    4 = Casual partnership
+
+    Labels shown in the csv
     Married = Married
     Regular = Regular partnership
     Casual = Casual relationship
     Widowed/Seperated = Widowed or seperated
     No partner = No partner
+
 """
 function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
     partnerepisodes = read_dta(ENV["PARTNER_DTA"])
@@ -653,7 +664,7 @@ function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
     p = innerjoin(p, map, on=:IndividualId)
     select!(p, :IIntId => :IIntID, :PartnerStatus)
     @info "Partner status $(nrow(p)) rows, columns: $(names(p))"
-    #
+    #"
     # file = joinpath(ENV["DATA_PATH"], "csvfiles", "IndividualMap.csv")
     # map = CSV.read(file, DataFrame)
     # mapped = innerjoin(p, map, on=:IndividualUid)

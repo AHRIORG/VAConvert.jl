@@ -2,6 +2,9 @@ using Revise
 using DataFrames
 using VAConvert
 
+# unit tests
+
+
 # function
 function consolidate_duration_variables!(df::AbstractDataFrame)::AbstractDataFrame
     # Read the metadata CSV that describes which variables to consolidate
