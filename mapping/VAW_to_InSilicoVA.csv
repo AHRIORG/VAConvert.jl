@@ -1,7 +1,7 @@
 "","WHO remarks","Duration_unit_variable","Reviewed","New Column Name","New Column Documentation","Source Column ID","VarDomain","Source Column Documentation","Relationship","Condition","Condition_Caption","Prerequisite","Hint_WHO2016","Meta: Notes"
 "1","","",1,"i004a","Did s(he) die during the wet season? (d wet)","hdss_dod_month","","Month of death","ge","9","","","",NA
-"2","","",1,"i004a","Did s(he) die during the wet season? (d wet)","hdss_dod_month","","Month of death","le","4","","","",NA
-"3","","",1,"i004b","Did s(he) die during the dry season? (d dry)","hdss_dod_month","","Month of death","between","5 to 8","","","",NA
+"2","","",1,"i004a","Did s(he) die during the wet season? (d wet)","hdss_dod_month","","Month of death","le","5","","","",NA
+"3","","",1,"i004b","Did s(he) die during the dry season? (d dry)","hdss_dod_month","","Month of death","between","6 to 8","","","",NA
 "4","","",1,"i019a","Was he male? (male)","hdss_sex","Numeric","What was the sex of the deceased?","eq","1","","","",NA
 "5","","",1,"i019b","Was she female? (female)","hdss_sex","Numeric","What was the sex of the deceased?","eq","2","","","",NA
 "6","","",1,"i022a","Was s(he) aged 65 years or more at death? (65+)","hdss_ageindays","","Age in days (1 year = 365 days, 1 month = 30 days)","ge","23725","","","",NA
@@ -250,7 +250,7 @@
 "249","","",1,"i301o","Was there excessive vaginal bleeding in the week prior to death? (vb <1w)","wmd_vagbleed_dea","VAWYesNo","Was there excessive vaginal bleeding in the week prior to death?","eq","YES","","","Important is the excessive quantity of blood",NA
 "250","","",1,"i302o","At the time of death was her period overdue? (men late)","wmd_perdovrd","VAWYesNo","At the time of death was her period overdue?","eq","YES","","","",NA
 "251","","",1,"i303a","Had her period been overdue for at least 4 weeks? (men l 4+w)","wmd_perdovrdwks","Numeric","For how many weeks had her period been overdue?","ge","4","","i302o","",NA
-"252","","",2,"i304o","Did she have a sharp pain in her abdomen shortly before death? (obs pain)","wmd_preg_pain","VAWYesNo","Did she have a sharp abdominal pain in the first 3 months of pregnancy?","eq","YES","","","",NA
+"252","","",99,"i304o","Did she have a sharp pain in her abdomen shortly before death? (obs pain)","wmd_preg_pain","VAWYesNo","Did she have a sharp abdominal pain in the first 3 months of pregnancy?","eq","YES","","","",NA
 "253","","",1,"i305o","Was she pregnant (incl. in labour) at the time of death? (pregnant)","wmd_preg_death","VAWYesNo","Was she pregnant and not yet in labour at the time of death?","eq","YES","","","",NA
 "254","","",1,"i305o","Was she pregnant (incl. in labour) at the time of death? (pregnant)","wmd_die_labour","VAWYesNo","Did she die during labour or delivery?","eq","YES","","","",NA
 "255","","",1,"i306o","Did she die within 6 weeks of delivery, abortion or miscarriage? (d <6w pend)","wmd_preg_abor","VAWYesNo","Did she have a pregnancy that ended in an abortion or miscarriage within 6 weeks of her death?","eq","YES","","","A ""yes"" response to this question means that a foetus or baby was lost or removed or delivered (vaginally or by C-section) within 6 weeks before she died, whether the baby survived or not.",NA
@@ -300,7 +300,7 @@
 "299","","",1,"i344o","Was the delivery a Caesarean section? (del cs)","wmd_delivery_cea","VAWYesNo","Was the delivery a Caesarean section?","eq","YES","","","",NA
 "300","","",1,"i347o","Was her baby born more than one month early? (del >1m ea)","wmd_preg_dura","Numeric","For how many months was she pregnant?","le","8","","","",NA
 "301","","",1,"i354o","Was the child part of a multiple  birth? (mult bir)","wnd_child_multip","VAWYesNo","Was the child part of a multiple birth?","eq","YES","","","This question should be asked only if the child was less than 1 year old when it died. If two or more children are born at the same time, it is counted as a multiple birth, even if one or more of the babies are born dead.",NA
-"302","","",99,"i355a","If the child was part of a multiple birth, was it born first? (mult fir)",NA,NA,NA,NA,NA,"","i354oY","",NA
+"302","","",99,"i355a","If the child was part of a multiple birth, was it born first? (mult fir)",NA,NA,NA,NA,NA,"","i354o","",NA
 "303","Question not essential for COD assignment; while recommended for dropping from the core VA instrument, its value was acknowledge and recommended for inclusion in a ""health system module""","",99,"i356o","Is the child's mother still alive? (moth aliv)",NA,NA,NA,NA,NA,"","","",NA
 "304","Question not essential for COD assignment; while recommended for dropping from the core VA instrument, its value was acknowledge and recommended for inclusion in a ""health system module""","",99,"i357o","Did the child's mother die during or shortly after the delivery? (moth d del)",NA,NA,NA,NA,NA,"","","",NA
 "305","Question not essential for COD assignment; while recommended for dropping from the core VA instrument, its value was acknowledge and recommended for inclusion in a ""health system module""","",99,"i358a","Did the child's mother die in the baby's first year of life? (moth d y1)",NA,NA,NA,NA,NA,"","","",NA

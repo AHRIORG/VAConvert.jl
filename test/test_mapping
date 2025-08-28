@@ -72,11 +72,12 @@ end
  
 
 
-for source in ["VAP", "VAW"#, "VAQ" 
+for source in ["VAW"#, "VAQ", "VAP",
     ]
+    println("Evaluating $(source) mapping")
     # --- Read input + expected datasets ---
     df_output    = CSV.read(joinpath(ENV["DATA_PATH"], "csvfiles/VAData_converted_$(source).csv"), DataFrame)
-    df_expected = CSV.read("mapping/test_datasets/$(source)_test_output_expected.csv")
+    df_expected = CSV.read("mapping/test_datasets/$(source)_test_output_expected.csv", DataFrame)
     select!(df_expected, Not(:Column1))
 
     
