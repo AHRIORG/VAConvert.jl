@@ -22,7 +22,7 @@ dotenv()
     end
 end
 #region Setup Logging
-l = open("logs/process_log2.log", "w")
+l = open("logs/process_log.log", "w")
 io = IOContext(l, :displaysize => (100, 100))
 logger = SimpleLogger(io)
 old_logger = global_logger(logger)
@@ -81,6 +81,19 @@ try
   #output variable domains
   CSV.write(joinpath(outputdir, "VAVariableDomains.csv"), vadomains)
   #output va data as flat csv files
+
+  #output before preprocessing
+  for source in unique(vadata.Source)
+    @info "Processing source $source"
+    source_data = filter(row -> row.Source == source, vadata)
+    source_data = stripcrlf(source_data) # remove carriage return and line feed in text fields
+    flat_data = unstack(source_data, :IIntID, :Variable, :Value; combine = combine_values)
+    # add the source and questionnaire for each individual
+    flat_data = leftjoin(flat_data, individualsources, on=:IIntID, matchmissing=:error)
+    CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
+  end
+
+  #output after processing
   domainvalues = CSV.read("mapping/VAVariableDomains_with_missing.csv", DataFrame)
   vadata = encodemissing(vadata, domainvalues)
   numericvalues = CSV.read("mapping/NumericVariables_with_missing.csv", DataFrame)
@@ -92,7 +105,7 @@ try
     flat_data = unstack(source_data, :IIntID, :Variable, :Value; combine = combine_values)
     # add the source and questionnaire for each individual
     flat_data = leftjoin(flat_data, individualsources, on=:IIntID, matchmissing=:error)
-    CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
+    # CSV.write(joinpath(outputdir, "VAData_raw_$source.csv"), flat_data)
       if source == "VAW" #add other sources that need consolidation
         consolidate_duration_variables!(flat_data)
       end
