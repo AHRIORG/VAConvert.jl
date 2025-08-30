@@ -72,7 +72,7 @@ end
  
 
 
-for source in ["VAW"#, "VAQ", "VAP",
+for source in ["VAW", "VAP" #, "VAP",
     ]
     println("Evaluating $(source) mapping")
     # --- Read input + expected datasets ---
