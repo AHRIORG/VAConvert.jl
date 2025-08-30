@@ -291,9 +291,9 @@ function convert_durations!(data::AbstractDataFrame)::AbstractDataFrame
     duration_lookup = Dict{String,Union{Number,Missing}}("NAD" => missing, "DFT" => missing, "MIS" => missing, "R" => missing,
         "DAY" => 1, "WEE" => 7, "MON" => 30, "YEA" => 365, "U" => missing, "QRY" => missing, "MIN" => 1 / 1440, "HOR" => 1 / 24,
         "H" => 1 / 24, "M" => 30, "D" => 1, "Y" => 365, "W" => 7, "HRS" => 1 / 24, "YRS" => 365, "DKN" => missing, "HOU" => 1 / 24)
-    default_duration = Dict{String,Integer}("NAD" => 0, "DFT" => 0, "MIS" => 0, "R" => 0, "DAY" => 5, "WEE" => 3, "MON" => 5, "YEA" => 3,
-        "U" => 0, "QRY" => 0, "MIN" => 30, "HOR" => 6, "H" => 6, "M" => 5, "D" => 5, "Y" => 3, "W" => 3, "HRS" => 6, "YRS" => 3,
-        "DKN" => 0, "HOU" => 6)
+    default_duration = Dict{String,Real}("NAD" => 0, "DFT" => 0, "MIS" => 0, "R" => 0, "DAY" => 5, "WEE" => 3.5, "MON" => 5, "YEA" => 3,
+        "U" => 0, "QRY" => 0, "MIN" => 7, "HOR" => 7, "H" => 7, "M" => 7, "D" => 5, "Y" => 3, "W" => 3.5, "HRS" => 7, "YRS" => 3,
+        "DKN" => 0, "HOU" => 7)
     duration_data = CSV.read(joinpath(ENV["MAPPING_PATH"], "VA_Duration_Unit_equivalence.csv"), DataFrame)
     duration_map = Dict{String,String}(zip(duration_data[!, :Variable_numeric], duration_data[!, :Variable_unit]))
     for row in eachrow(data)
@@ -481,7 +481,12 @@ function le(x, y)
     return ifelse(x <= y, "y", "n")
 end
 
-contains(x, y) = ifelse(ismissing(x) || ismissing(y), "-", ifelse(Base.contains(x, y), "y", "n"))
+function contains(x, y) 
+    return ifelse(ismissing(x) || ismissing(y), "-", 
+                    ifelse(Base.contains(x, y), "y", 
+                    "n")
+                 )
+end
 
 """
     between(x, y)
