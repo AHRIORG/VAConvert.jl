@@ -10,7 +10,7 @@ library(data.table)
 library(dplyr)
 library(questionr)
 
-## First test with VAW -----
+## Function to test mapping files -----
 
 test_mapping_files <- function(Source){
   Mapping_file <- read.csv(paste0(Source, "/", Source, "_to_InSilicoVA.csv"))
