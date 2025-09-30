@@ -483,10 +483,14 @@ end
 
 function contains(x, y) 
     return ifelse(ismissing(x) || ismissing(y), "-", 
-                    ifelse(Base.contains(x, y), "y", 
+                    ifelse(occursin(y, x), "y", 
                     "n")
                  )
 end
+""" contains tests
+contains("hello", "lo")
+"""
+
 
 """
     between(x, y)
