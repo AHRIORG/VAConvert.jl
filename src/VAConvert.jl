@@ -548,6 +548,35 @@ function AND(x, y)
     end
 end
 
+"""
+   map_category(x,y) - y is a dictionnary
+
+A function to map a variable into categories (relationship of the respondent to the deceased, death location....)
+    y has to be formated as a dictionnary in the following manner:  "Hello world =a, B=b, C=a"
+
+"""
+
+function map_category(x, y::String)
+    # Parse the mapping string into a Dict
+    mapping = Dict{String,String}()
+    for pair in split(y, ",")
+        k, v = strip.(split(pair, "="))   # split each "A=a" into ["A","a"]
+        mapping[k] = v
+    end
+
+    # Define lookup function
+    lookup(val) = get(mapping, string(val), missing)
+
+    # Apply to single value or array
+    if isa(x, AbstractVector)
+        return [lookup(xi) for xi in x]
+    else
+        return lookup(x)
+    end
+end
+
+
+
 
 function prepare(x) # prepare strings to put them in lowercase
     if !ismissing(x)
