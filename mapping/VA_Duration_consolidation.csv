@@ -2,7 +2,7 @@ Source,Problem,Note,Consolidated_variable,Question,Unit_variable,Numeric_var_hou
 VAW,,,wih_duration_consolidated,For how long was (s)he ill before death?,wih_duration,,wih_days,wih_unitsdays,wih_unitsmon,wih_unitsyr
 VAW,,,wsi_feverdura_consolidated,How long did the fever last?,wsi_feverdura,,wsi_feverdays,wsi_fever_days,wsi_fevermon,
 VAW,,,wsi_cough_durati_consolidated,For how long did (s)he have a cough?,wsi_cough_durati,,wsi_cough_days,,wsi_cough_month,
-VAW,,,wbd_brth_dff_un_consolidated,For how long did the difficulty breathing last?,wbd_brth_dff_un,,wbd_brth_dff_dr,,wbd_brth_dff_mn,wbd_brth_dff_yr
+VAW,,,wbd_brth_dff_un_consolidated,For how long did the difficulty breathing last?,wbd_brth_dff_un,,wbd_brth_dff_dr,wbd_brth_dff_d,wbd_brth_dff_mn,wbd_brth_dff_yr
 VAW,,,wbd_fst_brth_dr_consolidated,For how long did the fast breathing last?,wbd_fst_brth_dr,,wbd_fst_brth_l,wbd_fst_brth_d,wbd_fst_brth_mn,
 VAW,,,wbd_chst_pn_dr_consolidated,How long did the chest pain last ?,wbd_chst_pn_dr,wbd_chest_pain_h,wbd_chst_pn_d,,,
 VAW,2,General question for all age group,was_diarr_dur_consolidated,How long did (s)he have diarrhoea?,was_diarr_dur,,was_diarr_days,,was_diarr_mon,
