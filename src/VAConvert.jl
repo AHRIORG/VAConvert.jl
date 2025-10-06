@@ -482,10 +482,13 @@ function le(x, y)
 end
 
 function contains(x, y) 
-    return ifelse(ismissing(x) || ismissing(y), "-", 
-                    ifelse(occursin(y, x), "y", 
-                    "n")
-                 )
+    if ismissing(x) || ismissing(y)
+        return "-"
+    elseif occursin(y, x)
+        return "y"
+    else
+        return "n"
+    end
 end
 """ contains tests
 contains("hello", "lo")
