@@ -1,177 +1,253 @@
-Source,VariableName,Relationship,Condition
-HDSS,hdss_sex,eq,0
-VAW,wap_bellymass_da,ge,9998
-VAW,wap_bellymass_mo,ge,9998
-VAW,wap_bllyptrd_d,ge,9998
-VAW,wap_bllyptrd_mn,ge,9998
-VAW,wap_dffswllw_d,ge,9998
-VAW,wap_dffswllw_mn,ge,9998
-VAW,wap_fcpufnss_d,ge,9998
-VAW,wap_fcpufnss_mn,ge,9998
-VAW,wap_mentalconf_m,ge,9998
-VAW,wap_mntlcnf_d,ge,9998
-VAW,wap_skinrash_day,ge,9998
-VAW,wap_stiffneck_da,ge,9998
-VAW,wap_stiffneck_mo,ge,9998
-VAW,wap_stopsuckle_m,ge,9998
-VAW,wap_swollegs_day,ge,9998
-VAW,wap_swollegs_mon,ge,9998
-VAW,wap_ulcers_days,ge,9998
-VAW,wap_ulcers_mon,ge,9998
-VAW,wap_unconsc_days,ge,9998
-VAW,wap_unconsc_hour,ge,9998
-VAW,wap_ylldsclr_d,ge,9998
-VAW,wap_ylldsclr_mn,ge,9998
-VAW,was_diarr_amount,ge,9998
-VAW,was_diarr_days,ge,9998
-VAW,was_diarr_death,ge,9998
-VAW,was_diarr_mon,ge,9998
-VAW,was_drr_dth_d,ge,9998
-VAW,was_vomit_days,ge,9998
-VAW,was_vomit_mon,ge,9998
-VAW,wbd_brth_dff_d,ge,9998
-VAW,wbd_brth_dff_dr,ge,9998
-VAW,wbd_brth_dff_mn,ge,9998
-VAW,wbd_brth_dff_yr,ge,9998
-VAW,wbd_chest_pain,ge,9998
-VAW,wbd_chest_pain_h,ge,9998
-VAW,wbd_chst_pn_d,ge,9998
-VAW,wbd_fst_brth_d,ge,9998
-VAW,wbd_fst_brth_l,ge,9998
-VAW,wbd_fst_brth_mn,ge,9998
-VAW,wbp_bellypain_da,ge,9998
-VAW,wbp_bellypain_hr,ge,9998
-VAW,wbp_bellypain_mo,ge,9998
-VAW,wca_visitdate,ge,9998
-VAW,wcr_date,ge,9998
-VAW,wcr_death_reg_ce,ge,9998
-VAW,wcr_id,ge,9998
-VAW,wcr_place,ge,9998
-VAW,wdc_2ndantcd_dr,ge,9998
-VAW,whs_cause_dx_car,ge,9998
-VAW,wih_days,ge,9998
-VAW,wih_unitsdays,ge,9998
-VAW,wih_unitsmon,ge,9998
-VAW,wih_unitsyr,ge,9998
-VAW,wmd_labour_hrs,ge,9998
-VAW,wmd_preg_dura,ge,9998
-VAW,wmd_preg_stillbi,ge,9998
-VAW,wnd_baby_weight,ge,9998
-VAW,wnd_delivery_hrs,ge,9998
-VAW,wnd_preg_duratio,ge,9998
-VAW,won_descr,ge,9998
-VAW,wsb_minutes_cry,ge,9998
-VAW,wsi_cough_days,ge,9998
-VAW,wsi_cough_month,ge,9998
-VAW,wsi_feverdays,ge,9998
-VAW,wsi_fevermon,ge,9998
-VAW,wva_tob_chw_un,ge,9998
-VAW,wva_tobacco_unit,ge,9998
-VAW,wvb_va_resp,ge,9998
-VAW,wmd_perdovrdwks,ge,9998
-VAQ,VA_C1S01V11,ge,98
-VAQ,VA_C2S01V03,ge,98
-VAQ,VA_C2S02V03,ge,98
-VAQ,VA_C2S02V08,ge,98
-VAQ,VA_C2S02V10,ge,98
-VAQ,VA_C3S02V02,ge,98
-VAQ,VA_C3S02V04,ge,98
-VAQ,VA_C3S03V02,ge,98
-VAQ,VA_C3S04V03,ge,98
-VAQ,VA_C3S05V02,ge,98
-VAQ,VA_C3S06V05,ge,98
-VAQ,VA_C3S07V02,ge,98
-VAQ,VA_C3S08V03,ge,98
-VAQ,VA_C3S09V02,ge,98
-VAQ,VAC3_S10V02,ge,98
-VAQ,VAC3_S10V05,ge,98
-VAQ,VAC3_S11V02,ge,98
-VAQ,VAC3_S12V03,ge,98
-VAQ,VAC3_S12V08,ge,98
-VAQ,VAC3_S13V02,ge,98
-VAQ,VAC3_S14V02,ge,98
-VAQ,VAC3_S15V03,ge,98
-VAQ,VAC3_S16V02,ge,98
-VAQ,VAC3_S17V03,ge,98
-VAQ,VAC3_S17V04,ge,98
-VAQ,VAC3_S18V03,ge,98
-VAQ,VAC3_S20V01,ge,98
-VAQ,VAC3_S23V02,ge,98
-VAQ,VAC3_S23V05,ge,98
-VAQ,VAC3_S24V02,ge,98
-VAQ,VAC3_S26V03,ge,98
-VAQ,VAC3_S26V06,ge,98
-VAQ,VAC3_S31V02,ge,98
-VAQ,VAC4_S01V02,ge,98
-VAQ,VAC4_S01V04,ge,98
-VAQ,VAC4_S02V03,ge,98
-VAQ,VAC4_S02V05,ge,98
-VAQ,VAC4_S03V04,ge,98
-VAQ,VAC4_S03V06,ge,98
-VAQ,VAC4_S04V04,ge,98
-VAQ,VAC4_S04V05,ge,98
-VAQ,VAC4_S04V07,ge,98
-VAQ,VAC4_S05V01,ge,98
-VAQ,VAC4_S05V06,ge,98
-VAQ,VAC4_S06V02,ge,98
-VAQ,VAC4_S06V04,ge,98
-VAQ,VAC5_S01V04,ge,98
-VAQ,VAC6_S01V14,ge,98
-VAQ,VAC6_S01V17,ge,98
-VAQ,VAC6_S01V19,ge,98
-VAQ,VAC6_S01V21a,ge,98
-VAP,ap_bellymass_dur,ge,998
-VAP,ap_bellypotrud_d,ge,998
-VAP,bd_breath_diff_d,ge,998
-VAP,bd_chest_pain_du,ge,998
-VAP,cp_bellypain_dur,ge,998
-VAP,nd_mthr_dthm_dur,ge,998
-VAP,nd_move_duration,ge,998
-VAP,ih_duration_1,ge,998
-VAP,sb_minutes_cry,ge,998
-VAP,sb_hours_cry,ge,998
-VAP,si_fever_days,ge,998
-VAP,si_fever_days,ge,998
-VAP,si_fever_days,ge,998
-VAP,si_cough_duratio,ge,998
-VAP,si_cough_duratio,ge,998
-VAP,bd_fast_breath_l,ge,998
-VAP,bd_fast_breath_l,ge,998
-VAP,bd_brthlsns_days,ge,998
-VAP,bd_brthlsns_days,ge,998
-VAP,bd_chest_pain,ge,998
-VAP,cp_stools_days,ge,998
-VAP,cp_stools_days,ge,998
-VAP,cp_stools_days,ge,998
-VAP,cp_stools_num,ge,998
-VAP,cp_stools_days_d,ge,998
-VAP,cp_stools_days_d,ge,998
-VAP,cp_vomit_days_de,ge,998
-VAP,ap_stiffneck_day,ge,998
-VAP,ap_stiffneck_day,ge,998
-VAP,ap_painneck_days,ge,998
-VAP,ap_mentalconfus_,ge,998
-VAP,ap_unconsc_hrs,ge,998
-VAP,ap_convuls_min,ge,998
-VAP,ap_convuls_min,ge,998
-VAP,ap_ulcrt_ooze_dy,ge,998
-VAP,ap_skinrash_days,ge,998
-VAP,ap_skinrash_days,ge,998
-VAP,ap_facepufiness_,ge,998
-VAP,ap_swollegs_days,ge,998
-VAP,ap_diffswallow_d,ge,998
-VAP,ap_yllwdisclr_dy,ge,998
-VAP,ap_stopsuckle_da,ge,998
-VAP,nc_babycold_days,ge,998
-VAP,md_perdovrduewks,ge,998
-VAP,md_preg_months,ge,998
-VAP,md_numbirths,ge,998
-VAP,md_numbirths,ge,998
-VAP,md_labour_hrs,ge,998
-VAP,nd_preg_duration,ge,998
-VAP,nd_preg_duration,ge,998
-VAP,nd_preg_duration,ge,998
-VAP,nd_delivery_hrs,ge,998
-VAP,md_births_num,ge,998
-VAP,md_births_num,ge,998
-VAP,va_cigar_num,ge,998
+,Source,VariableName,Prompt,Relationship,Condition
+1,HDSS,hdss_sex,NA,eq,0
+2,VAW,wap_bellymass_da,Enter how long (s)he had a mass in the belly (abdomen) in days,ge,9998
+3,VAW,wap_bellymass_mo,Enter how long (s)he had a mass in the belly (abdomen) in months,ge,9998
+4,VAW,wap_bllyptrd_d,Enter how long before death (s)he had a more than usually protruding belly (abdomen) in days,ge,9998
+5,VAW,wap_bllyptrd_mn,Enter how long before death (s)he had a more than usually protruding belly (abdomen) in months,ge,9998
+6,VAW,wap_dffswllw_d,Enter how long before death (s)he had difficulty swallowing in days,ge,9998
+7,VAW,wap_dffswllw_mn,Enter how long before death (s)he had difficulty swallowing in months,ge,9998
+8,VAW,wap_fcpufnss_d,Enter how long (s)he had puffiness of the face in days,ge,9998
+9,VAW,wap_fcpufnss_mn,Enter how long (s)he had puffiness of the face in months,ge,9998
+10,VAW,wap_mentalconf_m,Enter how long (s)he had mental confusion in months,ge,9998
+11,VAW,wap_mntlcnf_d,Enter how long (s)he had mental confusion in days,ge,9998
+12,VAW,wap_skinrash_day,For how many days did (s)he have the skin rash?,ge,9998
+13,VAW,wap_stiffneck_da,Enter how long before death did (s)he have stiff neck in days,ge,9998
+14,VAW,wap_stiffneck_mo,Enter how long before death did (s)he have stiff neck in months,ge,9998
+15,VAW,wap_stopsuckle_m,Enter how long after birth the baby stopped suckling in months,ge,9998
+16,VAW,wap_swollegs_day,Enter how long the swelling lasted in days,ge,9998
+17,VAW,wap_swollegs_mon,Enter how long the swelling lasted in months,ge,9998
+18,VAW,wap_ulcers_days,Enter how long the ulcer on the foot oozed pus in days,ge,9998
+19,VAW,wap_ulcers_mon,Enter how long the ulcer on the foot oozed pus in months,ge,9998
+20,VAW,wap_unconsc_days,Enter how long before death unconsciousness started in days,ge,9998
+21,VAW,wap_unconsc_hour,Enter how long before death unconsciousness started in hours,ge,9998
+22,VAW,wap_ylldsclr_d,Enter how long (s)he had the yellow discoloration in days,ge,9998
+23,VAW,wap_ylldsclr_mn,Enter how long (s)he had the yellow discoloration in months,ge,9998
+24,VAW,was_diarr_amount,How many stools did the baby or child have on the day that diarrhoea was most frequent?,ge,9998
+25,VAW,was_diarr_days,Enter how long (s)he had frequent loose or liquid stools in days,ge,9998
+26,VAW,was_diarr_death,How many days before death did the diarrhoea start?,ge,9998
+27,VAW,was_diarr_mon,Enter how long (s)he had frequent loose or liquid stools in months,ge,9998
+28,VAW,was_drr_dth_d,Enter how long before death the frequent loose or liquid stools started in days,ge,9998
+29,VAW,was_vomit_days,For how many days before death did (s)he vomit?,ge,9998
+30,VAW,was_vomit_mon,For how many months before death did (s)he vomit?,ge,9998
+31,VAW,wbd_brth_dff_d,Enter how long the difficult breathing lasted in days,ge,9998
+32,VAW,wbd_brth_dff_dr,For how many days did the difficulty breathing last?,ge,9998
+33,VAW,wbd_brth_dff_mn,Enter how long the difficult breathing lasted in months,ge,9998
+34,VAW,wbd_brth_dff_yr,Enter how long the difficult breathing lasted in years,ge,9998
+35,VAW,wbd_chest_pain,How many days before death did (s)he have chest pain?,ge,9998
+36,VAW,wbd_chest_pain_h,Enter how long the chest pain lasted in hours,ge,9998
+37,VAW,wbd_chst_pn_d,Enter how long the chest pain lasted in days,ge,9998
+38,VAW,wbd_fst_brth_d,Enter how long did the fast breathing lasted in days?,ge,9998
+39,VAW,wbd_fst_brth_l,For how many days did the fast breathing last?,ge,9998
+40,VAW,wbd_fst_brth_mn,Enter how long did the fast breathing lasted in months?,ge,9998
+41,VAW,wbp_bellypain_da,Enter how long (s)he had belly (abdominal) pain in days,ge,9998
+42,VAW,wbp_bellypain_hr,Enter how long (s)he had belly (abdominal) pain in hours,ge,9998
+43,VAW,wbp_bellypain_mo,Enter how long (s)he had belly (abdominal) pain in months,ge,9998
+44,VAW,wca_visitdate,Visit Date,ge,9998
+45,VAW,wcr_date,Date of registration,ge,9998
+46,VAW,wcr_death_reg_ce,Death registration number/certificate,ge,9998
+47,VAW,wcr_id,National identification number of deceased,ge,9998
+48,VAW,wcr_place,Place of registration,ge,9998
+49,VAW,wdc_2ndantcd_dr,Duration (1c):,ge,9998
+50,VAW,whs_cause_dx_car,What did the health care worker say?,ge,9998
+51,VAW,wih_days,For how many days was (s)he ill before death?,ge,9998
+52,VAW,wih_unitsdays,Days,ge,9998
+53,VAW,wih_unitsmon,Months,ge,9998
+54,VAW,wih_unitsyr,Years,ge,9998
+55,VAW,wmd_labour_hrs,For how many hours was she in labour?,ge,9998
+56,VAW,wmd_preg_dura,For how many months was she pregnant?,ge,9998
+57,VAW,wmd_preg_stillbi,"How many births, including stillbirths, did she/the mother have before this pregnancy?",ge,9998
+58,VAW,wnd_baby_weight,What was the weight (in grammes) of the deceased at birth?,ge,9998
+59,VAW,wnd_delivery_hrs,How many hours did labour and delivery take?,ge,9998
+60,VAW,wnd_preg_duratio,How many months long was the pregnancy before the child was born?,ge,9998
+61,VAW,won_descr,Thank you for your information. Now can you please tell me in your own words about the events that led to the death?,ge,9998
+62,VAW,wsb_minutes_cry,How many minutes after birth did the baby first cry?,ge,9998
+63,VAW,wsi_cough_days,Enter how long (s)he had a cough in days,ge,9998
+64,VAW,wsi_cough_month,Enter how long (s)he had a cough in months,ge,9998
+65,VAW,wsi_feverdays,Enter how long the fever lasted in days,ge,9998
+66,VAW,wsi_fevermon,Enter how long the fever lasted in months,ge,9998
+67,VAW,wva_tob_chw_un,For how long did s/he chew tobacco?,ge,9998
+68,VAW,wva_tobacco_unit,How many (months/years),ge,9998
+69,VAW,wvb_va_resp,Name of VA Respondent,ge,9998
+70,VAW,wmd_perdovrdwks,For how many weeks had her period been overdue?,ge,9998
+71,VAQ,VA_C1S01V11,For how long was s/he ill before s/he died?,ge,98
+72,VAQ,VA_C2S01V03,How long after the injury did s/he die?,ge,98
+73,VAQ,VA_C2S02V03,For how long was s/he inconscious?,ge,98
+74,VAQ,VA_C2S02V08,How long did the stiffness of the body last?,ge,98
+75,VAQ,VA_C2S02V10,For how long did s/he have problem with breathing?,ge,98
+76,VAQ,VA_C3S02V02,For how long did s/he have a cough?,ge,98
+77,VAQ,VA_C3S02V04,For how long did s/he have a cough with sputum?,ge,98
+78,VAQ,VA_C3S03V02,For how long did s/he have that skin condition?,ge,98
+79,VAQ,VA_C3S04V03,For how long did s/he have loose or liquid stool or diarrhoea?,ge,98
+80,VAQ,VA_C3S05V02,For how long did s/he have the swelling in the neck?,ge,98
+81,VAQ,VA_C3S06V05,If confused or unconscious for how long was s/he confused or unconcious before s/he died?,ge,98
+82,VAQ,VA_C3S07V02,How long did s/he have fever?,ge,98
+83,VAQ,VA_C3S08V03,How long did s/he have the swelling?,ge,98
+84,VAQ,VA_C3S09V02,How long did she have the swelling or ulcer?,ge,98
+85,VAQ,VAC3_S10V02,For how long did s/he have this problem to swallow?,ge,98
+86,VAQ,VAC3_S10V05,How long did the shortness of breath last?,ge,98
+87,VAQ,VAC3_S11V02,For how long did s/he have diffculty passing stool?,ge,98
+88,VAQ,VAC3_S12V03,For how long did s/he have the pain?,ge,98
+89,VAQ,VAC3_S12V08,For how long did s/he suffer from vomitting?,ge,98
+90,VAQ,VAC3_S13V02,For how long did s/he have the mass?,ge,98
+91,VAQ,VAC3_S14V02,How many days did s/he have this Jaundice?,ge,98
+92,VAQ,VAC3_S15V03,For how long did s/he have this abdominal distension,ge,98
+93,VAQ,VAC3_S16V02,For how long did s/he have the swelling of ankles?,ge,98
+94,VAQ,VAC3_S17V03,"If s/he had it on and off, how long did such period of shortness of breath last usually?",ge,98
+95,VAQ,VAC3_S17V04,How long did s/he have this shortness of breath for the first time?,ge,98
+96,VAQ,VAC3_S18V03,For how long did s/he have this paralysis before s/he died?,ge,98
+97,VAQ,VAC3_S20V01,"If s/he had diarrhoea or liquid or loose stool before s/he died, how long did it last?",ge,98
+98,VAQ,VAC3_S23V02,How long did the cough with sputum last?,ge,98
+99,VAQ,VAC3_S23V05,How long did the shortness of breath last?,ge,98
+100,VAQ,VAC3_S24V02,For how long did s/he have problems passing urine?,ge,98
+101,VAQ,VAC3_S26V03,For how long did s/he have this change in the amount of urine?,ge,98
+102,VAQ,VAC3_S26V06,For how long did s/he have this change in the colour of the urine?,ge,98
+103,VAQ,VAC3_S31V02,How long did s/he have headache?,ge,98
+104,VAQ,VAC4_S01V02,How many months was she pregnant when she died?,ge,98
+105,VAQ,VAC4_S01V04,How many months was she pregnant when the pregnancy ended?,ge,98
+106,VAQ,VAC4_S02V03,How long did the bleeding last?,ge,98
+107,VAQ,VAC4_S02V05,How long after the start of the bleeding did she die?,ge,98
+108,VAQ,VAC4_S03V04,How many months was she pregnant when the convulsions started?,ge,98
+109,VAQ,VAC4_S03V06,How long after the start of the convulsions did she die?,ge,98
+110,VAQ,VAC4_S04V04,How long after the bleeding started did she die?,ge,98
+111,VAQ,VAC4_S04V05,How long after the delivery of the child was the placents delivered?,ge,98
+112,VAQ,VAC4_S04V07,How long after the delivery of the child were the placenta or these retained parts of the placenta or membranes delivered?,ge,98
+113,VAQ,VAC4_S05V01,How long did the labour pain last?,ge,98
+114,VAQ,VAC4_S05V06,If the woman had an assisted delivery how long after the delivery did she die?,ge,98
+115,VAQ,VAC4_S06V02,How long did the fever last?,ge,98
+116,VAQ,VAC4_S06V04,How long after delivery of the child did she die?,ge,98
+117,VAQ,VAC5_S01V04,How many months was the mother pregnant when she delivered?,ge,98
+118,VAQ,VAC6_S01V14,"If liquid or loose stool or from diarrhoea, how long did it last?",ge,98
+119,VAQ,VAC6_S01V17,"If fever, how long did the fever last?",ge,98
+120,VAQ,VAC6_S01V19,"If cough, how long did the cough last?",ge,98
+121,VAQ,VAC6_S01V21a,"If yes, how did the difficult or fast breathing last?",ge,98
+122,VAQ,VA_C1S01V11,For how long was s/he ill before s/he died?,eq,0
+123,VAQ,VA_C2S01V03,How long after the injury did s/he die?,eq,0
+124,VAQ,VA_C2S02V03,For how long was s/he inconscious?,eq,0
+125,VAQ,VA_C2S02V08,How long did the stiffness of the body last?,eq,0
+126,VAQ,VA_C2S02V10,For how long did s/he have problem with breathing?,eq,0
+127,VAQ,VA_C3S02V02,For how long did s/he have a cough?,eq,0
+128,VAQ,VA_C3S02V04,For how long did s/he have a cough with sputum?,eq,0
+129,VAQ,VA_C3S03V02,For how long did s/he have that skin condition?,eq,0
+130,VAQ,VA_C3S04V03,For how long did s/he have loose or liquid stool or diarrhoea?,eq,0
+131,VAQ,VA_C3S05V02,For how long did s/he have the swelling in the neck?,eq,0
+132,VAQ,VA_C3S06V05,If confused or unconscious for how long was s/he confused or unconcious before s/he died?,eq,0
+133,VAQ,VA_C3S07V02,How long did s/he have fever?,eq,0
+134,VAQ,VA_C3S08V03,How long did s/he have the swelling?,eq,0
+135,VAQ,VA_C3S09V02,How long did she have the swelling or ulcer?,eq,0
+136,VAQ,VAC3_S10V02,For how long did s/he have this problem to swallow?,eq,0
+137,VAQ,VAC3_S10V05,How long did the shortness of breath last?,eq,0
+138,VAQ,VAC3_S11V02,For how long did s/he have diffculty passing stool?,eq,0
+139,VAQ,VAC3_S12V03,For how long did s/he have the pain?,eq,0
+140,VAQ,VAC3_S12V08,For how long did s/he suffer from vomitting?,eq,0
+141,VAQ,VAC3_S13V02,For how long did s/he have the mass?,eq,0
+142,VAQ,VAC3_S14V02,How many days did s/he have this Jaundice?,eq,0
+143,VAQ,VAC3_S15V03,For how long did s/he have this abdominal distension,eq,0
+144,VAQ,VAC3_S16V02,For how long did s/he have the swelling of ankles?,eq,0
+145,VAQ,VAC3_S17V03,"If s/he had it on and off, how long did such period of shortness of breath last usually?",eq,0
+146,VAQ,VAC3_S17V04,How long did s/he have this shortness of breath for the first time?,eq,0
+147,VAQ,VAC3_S18V03,For how long did s/he have this paralysis before s/he died?,eq,0
+148,VAQ,VAC3_S20V01,"If s/he had diarrhoea or liquid or loose stool before s/he died, how long did it last?",eq,0
+149,VAQ,VAC3_S23V02,How long did the cough with sputum last?,eq,0
+150,VAQ,VAC3_S23V05,How long did the shortness of breath last?,eq,0
+151,VAQ,VAC3_S24V02,For how long did s/he have problems passing urine?,eq,0
+152,VAQ,VAC3_S26V03,For how long did s/he have this change in the amount of urine?,eq,0
+153,VAQ,VAC3_S26V06,For how long did s/he have this change in the colour of the urine?,eq,0
+154,VAQ,VAC3_S31V02,How long did s/he have headache?,eq,0
+155,VAQ,VAC4_S01V02,How many months was she pregnant when she died?,eq,0
+156,VAQ,VAC4_S01V04,How many months was she pregnant when the pregnancy ended?,eq,0
+157,VAQ,VAC4_S02V03,How long did the bleeding last?,eq,0
+158,VAQ,VAC4_S02V05,How long after the start of the bleeding did she die?,eq,0
+159,VAQ,VAC4_S03V04,How many months was she pregnant when the convulsions started?,eq,0
+160,VAQ,VAC4_S03V06,How long after the start of the convulsions did she die?,eq,0
+161,VAQ,VAC4_S04V04,How long after the bleeding started did she die?,eq,0
+162,VAQ,VAC4_S04V05,How long after the delivery of the child was the placents delivered?,eq,0
+163,VAQ,VAC4_S04V07,How long after the delivery of the child were the placenta or these retained parts of the placenta or membranes delivered?,eq,0
+164,VAQ,VAC4_S05V01,How long did the labour pain last?,eq,0
+165,VAQ,VAC4_S05V06,If the woman had an assisted delivery how long after the delivery did she die?,eq,0
+166,VAQ,VAC4_S06V02,How long did the fever last?,eq,0
+167,VAQ,VAC4_S06V04,How long after delivery of the child did she die?,eq,0
+168,VAQ,VAC5_S01V04,How many months was the mother pregnant when she delivered?,eq,0
+169,VAQ,VAC6_S01V14,"If liquid or loose stool or from diarrhoea, how long did it last?",eq,0
+170,VAQ,VAC6_S01V17,"If fever, how long did the fever last?",eq,0
+171,VAQ,VAC6_S01V19,"If cough, how long did the cough last?",eq,0
+172,VAQ,VAC6_S01V21a,"If yes, how did the difficult or fast breathing last?",eq,0
+173,VAQ,VACL01_V01,Did the final illness last at least 3 weeks?,eq,0
+174,VAQ,VAC5_S01V09,"If yes, for how many days did the fever last?",eq,0
+175,VAQ,VAC5_S01V09,"If yes, for how many days did the fever last?",eq,0
+176,VAQ,VAC5_S01V09,"If yes, for how many days did the fever last?",eq,0
+177,VAQ,VAC4_S02V10,How long did she have fever?,eq,0
+178,VAQ,VAC4_S02V10,How long did she have fever?,eq,0
+179,VAQ,VAC4_S02V10,How long did she have fever?,eq,0
+180,VAQ,VAC5_S01V25a,"If yes, how long did the last in days?",eq,0
+181,VAQ,VA_C3S02V03,Was the cough productive (sputum)?,eq,0
+182,VAQ,VAC5_S01V25a,"If yes, how long did the last in days?",eq,0
+183,VAQ,VAC5_S01V28,"If yes, how long did the difficult or fast breathing last in days?",eq,0
+184,VAQ,VAC5_S01V18,How many days after birth did the child start having problems sucking?,eq,0
+185,VAQ,VAC5_S01V11,"If yes, how many days after birth did the child start having spasms/convulsions?",eq,0
+186,VAQ,VAC5_S01V12,How long did the spasms/convulsions last?,eq,0
+187,VAQ,VAC4_S01V06,How many days after the end of the pregnancy did the woman die?,eq,0
+188,VAQ,VAC5_S01V05,What was the size of the child at birth?,eq,0
+189,VAQ,VAC5_S01V06,Did the child have any malformations at delivery?,eq,0
+190,VAQ,VAC5_S01V37,"If yes, how many days before labour started?",eq,0
+191,VAQ,VAC5_S01V34,"If the child suffered from liquid or loose stool or from diarrhoea, for how many days was that?",eq,0
+192,VAQ,VAC5_S01V34,"If the child suffered from liquid or loose stool or from diarrhoea, for how many days was that?",eq,0
+193,VAQ,VAC5_S01V34,"If the child suffered from liquid or loose stool or from diarrhoea, for how many days was that?",eq,0
+194,VAQ,VAC3_S20V02,"When the loose or liquid stool or the diarrhoea was severe, how many times did s/he pass stool per day?",eq,0
+195,VAQ,VAC3_S28V03,How many days did s/he have neck stiffness or pain?,eq,0
+196,VAQ,VAC3_S28V03,How many days did s/he have neck stiffness or pain?,eq,0
+197,VAQ,VAC3_S28V03,How many days did s/he have neck stiffness or pain?,eq,0
+198,VAP,ap_bellymass_dur,For how long before death did (s)he have a mass in the belly (abdomen)? (Days/Months),ge,998
+199,VAP,ap_bellypotrud_d,For how long did (s)he have a more than usually protruding belly (abdomen)?(Days/Months),ge,998
+200,VAP,bd_breath_diff_d,For how long did the difficultly breathing last ? (Days/Months/Years),ge,998
+201,VAP,bd_chest_pain_du,For how long did the chest pain last ? (Minutes/Hours),ge,998
+202,VAP,cp_bellypain_dur,For how long before death did (s)he have belly (abdominal) pain? (Hours/Days/Weeks/Months),ge,998
+203,VAP,nd_mthr_dthm_dur,How long after the delivery did the mother die? (Days/Months),ge,998
+204,VAP,nd_move_duration,How long before labour did you or the mother last feel the baby move?,ge,998
+205,VAP,ih_duration_1,Duration,ge,998
+206,VAP,sb_minutes_cry,How many minutes after birth did the baby first cry?,ge,998
+207,VAP,sb_hours_cry,How many hours before death did the baby stop crying?,ge,998
+208,VAP,si_fever_days,How many days did the fever last?,ge,998
+209,VAP,si_fever_days,How many days did the fever last?,ge,998
+210,VAP,si_fever_days,How many days did the fever last?,ge,998
+211,VAP,si_cough_duratio,For how many days did (s)he have a cough?,ge,998
+212,VAP,si_cough_duratio,For how many days did (s)he have a cough?,ge,998
+213,VAP,bd_fast_breath_l,For how many days did the fast breathing last?,ge,998
+214,VAP,bd_fast_breath_l,For how many days did the fast breathing last?,ge,998
+215,VAP,bd_brthlsns_days,For how many days did (s)he have breathlessness?,ge,998
+216,VAP,bd_brthlsns_days,For how many days did (s)he have breathlessness?,ge,998
+217,VAP,bd_chest_pain,How many days before death did (s)he have chest pain?,ge,998
+218,VAP,cp_stools_days,For how many days did (s)he have frequent loose or liquid stools?,ge,998
+219,VAP,cp_stools_days,For how many days did (s)he have frequent loose or liquid stools?,ge,998
+220,VAP,cp_stools_days,For how many days did (s)he have frequent loose or liquid stools?,ge,998
+221,VAP,cp_stools_num,How many stools did the baby or child have on the day that loose liquid stools were most frequent?,ge,998
+222,VAP,cp_stools_days_d,How many days before death did the frequent loose or liquid stools start?,ge,998
+223,VAP,cp_stools_days_d,How many days before death did the frequent loose or liquid stools start?,ge,998
+224,VAP,cp_vomit_days_de,For how many days before death did (s)he vomit?,ge,998
+225,VAP,ap_stiffneck_day,For how many days before death did (s)he have stiff neck?,ge,998
+226,VAP,ap_stiffneck_day,For how many days before death did (s)he have stiff neck?,ge,998
+227,VAP,ap_painneck_days,For how many days before death did (s)he have a painful neck?,ge,998
+228,VAP,ap_mentalconfus_,For how many months did (s)he have mental confusion?,ge,998
+229,VAP,ap_unconsc_hrs,How many hours before death did unconsciousness start?,ge,998
+230,VAP,ap_convuls_min,For how many minutes did the convulsions last?,ge,998
+231,VAP,ap_convuls_min,For how many minutes did the convulsions last?,ge,998
+232,VAP,ap_ulcrt_ooze_dy,For how many days did the ulcer on the foot ooze pus?,ge,998
+233,VAP,ap_skinrash_days,For how many days did (s)he have the skin rash?,ge,998
+234,VAP,ap_skinrash_days,For how many days did (s)he have the skin rash?,ge,998
+235,VAP,ap_facepufiness_,For how many days did (s)he have puffiness of the face?,ge,998
+236,VAP,ap_swollegs_days,How many days did the swelling last?,ge,998
+237,VAP,ap_diffswallow_d,For how many days before death did (s)he have difficulty swallowing?,ge,998
+238,VAP,ap_yllwdisclr_dy,For how many days did (s)he have the yellow discoloration?,ge,998
+239,VAP,ap_stopsuckle_da,How many days after birth did the baby stop suckling?,ge,998
+240,VAP,nc_babycold_days,How many days old was the baby when it started feeling cold to touch?,ge,998
+241,VAP,md_perdovrduewks,For how many weeks had her period been overdue?,ge,998
+242,VAP,md_preg_months,For how many months was she pregnant?,ge,998
+243,VAP,md_numbirths,"How many births, including stillbirths, did she/the mother have before this baby?",ge,998
+244,VAP,md_numbirths,"How many births, including stillbirths, did she/the mother have before this baby?",ge,998
+245,VAP,md_labour_hrs,For how many hours was she in labour?,ge,998
+246,VAP,nd_preg_duration,How many months long was the pregnancy before the child was born?,ge,998
+247,VAP,nd_preg_duration,How many months long was the pregnancy before the child was born?,ge,998
+248,VAP,nd_preg_duration,How many months long was the pregnancy before the child was born?,ge,998
+249,VAP,nd_delivery_hrs,How many hours did labour and delivery take?,ge,998
+250,VAP,md_births_num,"How many births, including stillbirths, did the baby's mother have before this baby?",ge,998
+251,VAP,md_births_num,"How many births, including stillbirths, did the baby's mother have before this baby?",ge,998
+252,VAP,va_cigar_num,How many cigarettes did (s)he smoke daily?,ge,998
