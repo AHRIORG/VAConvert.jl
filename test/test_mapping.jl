@@ -3,7 +3,6 @@ using DataFrames
 using VAConvert
 using CSV
 
-
 # ===============================
 # Function: compare DataFrames
 # ===============================
@@ -93,7 +92,8 @@ for source in ["VAW", "VAP" #, "VAP",
     df_test_output = select(df_test_output, Cols("IIntID", vars_to_keep...))
 
     compare_dfs(df_test_output, df_expected; idcol=:IIntID)
-# Run when script is executed directly
+    # Run when script is executed directly
+
 end
 
 
