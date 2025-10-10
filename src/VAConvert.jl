@@ -12,7 +12,7 @@ using TidierFiles
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
     read_variablemap, consolidate_duration_variables!, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
-    encodemissing, encodenumeric
+    encodemissing, encodenumeric, eq, ge, gt, lt, le, between, contains
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -355,17 +355,16 @@ function read_variablemap(file)::AbstractDataFrame
         "Prerequisite" => "prerequisite_variable"))
     return df
 end
-#=
+"""
   * eq: is equal to
   * gt: is greater than
   * ge: is greater than or equal to
   * lt: is less than
   * le: is less than or equal to
-  * ne: is not equal to
+  * ne: is not equal to # not yet implemented
   * contains: contains the substring
   * between: is between 2 numbers, inclusive
-=#
-# 
+"""
 
 """
     eq(x, y)
@@ -737,18 +736,79 @@ function encodemissing(df::AbstractDataFrame, domainvalues::AbstractDataFrame)::
     return values
 end
 
+# function encodenumeric(df::AbstractDataFrame, numericvalues::AbstractDataFrame)::AbstractDataFrame
+#     numeric_dict = Dict(row[:VariableName] => row[:Condition] for row in eachrow(numericvalues))
+#     values = copy(df)
+#     for row in eachrow(values)
+#         if haskey(numeric_dict, row.Variable)
+#             value = tryparse(Int64, row.Value)
+#             if !isnothing(value) && value >= numeric_dict[row.Variable]
+#                 row.Value = missing
+#             end
+#         end
+#     end
+#     return values
+# end
+
+
 function encodenumeric(df::AbstractDataFrame, numericvalues::AbstractDataFrame)::AbstractDataFrame
-    numeric_dict = Dict(row[:VariableName] => row[:Condition] for row in eachrow(numericvalues))
+    # Build a dictionary: VariableName => vector of (Relationship, Condition) tuples
+    #empty dictionnary
+    rule_dict = Dict{String, Vector{Tuple{String, Any}}}()
+
+    # now we fill the dictionnary with the numericvalues missing mapping sheet
+    for row in eachrow(numericvalues)
+        var = row[:VariableName]
+        rel = row[:Relationship] # same function as for mapping
+        cond = row[:Condition]
+        if !haskey(rule_dict, var)
+            rule_dict[var] = [(rel, cond)]
+        # one var can have several rules for missing, this allows to treat these rules successively
+        else
+            push!(rule_dict[var], (rel, cond))
+        end
+    end
+
+    # Copy df to avoid mutating original
     values = copy(df)
+
+    # we evaluate every variable
     for row in eachrow(values)
-        if haskey(numeric_dict, row.Variable)
-            value = tryparse(Int64, row.Value)
-            if !isnothing(value) && value >= numeric_dict[row.Variable]
-                row.Value = missing
+        var = row.Variable
+        #is the variable in the dictionnary?
+        if haskey(rule_dict, var)
+            # We make sure the value is a string as our relationship function take strings as input
+            x = isnothing(row.Value) || ismissing(row.Value) ? "" : string(row.Value)
+            # x = if isa(row.Value, AbstractString)
+            #     tryparse(Int64, row.Value)
+            # else
+            #     row.Value
+            # end
+
+            # x = tryparse(Int64, row.Value) #transform it in numerical value
+            # x = isnothing(x) ? row.Value : x
+
+            #for each variable, goes through all the rules that applies 
+            for (rel, cond) in rule_dict[var]
+                if isdefined(Main, Symbol(rel))
+                    f = getfield(VAConvert, Symbol(rel)) # find function in VAConvert module
+                    cond_str = isnothing(cond) || ismissing(cond) ? "" : string(cond) #transform condition in string as functions all take Relationship as strings
+                    result = f(x, cond_str)
+                    # result = eval(Expr(:call, Symbol(rel), x, cond))
+                    if result == "y" # if the condition is met, set the value to missing
+                        row.Value = missing 
+                        break # if one rule is verified then no need to look through the others
+                    end
+                else
+                    @warn "Function $(rel) not found for variable $(var)"
+                end
             end
         end
     end
+
     return values
 end
+
+
 
 end # module VAConvert
