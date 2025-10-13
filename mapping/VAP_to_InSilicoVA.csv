@@ -152,7 +152,7 @@
 "151","",1,"i213o","Did (s)he have mental confusion for at least 3 months before death? (menc 3+m)","ap_mentalconfus_","Numeric","For how many months did (s)he have mental confusion?","ge","3","","i212o",""
 "152","",1,"i214o","During the illness that led to death, was (s)he unconscious? (uncons)","ap_unconsc_death","VAPYesNo","Was (s)he unconscious during the illness that lead to death?","eq","YES","","",""
 "153","",1,"i215o","Was (s)he unconscious for at least 24 hours before death? (unc 24+h)","ap_unconsc_24hrs","VAPYesNo","Was (s)he unconscious for more than 24 hours before death?","eq","YES","","i214o",""
-"154","",1,"i216a","Was (s)he unsconscious for at least 6 hours before death? (unc 6+h)","ap_unconsc_hrs","Numeric","How many hours before death did unconsciousness start?","ge","6","","i215o",""
+"154","",1,"i216a","Was (s)he unsconscious for at least 6 hours before death? (unc 6+h)","ap_unconsc_hrs","Numeric","How many hours before death did unconsciousness start?","ge","6","","i214o",""
 "155","",1,"i217o","Did the unconsciousness start suddenly, quickly (at least within a single day)? (unc sudd)","ap_unconsc_start","VAPYesNo","Did the unconsciousness start suddenly, quickly (at least within a single day)?","eq","YES","","i215o",""
 "156","",1,"i218o","Did the unconsciousness continue until death? (unc to d)","ap_unconsc_cont","VAPYesNo","Did the unconsciousness continue until death?","eq","YES","","i215o",""
 "157","",1,"i219o","During the illness that led to death, did (s)he have any convulsions? (conv)","ap_convuls","VAPYesNo","Did (s)he have convulsions?","eq","YES","","",""

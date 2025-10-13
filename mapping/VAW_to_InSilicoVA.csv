@@ -154,7 +154,7 @@
 "153","wap_mntlcnf_dr",1,"i213o","Did (s)he have mental confusion for at least 3 months before death? (menc 3+m)","wap_mntlcnf_dr_consolidated","Numeric","How long did (s)he have mental confusion?","ge","90","","i212o",""
 "154","",1,"i214o","During the illness that led to death, was (s)he unconscious? (uncons)","wap_unconsc_deat","VAWYesNo","Was (s)he unconscious during the illness that lead to death?","eq","YES","","",""
 "155","wap_unconsc_dur",1,"i215o","Was (s)he unconscious for at least 24 hours before death? (unc 24+h)","wap_unconsc_dur_consolidated","Numeric","How long before death did unconsciousness start?","ge","1","","i214o",""
-"156","wap_unconsc_dur",1,"i216a","Was (s)he unsconscious for at least 6 hours before death? (unc 6+h)","wap_unconsc_dur_consolidated","Numeric","How long before death did unconsciousness start?","ge","0.25","","i215o",""
+"156","wap_unconsc_dur",1,"i216a","Was (s)he unsconscious for at least 6 hours before death? (unc 6+h)","wap_unconsc_dur_consolidated","Numeric","How long before death did unconsciousness start?","ge","0.25","","i214o",""
 "157","",1,"i217o","Did the unconsciousness start suddenly, quickly (at least within a single day)? (unc sudd)","wap_unconsc_star","VAWYesNo","Did the unconsciousness start suddenly, quickly (at least within a single day)?","eq","YES","","",""
 "158","",99,"i218o","Did the unconsciousness continue until death? (unc to d)",NA,NA,NA,NA,NA,"","i215o",""
 "159","",2,"i219o","During the illness that led to death, did (s)he have any convulsions? (conv)","wap_convuls","VAWYesNo","Did (s)he experience any generalized convulsions during the illness that led to death?","eq","YES","","",""
