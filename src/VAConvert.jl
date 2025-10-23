@@ -9,6 +9,7 @@ using CSV
 using Logging
 using Dates
 using TidierFiles
+using StatFiles
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
     read_variablemap, consolidate_duration_variables!, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
@@ -126,7 +127,7 @@ function individual_deaths(con)
     sql = """
     SELECT
         CAST(i.IndividualUid AS VARCHAR(36)) IndividualUid,
-        p.IntID IIntID,
+        im.IndividualId IIntID,
         i.Sex,
         b.EventDate DoB,
         e.EventDate DoD,
@@ -134,7 +135,7 @@ function individual_deaths(con)
     FROM AHRI_STG.dbo.Individuals i
         JOIN AHRI_STG.dbo.Events e ON i.EndEventUid = e.EventUid
         JOIN AHRI_STG.dbo.Events b ON i.BirthEventUid = b.EventUid
-        LEFT JOIN ACDIS_STG.dbo.ProtectedIndividuals p ON i.IndividualUid = p.uuid
+        JOIN AHRI_STG.ops.IndividualMaps im ON i.IndividualUid = im.IndividualUid
     WHERE e.EventTypeId = 7;
     """
     df = DBInterface.execute(con, sql) |> DataFrame
@@ -695,12 +696,14 @@ This function connects to the DuckDB database specified in the environment varia
 
 """
 function add_marriage(df::AbstractDataFrame)::AbstractDataFrame
-    partnerepisodes = read_dta(ENV["PARTNER_DTA"])
+    #partnerepisodes = read_dta(ENV["PARTNER_DTA"])
+    partnerepisodes = DataFrame(load(ENV["PARTNER_DTA"]))
     p = combine(groupby(partnerepisodes, [:IndividualId]), :Episode => maximum => :Episodes)
     p = innerjoin(partnerepisodes, p, on=[:IndividualId])
     # Get just the most recent episode
     subset!(p, [:Episode, :Episodes] => ByRow((x, y) -> x == y))
-    map = read_dta(ENV["INDIVIDUAL_MAP"])
+    #map = read_dta(ENV["INDIVIDUAL_MAP"])
+    map = DataFrame(load(ENV["INDIVIDUAL_MAP"]))
     p = innerjoin(p, map, on=:IndividualId)
     select!(p, :IIntId => :IIntID, :PartnerStatus)
     @info "Partner status $(nrow(p)) rows, columns: $(names(p))"
