@@ -1,7 +1,12 @@
+using ConfigEnv
+using Logging
 using Revise
 using DataFrames
 using VAConvert
 using CSV
+
+#get environment variables
+dotenv()
 
 # ===============================
 # Function: compare DataFrames
@@ -71,7 +76,7 @@ end
  
 
 
-for source in ["VAW", "VAP" #, "VAP",
+for source in ["VAW", "VAP", "VAQ",
     ]
     println("Evaluating $(source) mapping")
     # --- Read input + expected datasets ---
