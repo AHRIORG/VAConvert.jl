@@ -43,10 +43,39 @@ test_mapping_files <- function(Source){
   Variable_file <- read.csv(paste0("../VA_Variables_and_domains/VAVariables_",Source, ".csv"), check.names = F, sep=",")
   Variable_domain <- read.csv("../VA_Variables_and_Domains/VAVariableDomains.csv", check.names = F, sep=",")
   VA_Duration_consolidation <- read.csv("Pre_processing_files/VA_Duration_consolidation.csv") %>% filter(Source == Source)
+  Mapping_framework <- read.csv("0_Mapping_framework/Mapping_framework_probbase_2016.csv", sep= ",") 
+  
+  
+  # 1. Testing New Column name
+
+  # Checking new column names
+  New_indic_compared_to_Framework <- Mapping_file$New.Column.Name %in% Mapping_framework$New.Column.Name
+  
+  if (F %in% New_indic_compared_to_Framework) {
+    print(paste0("Errors in New Column Name for ", Source, "following column names do not match the expected format:"))
+    print(Mapping_file$New.Column.Name[Mapping_file$New.Column.Name %in% Mapping_framework$New.Column.Name == F])
+  } else {print("New Column Name verified")
+  
+        # Checking the order of New Column names (important to run InterVA) if they do match
+        
+        # extract the numerical part of the new col names - they should be in an increasing order
+        New_col_name_num <- as.numeric(str_sub(Mapping_file$New.Column.Name, start = 2, end =4))
+        # compute the difference between a value and the next in the vector
+        Increasing_diff <- diff(New_col_name_num) >= 0
+        
+        if (F %in% Increasing_diff) {
+          print(paste0("Errors in New Column Name order for ", Source, "following new col is not in the expected order:"))
+          print(Mapping_file$New.Column.Name[c(T,Increasing_diff) == F]) 
+          # T is added as the Increasing diff is of dimension n-1 compared to Mapping_file$New.Column.Name
+        } else {print("New Column Name order verified")}
+        
+  }
   
   
   
-  # 1. Testing relationship - I add a trimws here (trim white space) because in the function reading the mapping, we also add a strip ------
+  
+  
+  # 2. Testing relationship - I add a trimws here (trim white space) because in the function reading the mapping, we also add a strip ------
   
     # Isolating variables that would not meet requirement
   Relationship_pb <- Mapping_file %>% filter(!(trimws(Relationship) %in% c(NA,"", "eq", "gt", "ge", "lt", "le", "contains", "between")))
@@ -118,7 +147,7 @@ test_mapping_files <- function(Source){
   } else {print("Conditions verified")}
   
   
-  ## 4. Verification for numeric variables
+  ## 5. Verification for numeric variables
   ## Verifying numeric variables are in the preprocessing file for missing
   test_numericvar_recoded(Source)
   
