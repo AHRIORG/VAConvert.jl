@@ -155,7 +155,7 @@
 "154",1,"i214o","During the illness that led to death, was (s)he unconscious? (uncons)","wap_unconsc_deat","VAWYesNo","Was (s)he unconscious during the illness that lead to death?","eq","YES","","","",""
 "155",1,"i215o","Was (s)he unconscious for at least 24 hours before death? (unc 24+h)","wap_unconsc_dur_consolidated","Numeric","How long before death did unconsciousness start?","ge","1","","i214o","wap_unconsc_dur",""
 "156",1,"i216a","Was (s)he unsconscious for at least 6 hours before death? (unc 6+h)","wap_unconsc_dur_consolidated","Numeric","How long before death did unconsciousness start?","ge","0.25","","i214o","wap_unconsc_dur",""
-"157",1,"i217o","Did the unconsciousness start suddenly, quickly (at least within a single day)? (unc sudd)","wap_unconsc_star","VAWYesNo","Did the unconsciousness start suddenly, quickly (at least within a single day)?","eq","YES","","","",""
+"157",1,"i217o","Did the unconsciousness start suddenly, quickly (at least within a single day)? (unc sudd)","wap_unconsc_star","VAWYesNo","Did the unconsciousness start suddenly, quickly (at least within a single day)?","eq","YES","","i214o","",""
 "158",99,"i218o","Did the unconsciousness continue until death? (unc to d)",NA,NA,NA,NA,NA,"","i215o","",""
 "159",2,"i219o","During the illness that led to death, did (s)he have any convulsions? (conv)","wap_convuls","VAWYesNo","Did (s)he experience any generalized convulsions during the illness that led to death?","eq","YES","","","",""
 "160",2,"i220o","Did (s)he experience any generalized convulsions or fits? (conv gen)","wap_convuls","VAWYesNo","Did (s)he experience any generalized convulsions during the illness that led to death?","eq","YES","","i219o","",""
