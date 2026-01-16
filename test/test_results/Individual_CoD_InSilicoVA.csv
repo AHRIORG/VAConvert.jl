@@ -1,0 +1,201 @@
+"","IIntID","cause1","prob1","cause2","prob2","cause3","prob3"
+"1","d1","Stroke",0.708395758304259,"Digestive neoplasms",0.258602969484889,"Other and unspecified infect dis",0.0295270714755559
+"2","d2","Other and unspecified infect dis",0.499862344320591,"Other and unspecified cardiac dis",0.486994597362782,"Severe anaemia",0.00740187068842463
+"3","d3","Other and unspecified cardiac dis",0.885857312663874,"Other and unspecified infect dis",0.0531304404365224,"Acute resp infect incl pneumonia",0.0276185596902581
+"4","d4","HIV/AIDS related death",0.49983210857677,"Digestive neoplasms",0.499830290601331,"Breast neoplasms",0.000222140239898469
+"5","d5","HIV/AIDS related death",0.84468600853583,"Pulmonary tuberculosis",0.0847924432804022,"Digestive neoplasms",0.061844273700013
+"6","d6","Other and unspecified infect dis",0.66047593237983,"HIV/AIDS related death",0.116019246466865,"Other and unspecified NCD",0.0453402355672501
+"7","d7","Digestive neoplasms",0.492327444518163,"HIV/AIDS related death",0.491877072660254,"Other and unspecified neoplasms",0.00913573005042139
+"8","d8","Other and unspecified infect dis",0.751725944726626,"Liver cirrhosis",0.0922837422081936,"Reproductive neoplasms MF",0.071978809645441
+"9","d9","Severe malnutrition",0.467390775911948,"HIV/AIDS related death",0.214234763061412,"Other and unspecified NCD",0.153668494023218
+"10","d10","Other and unspecified infect dis",0.662334349466566,"HIV/AIDS related death",0.336719687326406,"Liver cirrhosis",0.000474760398656013
+"11","d11","Acute resp infect incl pneumonia",0.99828632052276,"Other and unspecified cardiac dis",0.00169423684272595,"Other and unspecified infect dis",9.3591269359814e-06
+"12","d12","Severe malnutrition",0.698848834642772,"Digestive neoplasms",0.1275295152253,"Other and unspecified neoplasms",0.0986432338590954
+"13","d13","Acute abdomen",0.713667508760836,"Other and unspecified cardiac dis",0.21386737625156,"Stroke",0.0200282346379841
+"14","d14","Stroke",0.999524797727176,"Severe anaemia",0.000236088097053986,"Pulmonary tuberculosis",0.00023272183848287
+"15","d15","Liver cirrhosis",0.940301716837943,"Other and unspecified infect dis",0.0412772654695671,"Digestive neoplasms",0.00911488585582959
+"16","d16","HIV/AIDS related death",0.922456523348423,"Pulmonary tuberculosis",0.0774985813567923,"Severe malnutrition",4.38859293116029e-05
+"17","d17","Other and unspecified infect dis",0.824936501190941,"Diabetes mellitus",0.0469374898328261,"Acute abdomen",0.0255283519373511
+"18","d18","Digestive neoplasms",0.988623987097369,"Acute abdomen",0.0109505071738691,"Diarrhoeal diseases",0.00029924410529645
+"19","d19","Pregnancy-related sepsis",0.868038031219527,"Ruptured uterus",0.0612309730908342,"Obstetric haemorrhage",0.0485041613210753
+"20","d20","Diabetes mellitus",0.567361055949303,"Liver cirrhosis",0.345317303919964,"Other and unspecified infect dis",0.0600685057428892
+"21","d21","Pulmonary tuberculosis",0.980082475216763,"HIV/AIDS related death",0.0198907568645464,"Acute resp infect incl pneumonia",2.60253559874667e-05
+"22","d22","Digestive neoplasms",0.994001101340583,"Other and unspecified infect dis",0.00347796767272016,"Reproductive neoplasms MF",0.00216673890887318
+"23","d23","Other and unspecified infect dis",0.568493658326372,"HIV/AIDS related death",0.379994372589895,"Stroke",0.0221379315604722
+"24","d24","Digestive neoplasms",0.904060837290047,"Reproductive neoplasms MF",0.0473155470417114,"Liver cirrhosis",0.046678962220754
+"25","d25","HIV/AIDS related death",0.999792250399025,"Other and unspecified infect dis",0.000185133069254531,"Other and unspecified neoplasms",1.18713824467388e-05
+"26","d26","Stroke",0.511785017062463,"Diabetes mellitus",0.435853341142214,"Digestive neoplasms",0.0171066983795762
+"27","d27","Acute resp infect incl pneumonia",0.505775601471903,"Other and unspecified cardiac dis",0.464731747612491,"HIV/AIDS related death",0.0174360041009791
+"28","d28","Other and unspecified infect dis",0.709783549349518,"Stroke",0.106172901019104,"Other and unspecified NCD",0.0647119488230373
+"29","d29","Pulmonary tuberculosis",0.808348554725639,"HIV/AIDS related death",0.168821579324275,"Other and unspecified infect dis",0.0156677685206035
+"30","d30","Pulmonary tuberculosis",0.99974389734227,"HIV/AIDS related death",0.000231939396097201,"Acute resp infect incl pneumonia",2.193425317528e-05
+"31","d31","HIV/AIDS related death",0.999372872355073,"Pulmonary tuberculosis",0.000627126500807594,"Other and unspecified infect dis",7.48162564145414e-10
+"32","d32","Digestive neoplasms",0.954655236852296,"HIV/AIDS related death",0.0376040424288057,"Reproductive neoplasms MF",0.00324823070710676
+"33","d33","Digestive neoplasms",0.979657266925902,"Reproductive neoplasms MF",0.0200682234086155,"Severe malnutrition",0.000112763216892068
+"34","d35","Other and unspecified cardiac dis",0.994334324780122,"Pulmonary tuberculosis",0.00264135028552192,"Acute resp infect incl pneumonia",0.00177526250613525
+"35","d36","Acute resp infect incl pneumonia",0.518433052194747,"HIV/AIDS related death",0.379159724958594,"Pulmonary tuberculosis",0.0849303806857815
+"36","d37","Digestive neoplasms",0.948148671584302,"Reproductive neoplasms MF",0.0477350849318218,"Acute abdomen",0.00409162325739256
+"37","d38","Other and unspecified infect dis",0.999692595323819,"Acute resp infect incl pneumonia",0.000306359988526264,"HIV/AIDS related death",9.8063965304744e-07
+"38","d39","Other and unspecified cardiac dis",0.968370412127054,"Acute resp infect incl pneumonia",0.0275971131851628,"Stroke",0.0028910593842691
+"39","d40","HIV/AIDS related death",0.990870765196932,"Malaria",0.00445664285132926,"Other and unspecified infect dis",0.00421095753142951
+"40","d41","Other and unspecified cardiac dis",0.507788963727503,"HIV/AIDS related death",0.272858451268475,"Other and unspecified infect dis",0.0962537131437796
+"41","d42","Digestive neoplasms",0.517570760017633,"Acute abdomen",0.475952208504904,"Liver cirrhosis",0.00425178665920798
+"42","d43","Digestive neoplasms",0.997295771806471,"Other and unspecified neoplasms",0.00202998621175675,"Reproductive neoplasms MF",0.000264337414272431
+"43","d44","Acute resp infect incl pneumonia",0.780884694805101,"Other and unspecified cardiac dis",0.209926454644386,"HIV/AIDS related death",0.00609203961910745
+"44","d45","Acute resp infect incl pneumonia",0.985661982765149,"Other and unspecified infect dis",0.00559537673693384,"Severe anaemia",0.00484969645435906
+"45","d46","Reproductive neoplasms MF",0.978531199615947,"Acute abdomen",0.0186196293061693,"Digestive neoplasms",0.00153831220851096
+"46","d47","Acute abdomen",0.981538259786836,"Other and unspecified infect dis",0.0183047758470826,"Digestive neoplasms",8.27369522543752e-05
+"47","d48","Digestive neoplasms",0.896578638160816,"HIV/AIDS related death",0.0594104317140451,"Reproductive neoplasms MF",0.0437107970596394
+"48","d49","Stroke",0.985875224344053,"Other and unspecified infect dis",0.00710195281576718,"Diabetes mellitus",0.00701431803194109
+"49","d50","Pulmonary tuberculosis",0.999881282223606,"Acute resp infect incl pneumonia",6.42690689836095e-05,"Respiratory neoplasms",4.07996969896684e-05
+"50","d51","Other and unspecified infect dis",0.99933468211343,"Liver cirrhosis",0.000486424464556028,"HIV/AIDS related death",9.58421308958578e-05
+"51","d53","Other and unspecified infect dis",0.758269184608687,"Reproductive neoplasms MF",0.137668852728089,"Meningitis and encephalitis",0.0957179865916861
+"52","d54","Severe malnutrition",0.780493951091234,"Digestive neoplasms",0.135033332885543,"Other and unspecified infect dis",0.0738708993819643
+"53","d55","Liver cirrhosis",0.49934726077399,"Reproductive neoplasms MF",0.30308229315855,"Digestive neoplasms",0.0990148721352419
+"54","d56","Acute resp infect incl pneumonia",0.999989865422499,"Respiratory neoplasms",5.3821669347676e-06,"Other and unspecified infect dis",3.69052893843691e-06
+"55","d57","Digestive neoplasms",0.998680773600545,"HIV/AIDS related death",0.000988256116378463,"Severe malnutrition",0.000313511189185725
+"56","d58","Other and unspecified infect dis",0.640057031092465,"Digestive neoplasms",0.297041745233268,"Reproductive neoplasms MF",0.0352785876733757
+"57","d59","HIV/AIDS related death",0.985198478285377,"Pulmonary tuberculosis",0.0147931762259254,"Respiratory neoplasms",4.96550930205785e-06
+"58","d60","Diabetes mellitus",0.383292403949455,"Liver cirrhosis",0.199139412728573,"Other and unspecified infect dis",0.187004273149524
+"59","d61","Other and unspecified infect dis",0.518954926781538,"HIV/AIDS related death",0.442482084254027,"Meningitis and encephalitis",0.0251313956038605
+"60","d62","Other and unspecified infect dis",0.994272030020459,"Acute resp infect incl pneumonia",0.00186708063059554,"Acute abdomen",0.00160702583661954
+"61","d63","Digestive neoplasms",0.976644864949417,"Reproductive neoplasms MF",0.0211216043597379,"HIV/AIDS related death",0.00185328891121704
+"62","d64","Malaria",0.405753837453824,"Other and unspecified infect dis",0.268654974675446,"Acute abdomen",0.169700366977926
+"63","d65","Reproductive neoplasms MF",0.999996665223866,"Digestive neoplasms",3.33473859646482e-06,"Liver cirrhosis",2.23784393650562e-11
+"64","d66","Other and unspecified infect dis",0.675161179266751,"Acute abdomen",0.251930541862377,"Digestive neoplasms",0.0471959189407475
+"65","d67","Pulmonary tuberculosis",0.906203184517924,"Respiratory neoplasms",0.0928995559775219,"Chronic obstructive pulmonary dis",0.000631522627591251
+"66","d69","Reproductive neoplasms MF",0.64987617547935,"Digestive neoplasms",0.343547983155604,"Acute abdomen",0.00359113935100394
+"67","d70","Pulmonary tuberculosis",0.998408772846317,"Respiratory neoplasms",0.00151380671315461,"Acute resp infect incl pneumonia",3.3809928896474e-05
+"68","d71","Pulmonary tuberculosis",0.999978318600624,"Respiratory neoplasms",1.97881433621438e-05,"HIV/AIDS related death",1.88437185560671e-06
+"69","d72","Acute abdomen",0.843978071814464,"Liver cirrhosis",0.100319301119881,"Diabetes mellitus",0.040627925751087
+"70","d73","Digestive neoplasms",0.9668376121221,"Reproductive neoplasms MF",0.0331465375559636,"Liver cirrhosis",1.5765750017815e-05
+"71","d74","Acute resp infect incl pneumonia",0.486673642887821,"Other and unspecified infect dis",0.306589299125089,"Other and unspecified cardiac dis",0.134839968416216
+"72","d75","Reproductive neoplasms MF",0.999999344421554,"Digestive neoplasms",4.98027909842659e-07,"Severe malnutrition",9.54858981001353e-08
+"73","d76","Acute resp infect incl pneumonia",0.99940527288206,"Other and unspecified infect dis",0.000594696200620318,"HIV/AIDS related death",2.29746730175648e-08
+"74","d77","Meningitis and encephalitis",0.979291335668206,"Other and unspecified infect dis",0.0120327496679848,"Stroke",0.00843553487661101
+"75","d78","Digestive neoplasms",0.972866356725531,"HIV/AIDS related death",0.0204518059229799,"Other and unspecified infect dis",0.0065678353130804
+"76","d79","HIV/AIDS related death",0.991329939682732,"Digestive neoplasms",0.0071988587950044,"Other and unspecified infect dis",0.000686719857440065
+"77","d80","HIV/AIDS related death",0.999997303088688,"Severe malnutrition",2.68189406000292e-06,"Other and unspecified NCD",1.33191155479315e-08
+"78","d81","HIV/AIDS related death",0.985786970745468,"Pulmonary tuberculosis",0.0142073294351363,"Respiratory neoplasms",5.63525207715258e-06
+"79","d82","Pulmonary tuberculosis",0.617623195158566,"HIV/AIDS related death",0.38080003031132,"Other and unspecified neoplasms",0.00108292053219916
+"80","d84","HIV/AIDS related death",0.629539992883349,"Digestive neoplasms",0.36602972218037,"Reproductive neoplasms MF",0.00440757410678989
+"81","d85","Other and unspecified cardiac dis",0.795195097303308,"Stroke",0.124786064678948,"Respiratory neoplasms",0.0269778396872079
+"82","d86","Reproductive neoplasms MF",0.994097483689775,"Other and unspecified infect dis",0.00578573098856592,"Acute abdomen",0.000115033925048121
+"83","d87","Digestive neoplasms",0.921908870902713,"HIV/AIDS related death",0.0679637557856558,"Other and unspecified neoplasms",0.00777998358219237
+"84","d88","Digestive neoplasms",0.683756767613754,"HIV/AIDS related death",0.185268598765294,"Liver cirrhosis",0.130968811518757
+"85","d89","Other and unspecified infect dis",0.859809330927267,"Pulmonary tuberculosis",0.0494220239303259,"Malaria",0.0491421994445607
+"86","d90","Reproductive neoplasms MF",0.999683828372901,"Acute abdomen",0.00031431217922516,"Liver cirrhosis",9.23295215563562e-07
+"87","d91","Digestive neoplasms",0.930936442413211,"Acute abdomen",0.0354610038669104,"HIV/AIDS related death",0.0309096402026328
+"88","d92","Digestive neoplasms",0.999830982883297,"HIV/AIDS related death",9.61058043118891e-05,"Reproductive neoplasms MF",6.09586663512126e-05
+"89","d93","Liver cirrhosis",0.673865567878685,"Diabetes mellitus",0.139281825316256,"Other and unspecified infect dis",0.102639557548509
+"90","d94","HIV/AIDS related death",0.974290546874376,"Severe malnutrition",0.0230465518089645,"Digestive neoplasms",0.00183819660872243
+"91","d95","Other and unspecified infect dis",0.947698067112389,"Reproductive neoplasms MF",0.00942610100945767,"Other and unspecified neoplasms",0.00864025290670095
+"92","d97","Digestive neoplasms",0.999945217096852,"Severe malnutrition",3.25345925704473e-05,"Reproductive neoplasms MF",1.08735283779765e-05
+"93","d98","Acute abdomen",0.517394302332293,"Digestive neoplasms",0.42139807521887,"Reproductive neoplasms MF",0.0542738634924914
+"94","d99","Acute abdomen",0.999961833011942,"Liver cirrhosis",2.6499584119474e-05,"Digestive neoplasms",6.43672885138076e-06
+"95","d100","Stroke",0.523853318359491,"Other and unspecified infect dis",0.443654217653981,"Other and unspecified cardiac dis",0.0226202354777376
+"96","d101","Pulmonary tuberculosis",0.990258376415503,"HIV/AIDS related death",0.0097088733373513,"Digestive neoplasms",2.8107908374195e-05
+"97","d102","Other and unspecified infect dis",0.780265181279548,"HIV/AIDS related death",0.14127356897442,"Reproductive neoplasms MF",0.0783675740362884
+"98","d103","Acute abdomen",0.959845305145235,"Digestive neoplasms",0.040137507769957,"Reproductive neoplasms MF",1.62179767399199e-05
+"99","d104","Other and unspecified cardiac dis",0.932534513405609,"Stroke",0.035648946661439,"Other and unspecified infect dis",0.0120840855137851
+"100","d105","Pulmonary tuberculosis",0.936157468625632,"HIV/AIDS related death",0.0470052578980666,"Acute resp infect incl pneumonia",0.0104696357593914
+"101","d106","Stroke",0.605086216858828,"Severe anaemia",0.236658260492721,"Severe malnutrition",0.0667731568261361
+"102","d107","Stroke",0.962887147695314,"Other and unspecified cardiac dis",0.035489092729811,"Acute resp infect incl pneumonia",0.00101674105187347
+"103","d108","Digestive neoplasms",0.997272544785974,"Liver cirrhosis",0.00181448420427768,"Reproductive neoplasms MF",0.000904852437603677
+"104","d109","Pulmonary tuberculosis",0.45752152971045,"Respiratory neoplasms",0.391523216193286,"Acute resp infect incl pneumonia",0.141403852001237
+"105","d110","HIV/AIDS related death",0.579248714350831,"Pulmonary tuberculosis",0.420396488300184,"Digestive neoplasms",0.000175404440875644
+"106","d111","HIV/AIDS related death",0.904483429095577,"Digestive neoplasms",0.0361832461548679,"Pulmonary tuberculosis",0.0316438426126048
+"107","d112","Acute abdomen",0.969438685556051,"Other and unspecified infect dis",0.0284613614326606,"Reproductive neoplasms MF",0.00136322131563197
+"108","d113","Other and unspecified cardiac dis",0.996760941826077,"Acute resp infect incl pneumonia",0.00311467704147106,"Pulmonary tuberculosis",5.18309070411097e-05
+"109","d114","Other and unspecified infect dis",0.554463335723599,"Epilepsy",0.371668357319416,"Meningitis and encephalitis",0.0274940978457445
+"110","d115","Liver cirrhosis",0.778840169449043,"Acute abdomen",0.217906155482915,"Other and unspecified infect dis",0.00293414430263058
+"111","d116","Liver cirrhosis",0.612189751736883,"Digestive neoplasms",0.307305912606885,"Reproductive neoplasms MF",0.0795809932286027
+"112","d117","Digestive neoplasms",0.472254762403916,"Other and unspecified infect dis",0.358844489719041,"Acute abdomen",0.0506751654218314
+"113","d118","Other and unspecified infect dis",0.996169211445335,"Acute abdomen",0.00304896598928564,"Meningitis and encephalitis",0.000354688904177826
+"114","d119","HIV/AIDS related death",0.981077572584695,"Digestive neoplasms",0.0189107978520068,"Reproductive neoplasms MF",6.67525854826619e-06
+"115","d120","Liver cirrhosis",0.992948788685074,"HIV/AIDS related death",0.00698670327788628,"Acute abdomen",5.3479059777001e-05
+"116","d121","Other and unspecified NCD",0.941348581928009,"Stroke",0.0343822369851334,"Other and unspecified cardiac dis",0.0147551102445113
+"117","d122","HIV/AIDS related death",0.982035356680717,"Reproductive neoplasms MF",0.0129334857150203,"Digestive neoplasms",0.00425307290987358
+"118","d123","Digestive neoplasms",0.97404176578144,"Reproductive neoplasms MF",0.0245763219991769,"HIV/AIDS related death",0.00106022601100054
+"119","d125","Other and unspecified infect dis",0.994272030020459,"Acute resp infect incl pneumonia",0.00186708063059554,"Acute abdomen",0.00160702583661954
+"120","d126","Pulmonary tuberculosis",0.999997251997794,"Acute resp infect incl pneumonia",2.36459475198205e-06,"Respiratory neoplasms",3.00189864902051e-07
+"121","d127","Other and unspecified infect dis",0.844841550986369,"Reproductive neoplasms MF",0.15261766912356,"Meningitis and encephalitis",0.00180275076778788
+"122","d128","Other and unspecified infect dis",0.553797479836521,"Acute resp infect incl pneumonia",0.434406587540239,"Malaria",0.00869574578384093
+"123","d129","Acute abdomen",0.866808508280953,"Digestive neoplasms",0.130222066471356,"Liver cirrhosis",0.00169558038767705
+"124","d130","Digestive neoplasms",0.445641766085511,"Liver cirrhosis",0.423063292427823,"Acute abdomen",0.0771394023290254
+"125","d131","Acute abdomen",0.9397812860631,"Digestive neoplasms",0.0500582145547843,"Liver cirrhosis",0.00862242519559128
+"126","d133","Liver cirrhosis",0.999593517154412,"Acute abdomen",0.000199568994003809,"Other and unspecified infect dis",0.000177398992225061
+"127","d134","HIV/AIDS related death",0.999695504300097,"Severe malnutrition",0.000269699468421798,"Other and unspecified infect dis",3.46510122485096e-05
+"128","d135","Other and unspecified infect dis",0.991265228194398,"Other and unspecified NCD",0.00654180228039429,"Stroke",0.000897938495904673
+"129","d136","Stroke",0.987682944236029,"Diabetes mellitus",0.0123162599200458,"Epilepsy",6.20007227800184e-07
+"130","d137","Epilepsy",0.997945770022922,"Stroke",0.00140668432947341,"Other and unspecified neoplasms",0.000408052083451673
+"131","d138","Other and unspecified infect dis",0.824936501190941,"Diabetes mellitus",0.0469374898328261,"Acute abdomen",0.0255283519373511
+"132","d139","Other and unspecified infect dis",0.935113971394176,"Stroke",0.0294330139025077,"HIV/AIDS related death",0.0153322838932947
+"133","d140","Other and unspecified infect dis",0.989275360624546,"Acute abdomen",0.00782096320068184,"Meningitis and encephalitis",0.00161280624712445
+"134","d141","Other and unspecified infect dis",0.994583327156346,"Malaria",0.00429768216203626,"Acute abdomen",0.000635684147355115
+"135","d142","Digestive neoplasms",0.933566805002477,"Other and unspecified infect dis",0.066315599566955,"HIV/AIDS related death",0.000105484161294374
+"136","d143","Meningitis and encephalitis",0.999886415402196,"Other and unspecified infect dis",9.64409782048763e-05,"Tetanus",1.39359837569239e-05
+"137","d144","Pulmonary tuberculosis",0.280296571418322,"HIV/AIDS related death",0.25454162397955,"Digestive neoplasms",0.201072160467556
+"138","d145","Other and unspecified infect dis",0.774052623331863,"Diabetes mellitus",0.0857553498978585,"Digestive neoplasms",0.0338665629055911
+"139","d146","Meningitis and encephalitis",0.999233268287947,"Other and unspecified infect dis",0.000572196871410303,"Acute resp infect incl pneumonia",0.00019275153095918
+"140","d147","Stroke",0.970467836053727,"Other and unspecified cardiac dis",0.0294914525477008,"Severe anaemia",3.14710324624314e-05
+"141","d148","Other and unspecified infect dis",0.999935132045758,"Severe anaemia",4.2098020627926e-05,"HIV/AIDS related death",2.26066105093921e-05
+"142","d149","HIV/AIDS related death",0.994852820809448,"Pulmonary tuberculosis",0.0051471784682393,"Acute resp infect incl pneumonia",4.48539070530669e-10
+"143","d150","HIV/AIDS related death",0.999997082378487,"Severe anaemia",9.62963115410022e-07,"Other and unspecified infect dis",7.18296399507537e-07
+"144","d152","Other and unspecified infect dis",0.990961672366375,"Digestive neoplasms",0.00622144360488715,"Stroke",0.00154542302052695
+"145","d153","Reproductive neoplasms MF",0.370178746847708,"Acute abdomen",0.330450281592059,"Digestive neoplasms",0.295309487820767
+"146","d154","Other and unspecified infect dis",0.510113115253581,"Acute abdomen",0.482573252209232,"Digestive neoplasms",0.00578991931211462
+"147","d155","Digestive neoplasms",0.956852973357126,"Reproductive neoplasms MF",0.0257957760552139,"Other and unspecified infect dis",0.00994853677231489
+"148","d156","HIV/AIDS related death",0.998089287866942,"Pulmonary tuberculosis",0.00184297463397415,"Other and unspecified infect dis",5.42481834800807e-05
+"149","d157","Acute resp infect incl pneumonia",0.548813815999975,"Pulmonary tuberculosis",0.449077734664034,"HIV/AIDS related death",0.0018146237621575
+"150","d158","Acute abdomen",0.997230902314977,"Liver cirrhosis",0.00274383729988261,"Other and unspecified infect dis",2.14091797324281e-05
+"151","d160","HIV/AIDS related death",0.296473028466596,"Other and unspecified cardiac dis",0.258295226569589,"Other and unspecified infect dis",0.245145320907996
+"152","d162","Pregnancy-related sepsis",0.921007843262609,"Other and unspecified infect dis",0.0344507142406921,"Acute abdomen",0.0194565547701282
+"153","d163","Pulmonary tuberculosis",0.921763343002066,"Other and unspecified infect dis",0.0663878992217147,"Acute resp infect incl pneumonia",0.011065173207292
+"154","d164","Other and unspecified infect dis",0.988232637164502,"HIV/AIDS related death",0.0114562834818963,"Liver cirrhosis",0.0002638468357906
+"155","d165","Acute abdomen",0.635243683853322,"HIV/AIDS related death",0.289466891896184,"Digestive neoplasms",0.0372134451646836
+"156","d166","Other and unspecified infect dis",0.874130966057329,"Diabetes mellitus",0.0502090386342686,"Acute abdomen",0.0271324575370144
+"157","d167","Other and unspecified infect dis",0.856925439570144,"Meningitis and encephalitis",0.0760436656098198,"Sepsis (non-obstetric)",0.0144143068902877
+"158","d168","Other and unspecified infect dis",0.702106429659334,"Acute abdomen",0.094909494710238,"Digestive neoplasms",0.0919246344176453
+"159","d169","Stroke",0.953258818219151,"Other and unspecified NCD",0.041028825936366,"Other and unspecified infect dis",0.00230896092775534
+"160","d170","Liver cirrhosis",0.627134594011342,"Other and unspecified cardiac dis",0.161319355166612,"Digestive neoplasms",0.11267253136227
+"161","d171","Reproductive neoplasms MF",0.9999832511253,"Digestive neoplasms",1.67487312188829e-05,"Other and unspecified neoplasms",1.07905507758044e-10
+"162","d172","Other and unspecified infect dis",0.644642019815655,"Digestive neoplasms",0.155836012109377,"Other and unspecified NCD",0.104196478249923
+"163","d173","Reproductive neoplasms MF",0.882450312949872,"Digestive neoplasms",0.0974275368984722,"Acute abdomen",0.0122193969275181
+"164","d174","Other and unspecified infect dis",0.549198736141893,"Liver cirrhosis",0.37985705527204,"Other and unspecified NCD",0.0250900702712219
+"165","d175","Digestive neoplasms",0.972416639714068,"Other and unspecified infect dis",0.0197009589616517,"HIV/AIDS related death",0.00719800173128876
+"166","d176","Acute abdomen",0.959694892616062,"Digestive neoplasms",0.0153767783302578,"Reproductive neoplasms MF",0.01249144706845
+"167","d177","Acute resp infect incl pneumonia",0.3940588019663,"Pulmonary tuberculosis",0.353860972791583,"Respiratory neoplasms",0.241127693804977
+"168","d178","Digestive neoplasms",0.999341790073427,"Reproductive neoplasms MF",0.000658201556024929,"Severe malnutrition",3.64185513497564e-09
+"169","d179","Reproductive neoplasms MF",0.986916722537492,"Diabetes mellitus",0.00955512388031594,"Other and unspecified NCD",0.00295894163464006
+"170","d181","Acute abdomen",0.939147766922034,"Other and unspecified infect dis",0.0588438957045124,"Digestive neoplasms",0.00187480961208606
+"171","d182","HIV/AIDS related death",0.757239340406278,"Digestive neoplasms",0.240806037251621,"Liver cirrhosis",0.00147908597374855
+"172","d183","Digestive neoplasms",0.999159352340126,"Reproductive neoplasms MF",0.000775816093724639,"Other and unspecified infect dis",5.98062634694808e-05
+"173","d184","Liver cirrhosis",0.987401177543519,"Other and unspecified NCD",0.00989307217888438,"Severe anaemia",0.00262848516508417
+"174","d185","Other and unspecified infect dis",0.856072790890043,"Stroke",0.134385987674465,"Acute abdomen",0.00944427915546587
+"175","d186","Digestive neoplasms",0.996573997432749,"Liver cirrhosis",0.00276360165832017,"Other and unspecified infect dis",0.00024731650216493
+"176","d187","Pulmonary tuberculosis",0.778349355280061,"HIV/AIDS related death",0.212704968791895,"Digestive neoplasms",0.00879219088744219
+"177","d188","Obstetric haemorrhage",0.526761840917019,"Ruptured uterus",0.470647673453725,"Obstructed labour",0.00214621553828739
+"178","d189","Digestive neoplasms",0.999524404192716,"Reproductive neoplasms MF",0.000283036090932793,"Pulmonary tuberculosis",0.000153596190370357
+"179","d190","Other and unspecified cardiac dis",0.963046544910211,"Pulmonary tuberculosis",0.0162432800911161,"Respiratory neoplasms",0.0104096003473237
+"180","d191","Pulmonary tuberculosis",0.762145169973222,"HIV/AIDS related death",0.223199551140111,"Digestive neoplasms",0.0143372927324331
+"181","d193","Acute resp infect incl pneumonia",0.816956315399956,"Other and unspecified cardiac dis",0.174477810250058,"Stroke",0.00819770456128343
+"182","d194","Digestive neoplasms",0.999792857217159,"Reproductive neoplasms MF",0.000206598618405449,"HIV/AIDS related death",3.76244677403186e-07
+"183","d195","Other and unspecified infect dis",0.989791182943836,"Acute resp infect incl pneumonia",0.00448623841213975,"Stroke",0.00157627260579975
+"184","d196","Other and unspecified infect dis",0.999197180364422,"Pulmonary tuberculosis",0.000381476670514085,"HIV/AIDS related death",0.000277613735209294
+"185","d197","Acute abdomen",0.862215425417941,"Digestive neoplasms",0.135751901197814,"Liver cirrhosis",0.00107528891246429
+"186","d198","Other and unspecified infect dis",0.999691356447218,"Acute resp infect incl pneumonia",0.000277925544840297,"Acute abdomen",1.65700176919335e-05
+"187","d199","HIV/AIDS related death",0.94009502146765,"Severe malnutrition",0.0415067301745819,"Other and unspecified neoplasms",0.0121426008565369
+"188","d200","Breast neoplasms",0.790535427213523,"Other and unspecified infect dis",0.15353560583086,"Acute abdomen",0.0109044222949774
+"189","d34","Road traffic accident",0.987103492865709,"Intentional self-harm",0.00493551746432855,"Assault",0.00493551746432855
+"190","d52","Road traffic accident",0.192307692307692,"Intentional self-harm",0.192307692307692,"Assault",0.192307692307692
+"191","d68","Intentional self-harm",0.49998300057798,"Assault",0.49998300057798,"Accid drowning and submersion",9.99966001155961e-06
+"192","d83","Intentional self-harm",0.49998300057798,"Assault",0.49998300057798,"Accid drowning and submersion",9.99966001155961e-06
+"193","d96","Assault",0.999922006083525,"Accid drowning and submersion",1.99984401216705e-05,"Accid expos to smoke fire & flame",1.99984401216705e-05
+"194","d124","Intentional self-harm",0.49998300057798,"Assault",0.49998300057798,"Accid drowning and submersion",9.99966001155961e-06
+"195","d132","Assault",0.999922006083525,"Accid drowning and submersion",1.99984401216705e-05,"Accid expos to smoke fire & flame",1.99984401216705e-05
+"196","d151","Road traffic accident",0.192307692307692,"Intentional self-harm",0.192307692307692,"Assault",0.192307692307692
+"197","d159","Road traffic accident",0.987103492865709,"Intentional self-harm",0.00493551746432855,"Assault",0.00493551746432855
+"198","d161","Road traffic accident",0.987103492865709,"Intentional self-harm",0.00493551746432855,"Assault",0.00493551746432855
+"199","d180","Intentional self-harm",0.49998300057798,"Assault",0.49998300057798,"Accid drowning and submersion",9.99966001155961e-06
+"200","d192","Road traffic accident",0.192307692307692,"Intentional self-harm",0.192307692307692,"Assault",0.192307692307692

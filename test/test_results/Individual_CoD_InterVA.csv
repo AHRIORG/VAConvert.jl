@@ -1,0 +1,201 @@
+"","IIntID","cause1","lik1","cause2","lik2","cause3","lik3"
+"1","d1","Stroke",0.98," ",NA," ",NA
+"2","d2","Other and unspecified cardiac dis",1," ",NA," ",NA
+"3","d3","Other and unspecified cardiac dis",0.95," ",NA," ",NA
+"4","d4","HIV/AIDS related death",1," ",NA," ",NA
+"5","d5","HIV/AIDS related death",0.97," ",NA," ",NA
+"6","d6","Renal failure",0.49," ",NA," ",NA
+"7","d7","HIV/AIDS related death",0.92," ",NA," ",NA
+"8","d8","Renal failure",1," ",NA," ",NA
+"9","d9","HIV/AIDS related death",0.78," ",NA," ",NA
+"10","d10","HIV/AIDS related death",1," ",NA," ",NA
+"11","d11","Acute resp infect incl pneumonia",0.98," ",NA," ",NA
+"12","d12","Severe malnutrition",0.72," ",NA," ",NA
+"13","d13","Renal failure",0.46,"Other and unspecified cardiac dis",0.46," ",NA
+"14","d14","Stroke",1," ",NA," ",NA
+"15","d15","Renal failure",0.99," ",NA," ",NA
+"16","d16","HIV/AIDS related death",1," ",NA," ",NA
+"17","d17","Renal failure",0.56,"Diabetes mellitus",0.28," ",NA
+"18","d18","Digestive neoplasms",0.56,"Diarrhoeal diseases",0.44," ",NA
+"19","d19","Obstetric haemorrhage",0.94," ",NA," ",NA
+"20","d20","Diabetes mellitus",1," ",NA," ",NA
+"21","d21","Pulmonary tuberculosis",0.67," ",NA," ",NA
+"22","d22","Digestive neoplasms",0.98," ",NA," ",NA
+"23","d23","HIV/AIDS related death",0.99," ",NA," ",NA
+"24","d24","Reproductive neoplasms MF",0.64," ",NA," ",NA
+"25","d25","HIV/AIDS related death",1," ",NA," ",NA
+"26","d26","Diabetes mellitus",0.96," ",NA," ",NA
+"27","d27","Other and unspecified cardiac dis",0.95," ",NA," ",NA
+"28","d28","Undetermined",1," ",NA," ",NA
+"29","d29","HIV/AIDS related death",0.76," ",NA," ",NA
+"30","d30","Pulmonary tuberculosis",0.99," ",NA," ",NA
+"31","d31","HIV/AIDS related death",1," ",NA," ",NA
+"32","d32","Diarrhoeal diseases",0.75," ",NA," ",NA
+"33","d33","Digestive neoplasms",0.86," ",NA," ",NA
+"34","d34","Road traffic accident",1," ",NA," ",NA
+"35","d35","Other and unspecified cardiac dis",1," ",NA," ",NA
+"36","d36","HIV/AIDS related death",0.92," ",NA," ",NA
+"37","d37","Digestive neoplasms",0.71," ",NA," ",NA
+"38","d38","Other and unspecified infect dis",0.97," ",NA," ",NA
+"39","d39","Other and unspecified cardiac dis",0.8," ",NA," ",NA
+"40","d40","HIV/AIDS related death",1," ",NA," ",NA
+"41","d41","Other and unspecified cardiac dis",0.66,"HIV/AIDS related death",0.33," ",NA
+"42","d42","Digestive neoplasms",0.79," ",NA," ",NA
+"43","d43","Digestive neoplasms",0.88," ",NA," ",NA
+"44","d44","Other and unspecified cardiac dis",0.79," ",NA," ",NA
+"45","d45","Acute resp infect incl pneumonia",0.97," ",NA," ",NA
+"46","d46","Diarrhoeal diseases",0.83," ",NA," ",NA
+"47","d47","Acute abdomen",0.99," ",NA," ",NA
+"48","d48","HIV/AIDS related death",0.75," ",NA," ",NA
+"49","d49","Stroke",0.97," ",NA," ",NA
+"50","d50","Pulmonary tuberculosis",1," ",NA," ",NA
+"51","d51","Other and unspecified infect dis",0.99," ",NA," ",NA
+"52","d52","Other and unspecified infect dis",0.55," ",NA," ",NA
+"53","d53","Meningitis and encephalitis",0.61," ",NA," ",NA
+"54","d54","Severe malnutrition",0.99," ",NA," ",NA
+"55","d55","Renal failure",0.84," ",NA," ",NA
+"56","d56","Acute resp infect incl pneumonia",1," ",NA," ",NA
+"57","d57","Digestive neoplasms",0.66,"HIV/AIDS related death",0.34," ",NA
+"58","d58","Other and unspecified infect dis",0.65," ",NA," ",NA
+"59","d59","HIV/AIDS related death",1," ",NA," ",NA
+"60","d60","Diabetes mellitus",0.99," ",NA," ",NA
+"61","d61","HIV/AIDS related death",0.99," ",NA," ",NA
+"62","d62","Other and unspecified infect dis",0.49,"Sepsis (non-obstetric)",0.39," ",NA
+"63","d63","Digestive neoplasms",0.45,"Reproductive neoplasms MF",0.37," ",NA
+"64","d64","Undetermined",1," ",NA," ",NA
+"65","d65","Reproductive neoplasms MF",1," ",NA," ",NA
+"66","d66","Undetermined",1," ",NA," ",NA
+"67","d67","Respiratory neoplasms",0.68," ",NA," ",NA
+"68","d68","Intentional self-harm",0.61,"Assault",0.39," ",NA
+"69","d69","Reproductive neoplasms MF",0.97," ",NA," ",NA
+"70","d70","Pulmonary tuberculosis",0.86," ",NA," ",NA
+"71","d71","Pulmonary tuberculosis",1," ",NA," ",NA
+"72","d72","Diabetes mellitus",0.95," ",NA," ",NA
+"73","d73","Reproductive neoplasms MF",0.57,"Digestive neoplasms",0.43," ",NA
+"74","d74","Acute resp infect incl pneumonia",0.4,"Other and unspecified cardiac dis",0.4," ",NA
+"75","d75","Reproductive neoplasms MF",1," ",NA," ",NA
+"76","d76","Acute resp infect incl pneumonia",1," ",NA," ",NA
+"77","d77","Meningitis and encephalitis",0.96," ",NA," ",NA
+"78","d78","HIV/AIDS related death",0.67," ",NA," ",NA
+"79","d79","HIV/AIDS related death",1," ",NA," ",NA
+"80","d80","HIV/AIDS related death",1," ",NA," ",NA
+"81","d81","HIV/AIDS related death",1," ",NA," ",NA
+"82","d82","HIV/AIDS related death",0.66,"Pulmonary tuberculosis",0.34," ",NA
+"83","d83","Intentional self-harm",0.56,"Assault",0.44," ",NA
+"84","d84","HIV/AIDS related death",0.99," ",NA," ",NA
+"85","d85","Undetermined",1," ",NA," ",NA
+"86","d86","Reproductive neoplasms MF",1," ",NA," ",NA
+"87","d87","HIV/AIDS related death",0.61,"Other and unspecified neoplasms",0.38," ",NA
+"88","d88","Digestive neoplasms",0.61,"Liver cirrhosis",0.39," ",NA
+"89","d89","Acute resp infect incl pneumonia",0.64," ",NA," ",NA
+"90","d90","Reproductive neoplasms MF",1," ",NA," ",NA
+"91","d91","HIV/AIDS related death",0.8," ",NA," ",NA
+"92","d92","Digestive neoplasms",0.94," ",NA," ",NA
+"93","d93","Renal failure",0.85," ",NA," ",NA
+"94","d94","HIV/AIDS related death",1," ",NA," ",NA
+"95","d95","Renal failure",0.6," ",NA," ",NA
+"96","d96","Assault",0.98," ",NA," ",NA
+"97","d97","Digestive neoplasms",1," ",NA," ",NA
+"98","d98","Renal failure",0.96," ",NA," ",NA
+"99","d99","Acute abdomen",1," ",NA," ",NA
+"100","d100","Stroke",0.9," ",NA," ",NA
+"101","d101","Pulmonary tuberculosis",0.91," ",NA," ",NA
+"102","d102","HIV/AIDS related death",0.82," ",NA," ",NA
+"103","d103","Acute abdomen",0.93," ",NA," ",NA
+"104","d104","Renal failure",0.91," ",NA," ",NA
+"105","d105","Undetermined",1," ",NA," ",NA
+"106","d106","Undetermined",1," ",NA," ",NA
+"107","d107","Stroke",0.96," ",NA," ",NA
+"108","d108","Digestive neoplasms",1," ",NA," ",NA
+"109","d109","Respiratory neoplasms",0.98," ",NA," ",NA
+"110","d110","HIV/AIDS related death",0.98," ",NA," ",NA
+"111","d111","HIV/AIDS related death",0.96," ",NA," ",NA
+"112","d112","Acute abdomen",0.95," ",NA," ",NA
+"113","d113","Other and unspecified cardiac dis",1," ",NA," ",NA
+"114","d114","Epilepsy",0.64," ",NA," ",NA
+"115","d115","Renal failure",0.83," ",NA," ",NA
+"116","d116","Liver cirrhosis",0.78," ",NA," ",NA
+"117","d117","Undetermined",1," ",NA," ",NA
+"118","d118","Other and unspecified infect dis",0.96," ",NA," ",NA
+"119","d119","HIV/AIDS related death",1," ",NA," ",NA
+"120","d120","Liver cirrhosis",0.76," ",NA," ",NA
+"121","d121","Other and unspecified NCD",0.99," ",NA," ",NA
+"122","d122","HIV/AIDS related death",1," ",NA," ",NA
+"123","d123","Undetermined",1," ",NA," ",NA
+"124","d124","Intentional self-harm",0.83," ",NA," ",NA
+"125","d125","Other and unspecified infect dis",0.49,"Sepsis (non-obstetric)",0.39," ",NA
+"126","d126","Pulmonary tuberculosis",1," ",NA," ",NA
+"127","d127","Reproductive neoplasms MF",0.8," ",NA," ",NA
+"128","d128","Acute resp infect incl pneumonia",0.96," ",NA," ",NA
+"129","d129","Acute abdomen",0.59," ",NA," ",NA
+"130","d130","Liver cirrhosis",0.59," ",NA," ",NA
+"131","d131","Acute abdomen",0.91," ",NA," ",NA
+"132","d132","Assault",1," ",NA," ",NA
+"133","d133","Liver cirrhosis",0.8," ",NA," ",NA
+"134","d134","HIV/AIDS related death",1," ",NA," ",NA
+"135","d135","Other and unspecified infect dis",0.54,"Other and unspecified NCD",0.34," ",NA
+"136","d136","Stroke",0.97," ",NA," ",NA
+"137","d137","Epilepsy",1," ",NA," ",NA
+"138","d138","Renal failure",0.56,"Diabetes mellitus",0.28," ",NA
+"139","d139","Undetermined",1," ",NA," ",NA
+"140","d140","Other and unspecified infect dis",0.88," ",NA," ",NA
+"141","d141","Other and unspecified infect dis",0.96," ",NA," ",NA
+"142","d142","Digestive neoplasms",0.8," ",NA," ",NA
+"143","d143","Meningitis and encephalitis",1," ",NA," ",NA
+"144","d144","HIV/AIDS related death",0.72," ",NA," ",NA
+"145","d145","Renal failure",0.62," ",NA," ",NA
+"146","d146","Meningitis and encephalitis",1," ",NA," ",NA
+"147","d147","Stroke",0.98," ",NA," ",NA
+"148","d148","Other and unspecified infect dis",1," ",NA," ",NA
+"149","d149","HIV/AIDS related death",1," ",NA," ",NA
+"150","d150","HIV/AIDS related death",1," ",NA," ",NA
+"151","d151","Renal failure",0.5," ",NA," ",NA
+"152","d152","Other and unspecified infect dis",0.52,"Stroke",0.41," ",NA
+"153","d153","Reproductive neoplasms MF",0.72," ",NA," ",NA
+"154","d154","Other and unspecified infect dis",0.53,"Acute abdomen",0.43," ",NA
+"155","d155","Digestive neoplasms",0.6," ",NA," ",NA
+"156","d156","HIV/AIDS related death",1," ",NA," ",NA
+"157","d157","Acute resp infect incl pneumonia",0.95," ",NA," ",NA
+"158","d158","Acute abdomen",1," ",NA," ",NA
+"159","d159","Other and unspecified infect dis",0.89," ",NA," ",NA
+"160","d160","HIV/AIDS related death",0.69," ",NA," ",NA
+"161","d161","Road traffic accident",1," ",NA," ",NA
+"162","d162","Pregnancy-related sepsis",0.95," ",NA," ",NA
+"163","d163","Pulmonary tuberculosis",0.98," ",NA," ",NA
+"164","d164","HIV/AIDS related death",0.83," ",NA," ",NA
+"165","d165","HIV/AIDS related death",0.96," ",NA," ",NA
+"166","d166","Diabetes mellitus",0.75," ",NA," ",NA
+"167","d167","Acute cardiac disease",0.69," ",NA," ",NA
+"168","d168","Acute cardiac disease",0.74," ",NA," ",NA
+"169","d169","Stroke",0.97," ",NA," ",NA
+"170","d170","Other and unspecified cardiac dis",0.66," ",NA," ",NA
+"171","d171","Reproductive neoplasms MF",1," ",NA," ",NA
+"172","d172","Other and unspecified NCD",0.9," ",NA," ",NA
+"173","d173","Reproductive neoplasms MF",0.76," ",NA," ",NA
+"174","d174","Renal failure",0.98," ",NA," ",NA
+"175","d175","HIV/AIDS related death",0.54,"Digestive neoplasms",0.42," ",NA
+"176","d176","Renal failure",0.69," ",NA," ",NA
+"177","d177","Respiratory neoplasms",0.85," ",NA," ",NA
+"178","d178","Digestive neoplasms",1," ",NA," ",NA
+"179","d179","Reproductive neoplasms MF",0.91," ",NA," ",NA
+"180","d180","Intentional self-harm",0.56,"Assault",0.44," ",NA
+"181","d181","Acute abdomen",0.66,"Other and unspecified infect dis",0.33," ",NA
+"182","d182","HIV/AIDS related death",1," ",NA," ",NA
+"183","d183","Digestive neoplasms",0.99," ",NA," ",NA
+"184","d184","Liver cirrhosis",0.97," ",NA," ",NA
+"185","d185","Stroke",0.98," ",NA," ",NA
+"186","d186","Digestive neoplasms",1," ",NA," ",NA
+"187","d187","HIV/AIDS related death",0.98," ",NA," ",NA
+"188","d188","Obstetric haemorrhage",1," ",NA," ",NA
+"189","d189","Digestive neoplasms",0.99," ",NA," ",NA
+"190","d190","Other and unspecified cardiac dis",0.92," ",NA," ",NA
+"191","d191","HIV/AIDS related death",0.95," ",NA," ",NA
+"192","d192","Other and unspecified external CoD",0.86," ",NA," ",NA
+"193","d193","Acute cardiac disease",0.64,"Other and unspecified cardiac dis",0.32," ",NA
+"194","d194","Digestive neoplasms",1," ",NA," ",NA
+"195","d195","Renal failure",0.48," ",NA," ",NA
+"196","d196","Other and unspecified infect dis",0.89," ",NA," ",NA
+"197","d197","Acute abdomen",0.8," ",NA," ",NA
+"198","d198","Other and unspecified infect dis",0.97," ",NA," ",NA
+"199","d199","HIV/AIDS related death",0.99," ",NA," ",NA
+"200","d200","Breast neoplasms",0.94," ",NA," ",NA
