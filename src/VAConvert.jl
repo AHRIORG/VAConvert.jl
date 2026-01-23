@@ -559,7 +559,7 @@ A function to map a variable into categories (relationship of the respondent to 
 
 """
 
-function map_category(x, y::String)
+function map_category(x, y::AbstractString)
     # Parse the mapping string into a Dict
     mapping = Dict{String,String}()
     for pair in split(y, ",")
@@ -579,6 +579,16 @@ function map_category(x, y::String)
 end
 
 
+"""  ---------------
+ rename_var(x,y) 
+ 
+ function - function that simply renames the variable for harmonization
+    ---------------
+"""
+
+function rename_var(x, y)
+    return x
+end
 
 
 function prepare(x) # prepare strings to put them in lowercase
@@ -608,9 +618,10 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
 
     #Create a new dataframe to store the output
     outdf = select(fromdf, [] => Returns(1:N) => :row_id, [] => Returns(string(row_identifier)) => :variable, row_identifier => ByRow(x -> string(x)) => :value)
-    #
+    allowmissing!(outdf, :value)# allow for value to be missing (for variables that are not part of the algorithm but should be part of the dataset)
+    
     for maprow in eachrow(map_table)
-        # @info "Processing: ", maprow
+        @info "Processing: ", maprow
 
         if ismissing(maprow.from_variable) # if the from_variable is empty (there is no corresponding variable in the questionnaire) then we set the variable to missing "-"
             # @info "Processing: ", "Missing from_variable"
@@ -625,11 +636,14 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
                 @info "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
             end
             sourcevalue = [prepare(x) for x in sourcevalue]
-            operant = strip(lowercase(maprow.operants))
+            operant = passmissing(x -> strip(lowercase(x)))(maprow.operants)
+            @info print(operant)
+            # operant = strip(lowercase(maprow.operants))
                 
             # Construct the conversion expression and get converted values
             # println("Processing: Construct the conversion expression and get converted values ")
-            value = [eval(Expr(:call, Symbol(strip(maprow.operator)), x, operant)) for x in sourcevalue] #strip(maprow.operator) - to make sure operator clean
+            clean_operator = passmissing(x -> Symbol(strip(x)))(maprow.operator)
+            value = [eval(Expr(:call, clean_operator, x, operant)) for x in sourcevalue] #strip(maprow.operator) - to make sure operator clean
 
             # If destination id already exists in output, meaning mapping is based on multiple conditions 
             if in(maprow.destination_variable, outdf.variable)

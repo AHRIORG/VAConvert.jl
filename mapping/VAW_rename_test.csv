@@ -1,0 +1,5 @@
+Duration_unit,Reviewed,New Column Name,New Column Documentation,Source Column ID,VarDomain,Source Column Documentation,Relationship,Condition,Condition_Caption,Prerequisite
+,,VAVisitDate,Visit Date,wca_visitdate,,Visit Date,rename_var,,,
+,,RespRelationship,What is the respondent's relationship to the deceased?,wvb_respo_relatn,VAWRespRel,What is the respondent's relationship to the deceased?,rename_var,,,
+,,DeathSetting,Where did the deceased die?,wvb_death_settin,VAWPlaceBirth,Where did the deceased die?,map_category,"HOS=HOS, OHF=CLI, HOM=HOME, OTH=OTH ",,
+,,Questionnaire,Verbal autopsy questionnaire used for data collection,Questionnaire,,Verbal autopsy questionnaire used for data collection,map_category,"VAW=VAW, VAP;VAW=VAW",,

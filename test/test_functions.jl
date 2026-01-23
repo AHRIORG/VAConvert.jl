@@ -59,6 +59,25 @@ map_category("A", "A=a, B=b, C=a")   # "a"
 
 map_category("Bilbao d", "Ariane and =a, Bilbao d=b, C=a") 
 
+
+
+"""  ---------------
+Testing rename function - function that simply renames the variable for harmonization
+    ---------------
+"""
+
+function rename_var(x, y)
+    return x
+end
+
+
+rename_var("HOS", missing)
+
+rename_var(missing, missing)
+
+rename_var(3, missing)
+
+
 """ ---------------------------
 # Test encodenumeric
  ---------------------------
