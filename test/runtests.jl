@@ -33,7 +33,7 @@ try
     @info "Output path: $outputdir"
     #map each source in vadata
     for source in [#"VAP", "VAW", 
-        "VAQ"
+        "VAW"
         ]
         #read va data
         mapfile = joinpath(mappath, "$(source)_to_InSilicoVA.csv")

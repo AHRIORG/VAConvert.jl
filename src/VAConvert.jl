@@ -633,11 +633,11 @@ function map_dataframe(fromdf::AbstractDataFrame, map_table::AbstractDataFrame, 
                 sourcevalue = fromdf[!, Symbol(maprow.from_variable)]
             else
                 sourcevalue = fill(missing, N)
-                @info "$from_var (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
+                @info "$(maprow.from_variable) (variable id $(maprow.from_id)) in mapping file not found in input dataframe, assign missing as default value."
             end
             sourcevalue = [prepare(x) for x in sourcevalue]
             operant = passmissing(x -> strip(lowercase(x)))(maprow.operants)
-            @info print(operant)
+            # @info print(operant)
             # operant = strip(lowercase(maprow.operants))
                 
             # Construct the conversion expression and get converted values

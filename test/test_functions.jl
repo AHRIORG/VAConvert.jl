@@ -56,9 +56,12 @@ end
 
 map_category("A", "A=a, B=b, C=a")   # "a"
 
+map_category("hos", "hos=a, B=b, C=a")
 
 map_category("Bilbao d", "Ariane and =a, Bilbao d=b, C=a") 
+map_category("Bilbao d", "Ariane and =a, Bilbao d=b, C=a") 
 
+map_category("m", "Ariane and =a, Bilbao d=b, C=a") 
 
 
 """  ---------------
