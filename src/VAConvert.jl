@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 
 module VAConvert
-
+using Arrow
 using DBInterface
 using ODBC
 using DataFrames
@@ -13,7 +13,7 @@ using StatFiles
 # Write your package code here.
 export readtable, connectdb, sessions, individual_deaths, sessionvalues, getvariables, getdomains,
     read_variablemap, consolidate_duration_variables!, convert_durations!, map_dataframe, stripcrlf, add_individual_dates, add_marriage,
-    encodemissing, encodenumeric, eq, ge, gt, lt, le, between, contains
+    encodemissing, encodenumeric, eq, ge, gt, lt, le, between, contains, CallCentreInterviews
 
 function readtable(server, database, table)
     conStr = "Driver=ODBC Driver 18 for SQL Server;SERVER=$server;DATABASE=$database;Trusted_Connection=yes;TrustServerCertificate=yes"
@@ -136,7 +136,7 @@ function individual_deaths(con)
         JOIN AHRI_STG.dbo.Events e ON i.EndEventUid = e.EventUid
         JOIN AHRI_STG.dbo.Events b ON i.BirthEventUid = b.EventUid
         JOIN AHRI_STG.ops.IndividualMaps im ON i.IndividualUid = im.IndividualUid
-    WHERE e.EventTypeId = 7;
+    WHERE e.EventTypeId = 7 AND im.IndividualId NOT IN (5060,15374,26753,31836,54755,91669,134916,155390,168397,107954,169112,176273,176275,177008);
     """
     df = DBInterface.execute(con, sql) |> DataFrame
     return df
@@ -826,6 +826,24 @@ function encodenumeric(df::AbstractDataFrame, numericvalues::AbstractDataFrame):
     return values
 end
 
-
+"""
+ Select the interviews that were done in the Call Centre.
+TBW
+"""
+function CallCentreInterviews(df::AbstractDataFrame, source)::AbstractDataFrame
+    vadata = Arrow.Table(joinpath(ENV["DATA_PATH"], "arrowfiles", "VAData_$source.arrow")) |> DataFrame
+    # Default value
+    vadata.IsCallCentreVisit = fill("NO", nrow(vadata))
+    if source == "VAW"
+        cols = [:wca_attmp1_willi, :wca_attmp2_willi, :wca_attmp3_willi]
+    elseif source == "VAP"
+        cols = [:ca_attmp1_willin, :ca_attmp2_willin, :ca_attmp3_willin]
+    else
+        cols = Symbol[]  # empty
+    end
+    #vadata.IsCallCentreVisit = mapslices(row -> any(col -> !ismissing(row[col]) && row[col] == "Call Centre", cols), eachrow(vadata)) .|> x -> x ? "YES" : "NO"
+    vadata.IsCallCentreVisit = [any(col -> !ismissing(row[col]) && row[col] == "YES", cols) ? "YES" : "NO" for row in eachrow(vadata)]
+    return leftjoin(df, select(vadata, :IIntID, :IsCallCentreVisit), on=:IIntID)
+end
 
 end # module VAConvert
