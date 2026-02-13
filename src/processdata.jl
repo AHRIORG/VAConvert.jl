@@ -42,7 +42,7 @@ try
   @info "VA Variable Values $(nrow(vadata)) rows\n"
   @info "VA Deaths $(nrow(vadeaths)) rows\n"
   @info "VA Variables $(nrow(vavariables)) rows\n"
-  pretty_table(io, vavariables; alignment=[:l, :l, :l, :l, :r], show_subheader=false)
+  pretty_table(io, vavariables; alignment=[:l, :l, :l, :l]) #pretty_table(io, vavariables; alignment=[:l, :l, :l, :l, :r], show_subheader=false)
   transform!(vadata, :Source => ByRow(x -> x) => :Questionnaire)
   # combine VCL into VAQ
   transform!(vadata, :Source => ByRow(x -> x == "VCL" ? "VAQ" : x) => :Source)
@@ -62,13 +62,13 @@ try
   )
   #summarise rows for each source
   sources = combine(groupby(vadata, :Source), nrow => :n)
-  pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
+  pretty_table(io, sources; alignment=[:c, :r]) #pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
   #summarise variables for each source
   va_variables = combine(groupby(vadata, [:Source, :Variable]), nrow => :n)
   va_variables = outerjoin(va_variables, vavariables, on=:Variable, makeunique=true)
   transform!(va_variables, :Source => ByRow(x -> ismissing(x) ? "VAW" : x) => :Source)
   @info "VA Variables $(names(va_variables)) columns\n"
-  pretty_table(io, va_variables; alignment=[:c, :l, :r, :l, :l, :l], show_subheader=false)
+  pretty_table(io, va_variables; alignment=[:c, :l, :r, :l, :l, :l]) #pretty_table(io, va_variables; alignment=[:c, :l, :r, :l, :l, :l], show_subheader=false)
   # output csv files for each source variables
   outputdir = joinpath(ENV["DATA_PATH"], "csvfiles")
   if !isdir(outputdir)
@@ -112,6 +112,7 @@ try
     f = convert_durations!(flat_data)
     f = add_individual_dates(f, vadeaths)
     f = add_marriage(f)
+    f = CallCentreInterviews(f, source)
     Arrow.write(joinpath(ENV["DATA_PATH"], "arrowfiles", "VAData_$source.arrow"), f)
     CSV.write(joinpath(outputdir, "VAData_$source.csv"), f)
   end
