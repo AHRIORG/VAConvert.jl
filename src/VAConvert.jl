@@ -567,8 +567,11 @@ function map_category(x, y::AbstractString)
         mapping[k] = v
     end
 
-    # Define lookup function
-    lookup(val) = get(mapping, string(val), missing)
+    # Define lookup function (uppercase output)
+    lookup(val) = begin
+        res = get(mapping, string(val), missing)
+        res === missing ? missing : uppercase(res)
+    end
 
     # Apply to single value or array
     if isa(x, AbstractVector)
@@ -587,7 +590,11 @@ end
 """
 
 function rename_var(x, y)
-    return x
+    if x isa AbstractString
+        return uppercase(x) # returns uppercases if it is a character variable
+    else
+        return x
+    end
 end
 
 

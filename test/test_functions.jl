@@ -42,9 +42,12 @@ function map_category(x, y::String)
         mapping[k] = v
     end
 
-    # Define lookup function
-    lookup(val) = get(mapping, string(val), missing)
-
+    # Define lookup function (uppercase output)
+    lookup(val) = begin
+        res = get(mapping, string(val), missing)
+        res === missing ? missing : uppercase(res)
+    end
+    
     # Apply to single value or array
     if isa(x, AbstractVector)
         return [lookup(xi) for xi in x]
