@@ -38,12 +38,12 @@ try
     @info "Sources\n"
     flush(io)
     sources = combine(groupby(df, :Source), nrow => :n)
-    pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
+    pretty_table(io, sources; alignment=[:c, :r]) #pretty_table(io, sources; alignment=[:c, :r], show_subheader=false)
     deaths = unstack(df, :IIntID, :Source, :QSessionID)
     individuals = individual_deaths(hdss)
     @info "Deaths\n"
     dyr = combine(groupby(individuals, [:DoDYr]; sort=true), nrow => :n)
-    pretty_table(io, dyr; alignment=[:c, :r], show_subheader=false)
+    pretty_table(io, dyr; alignment=[:c, :r]) #pretty_table(io, dyr; alignment=[:c, :r], show_subheader=false)
     deaths = leftjoin(individuals, deaths, on=:IIntID, matchmissing=:error)
     transform!(deaths, :VAQ => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAQ,
         :VAP => ByRow(x -> ismissing(x) ? 0 : 1) => :hasVAP,
@@ -59,7 +59,7 @@ try
         :hasVAN => sum => :nVAN,
         :hasVAC => sum => :nVAC,
         nrow => :nDeaths)
-    pretty_table(io, dyr; alignment=[:c, :r, :r, :r, :r, :r, :r, :r], show_subheader=false)
+    pretty_table(io, dyr; alignment=[:c, :r, :r, :r, :r, :r, :r, :r]) #pretty_table(io, dyr; alignment=[:c, :r, :r, :r, :r, :r, :r, :r], show_subheader=false)
     flush(io)
     v = sessionvalues(acq, deaths, :VAQ)
     @info "$(nrow(v)) values written for source $(:VAQ)"
