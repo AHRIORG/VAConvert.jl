@@ -136,7 +136,9 @@ function individual_deaths(con)
         JOIN AHRI_STG.dbo.Events e ON i.EndEventUid = e.EventUid
         JOIN AHRI_STG.dbo.Events b ON i.BirthEventUid = b.EventUid
         JOIN AHRI_STG.ops.IndividualMaps im ON i.IndividualUid = im.IndividualUid
-    WHERE e.EventTypeId = 7 AND im.IndividualId NOT IN (5060,15374,26753,31836,54755,91669,134916,155390,168397,107954,169112,176273,176275,177008);
+    WHERE e.EventTypeId = 7 AND im.IndividualId NOT IN (5060,15374,26753,31836,54755,91669,134916,155390,168397,107954,169112,176273,176275,177008,123056,17310,
+                                                        176968,40056,26513,189559,124897,241148,218843,215181,171617,270691,181947,169459,244359,134954,150634,
+                                                        54532,222441,236562,117374,9907,69817,76977,175725,87901,191959,224672,235697,100082,235795,36295,26796);
     """
     df = DBInterface.execute(con, sql) |> DataFrame
     return df
@@ -838,7 +840,7 @@ end
 TBW
 """
 function CallCentreInterviews(df::AbstractDataFrame, source)::AbstractDataFrame
-    vadata = Arrow.Table(joinpath(ENV["DATA_PATH"], "arrowfiles", "VAData_$source.arrow")) |> DataFrame
+    vadata = CSV.read(joinpath(ENV["DATA_PATH"], "csvfiles", "VAData_raw_$source.csv"), DataFrame)
     # Default value
     vadata.IsCallCentreVisit = fill("NO", nrow(vadata))
     if source == "VAW"
