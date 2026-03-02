@@ -1,5 +1,5 @@
 using CSV
-#using DataFrames
+using DataFrames
 using Dates
 using Statistics
 using Logging
@@ -8,6 +8,9 @@ using RCall
 using Chain
 using ConfigEnv
 
+# ENV["R_HOME"] = "C:/Program Files/R/R-4.3.2" # Use the path from step 1Pkg.build(
+# using Pkg
+# Pkg.build("RCall")
 #get environment variables
 dotenv()
 
@@ -97,15 +100,18 @@ VA_all_indic =
 @rput VA_all_indic   # Send Julia DataFrame to R
 @rput outputdir
 
+
 ## InterVA ----
 R"""
+install.packages("openVA")
 library(openVA)
 
 data(RandomVA5)
-VA_all_indic <- RandomVA5
+# VA_all_indic <- RandomVA5
 
 VA_all_InterVA <- codeVA(
-    VA_all_indic,
+    RandomVA5,
+    #VA_all_indic,
     data.type = "WHO2016",
     model = "InterVA",
     HIV = "h",
@@ -140,6 +146,8 @@ options(java.parameters = c("-Xmx32g"))
 # libraries
 library(InSilicoVA)
 library(openVA)
+library(dplyr)
+library(data.table)
 
 data(RandomVA5)
 VA_all_indic <- RandomVA5
@@ -162,12 +170,40 @@ Individual_CoD_InSilico <- getTopCOD(VA_all_InSilico, n = 3,
                                    include.prob = T) %>% 
   rename(IIntID = ID)
 
-# Function 
+#Extracting CI for all causes
+Individual_CoD_InSilicoVA_full <- getIndivProb(VA_all_InSilico, CI = 0.95) 
+
+# Functions 
+# Extract cause CI for top cause
+extract_ci <- function(cause_vec, full_proba_list) {
+  upper_df <- full_proba_list$indiv.prob.upper
+  lower_df <- full_proba_list$indiv.prob.lower
+  
+  upper_mat <- as.matrix(upper_df)
+  lower_mat <- as.matrix(lower_df)
+  
+  row_idx <- seq_along(cause_vec)
+  col_idx <- match(cause_vec, colnames(upper_mat))
+  
+  prob_upper <- rep(NA_real_, length(cause_vec))
+  prob_lower <- rep(NA_real_, length(cause_vec))
+  
+  valid <- !is.na(col_idx)
+  
+  prob_upper[valid] <- upper_mat[cbind(row_idx[valid], col_idx[valid])]
+  prob_lower[valid] <- lower_mat[cbind(row_idx[valid], col_idx[valid])]
+  
+  data.table(prob_upper = prob_upper, prob_lower = prob_lower)
+}
+
+# Select top causes according to rules
 select_InSilico_prob <- function(df, 
                                  cause1_lim = 0.4,
                                  other_lim  = 0.2,
                                  n_cause    = 3,
-                                 undetermined_label = "Undetermined"
+                                 undetermined_label = "Undetermined", 
+                                 extract_CI = F, 
+                                 full_proba_list = NULL
 ) {
   
   # column names
@@ -197,14 +233,34 @@ select_InSilico_prob <- function(df,
     }
   }
   
+  
+  
+  if(extract_CI == T){
+    
+    df <- as.data.table(df)
+    
+    cause_cols <- paste0("cause", 1:n) 
+    prob_name <- paste0("prob", 1:n) 
+    
+    # Extract CIs for each cause column
+    ci_list <- lapply(cause_cols, function(col) {
+      extract_ci(df[[col]], full_proba_list)
+    })
+    
+    df[, c(rbind(paste0(prob_name,"_upper"), paste0(prob_name,"_lower"))) := do.call(cbind, ci_list)]
+
+    
+  }
   return(df)
 }
 
 
 # Selecting Top causes of death
-Individual_CoD_InSilicoVA_select <- select_InSilico_prob(Individual_CoD_InSilico,
-                                                     cause1_lim = 0.40, 
-                                                     other_lim = 0.20)
+Individual_CoD_InSilicoVA_select <- Individual_CoD_InSilico %>% select_InSilico_prob(cause1_lim = 0.4, other_lim  = 0.2,
+                                                        n_cause    = 3, undetermined_label = "Undetermined",
+                                                        extract_CI = T,
+                                                        full_proba_list = Individual_CoD_InSilicoVA_full)
+
 
 Individual_CoD_InSilico_full <- as.data.frame(VA_all_InSilico$indiv.prob) %>% 
   rownames_to_column(var = "IIntID")
