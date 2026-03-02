@@ -1,5 +1,5 @@
 using CSV
-using DataFrames
+#using DataFrames
 using Dates
 using Statistics
 using Logging
@@ -67,7 +67,7 @@ println("Duplicate IDs in VAW: ", sum(nonunique(VAW, :IIntID)))
 
 ## Merge Sources 
 VA_all = vcat(VAP, VAQ, VAW, cols=:union)
-CSV.write(joinpath(outputdir, "csvfiles", "VAData_converted_ALL.csv"), VA_all)
+CSV.write(joinpath(outputdir, "VAData_converted_ALL.csv"), VA_all)
 
 println("Total rows in merged dataset: ", nrow(VA_all))
 println("Duplicate IDs in merged: ", sum(nonunique(VA_all, :IIntID)))
@@ -87,16 +87,22 @@ if !isempty(missing_cols)
     error("Missing required columns in VA_all: $(missing_cols)")
 end
 
-# Select the indicators
-VA_all_indic = select(VA_all, Algorithm_indic)
+# Select the indicators and year of death
+VA_all_indic =
+    VA_all |>
+    df -> subset(df, :DoD => ByRow(d -> year(d) <= 2024)) |>
+    df -> select(df, Algorithm_indic) 
 
-
+    
 @rput VA_all_indic   # Send Julia DataFrame to R
 @rput outputdir
 
 ## InterVA ----
 R"""
 library(openVA)
+
+data(RandomVA5)
+VA_all_indic <- RandomVA5
 
 VA_all_InterVA <- codeVA(
     VA_all_indic,
@@ -134,6 +140,9 @@ options(java.parameters = c("-Xmx32g"))
 # libraries
 library(InSilicoVA)
 library(openVA)
+
+data(RandomVA5)
+VA_all_indic <- RandomVA5
 
 VA_all_InSilico <- codeVA(VA_all_indic,
                           data.type = "WHO2016",
