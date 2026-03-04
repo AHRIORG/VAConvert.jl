@@ -6,11 +6,12 @@ This repository contains the code used by the Africa Health Research Institue (A
 
 It is based on a structured data processing framework set up to ensure transparency and traceability. Its key principle is that all data transformation is performed through correspondence tables, or "mapping files", that systematically document which variables from the historical data are used to produced the harmonized input format required by InterVA5 and InSilicoVA. It builds on the structure of the open-source tools CrossVA and PyCrossVA (listed below), implements their principles in Julia and extends them data pre-processing stages and quality control. 
 
-**For more details, see the report describing the harmonization process** (soon to be released, link will be added here)
-
 pyCrossVA: https://github.com/verbal-autopsy-software/pyCrossVA 
 
 CrossVA: https://github.com/SwissTPH/CrossVA
+
+
+**For more details, see the report describing the harmonization process** (soon to be released, link will be added here)
 
 
 ## Folder description
@@ -23,7 +24,7 @@ CrossVA: https://github.com/SwissTPH/CrossVA
 - Creating_datasets.R: script to create the final released datasets.
 
 **/test**: includes the following validation tests
-- mapping_file_checks.R: script running tests on the mapping files (validity of source variable, condition, relationship...)
+- Mapping_file_verifications.R: script running tests on the mapping files (validity of source variable, condition, relationship...)
 - test_mapping.jl: script to test the harmonization with validated test datasets
 
 **/mapping**: contains datasets used for harmonization
@@ -45,7 +46,9 @@ Mapping files, correspondance tables used to map historical VA data to a harmoni
 - VAQ_to_InSilicoVA.csv: mapping file for VAs using questionnaires from 2000 to 2016, including AHRI questionnaire (VAQ - 2000-2016), supplemented by AHRI's checklist 1 (VAC - 2000-2010) and AHRI's checklist 2 (2011-2016).
 - VAP_to_InSilicoVA.csv: mapping file for VAs using WHO 2016 standard questionnaire (VAP - 2017-2021)
 - VAW_to_InSilicoVA.csv: mapping file for VA using WHO 2016 standard questionnaire (VAW - 2022-2024)
-- Mapping_framework_probbase2016.csv: For reference, the general framework that each questionnaire had to be mapped to 
+- Mapping_framework_probbase2016.csv: For reference, the general framework to which each questionnaire had to be mapped
+
+**/test_dvlp**: folder for scripts in development for future evolutions of the package
 
 
 
