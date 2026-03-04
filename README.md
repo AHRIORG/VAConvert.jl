@@ -15,7 +15,7 @@ CrossVA: https://github.com/SwissTPH/CrossVA
 
 ## Folder description
 
-***/src***:includes
+***/src***: includes
 - extractdata.jl: script to extract relevant information from the main database
 - processdata.jl: script to prepare the data into a format ready for mapping, in particular setting missing values and transforming all duration variables in days.
 - variable_mapping.jl: script to harmonize data to the standard input expected by VA algorithms InSilicoVA and InterVA5
@@ -23,7 +23,7 @@ CrossVA: https://github.com/SwissTPH/CrossVA
 - Creating_datasets.R: script to create the final released datasets.
 
 **/test**: includes the following validation tests
-- mapping_file_checks.R: script running tests on the mapping files (validity of source variable, relationship...à
+- mapping_file_checks.R: script running tests on the mapping files (validity of source variable, condition, relationship...)
 - test_mapping.jl: script to test the harmonization with validated test datasets
 
 **/mapping**: contains datasets used for harmonization
