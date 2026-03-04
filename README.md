@@ -16,7 +16,7 @@ CrossVA: https://github.com/SwissTPH/CrossVA
 ## Folder description
 
 ***/src***: includes
-- extractdata.jl: script to extract relevant information from the main database
+- extractdata.jl: script to extract relevant information from the main AHRI database 
 - processdata.jl: script to prepare the data into a format ready for mapping, in particular setting missing values and transforming all duration variables in days.
 - variable_mapping.jl: script to harmonize data to the standard input expected by VA algorithms InSilicoVA and InterVA5
 - CoD_determination.R: script used to estimate the causes of death with InSilicoVA and InterVA5 and extract the top causes of death
@@ -35,9 +35,9 @@ a. Files to transform all durations variable in a common unit (days)
 - VA_Duration_equivalence.csv
 - VA_Duration_consolidation.csv
   
-b. Files to define missing variables
+b. Files to identify missing values
 
-- NumericVarialbes_with_missing.csv
+- NumericVariables_with_missing.csv
 - VAVariableDomains_with_missing.csv
 
 Mapping files, correspondance tables used to map historical VA data to a harmonized format 
