@@ -4,7 +4,7 @@
 
 This repository contains the code used by the Africa Health Research Institue (AHRI) to produce a harmonized cause-of-death datasets from VAs, across four different VA questionnaire versions from 2000 to 2024, using InterVA5 and InSilicoVA to estimate causes of death.
 
-It is based on a structured data processing framework set up to ensure transparency and traceability. Its key principle is that all data transformation is performed through correspondence tables that systematically document which variables from the historical data are used to produced the harmonized input format required by InterVA5 and InSilicoVA. It builds on the structure of the open-source tools CrossVA and PyCrossVA built (listed below), implements their principles in Julia and extends them data pre-processing stages and quality control. 
+It is based on a structured data processing framework set up to ensure transparency and traceability. Its key principle is that all data transformation is performed through correspondence tables, or "mapping files", that systematically document which variables from the historical data are used to produced the harmonized input format required by InterVA5 and InSilicoVA. It builds on the structure of the open-source tools CrossVA and PyCrossVA (listed below), implements their principles in Julia and extends them data pre-processing stages and quality control. 
 
 **For more details, see the report describing the harmonization process** (soon to be released, link will be added here)
 
