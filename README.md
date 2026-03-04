@@ -24,7 +24,7 @@ CrossVA: https://github.com/SwissTPH/CrossVA
 - Creating_datasets.R: script to create the final released datasets.
 
 **/test**: includes the following validation tests
-- Mapping_files_verifications.R: script running tests on the mapping files (validity of source variable, condition, relationship...)
+- Mapping_file_verifications.R: script running tests on the mapping files (validity of source variable, condition, relationship...)
 - test_mapping.jl: script to test the harmonization with validated test datasets
 
 **/mapping**: contains datasets used for harmonization
