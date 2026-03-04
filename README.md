@@ -8,13 +8,14 @@ It is based on a structured data processing framework set up to ensure transpare
 
 **For more details, see the report describing the harmonization process** (soon to be released, link will be added here)
 
-https://github.com/verbal-autopsy-software/pyCrossVA 
-https://github.com/SwissTPH/CrossVA
+pyCrossVA: https://github.com/verbal-autopsy-software/pyCrossVA 
+
+CrossVA: https://github.com/SwissTPH/CrossVA
 
 
 ## Folder description
 
-**/src**: includes
+***/src***:includes
 - extractdata.jl: script to extract relevant information from the main database
 - processdata.jl: script to prepare the data into a format ready for mapping, in particular setting missing values and transforming all duration variables in days.
 - variable_mapping.jl: script to harmonize data to the standard input expected by VA algorithms InSilicoVA and InterVA5
@@ -28,14 +29,19 @@ https://github.com/SwissTPH/CrossVA
 **/mapping**: contains datasets used for harmonization
 
 Files to preprocess the data:
+
 a. Files to transform all durations variable in a common unit (days)
+
 - VA_Duration_equivalence.csv
 - VA_Duration_consolidation.csv
+- 
 b. Files to define missing variables
+
 - NumericVarialbes_with_missing.csv
 - VAVariableDomains_with_missing.csv
 
 Mapping files, correspondance tables used to map historical VA data to a harmonized format 
+
 - VAQ_to_InSilicoVA.csv: mapping file for VAs using questionnaires from 2000 to 2016, including AHRI questionnaire (VAQ - 2000-2016), supplemented by AHRI's checklist 1 (VAC - 2000-2010) and AHRI's checklist 2 (2011-2016).
 - VAP_to_InSilicoVA.csv: mapping file for VAs using WHO 2016 standard questionnaire (VAP - 2017-2021)
 - VAW_to_InSilicoVA.csv: mapping file for VA using WHO 2016 standard questionnaire (VAP - 2017-2021)
