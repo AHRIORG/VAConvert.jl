@@ -34,7 +34,7 @@ a. Files to transform all durations variable in a common unit (days)
 
 - VA_Duration_equivalence.csv
 - VA_Duration_consolidation.csv
-- 
+  
 b. Files to define missing variables
 
 - NumericVarialbes_with_missing.csv
