@@ -10,13 +10,20 @@ library(data.table)
 library(dplyr)
 library(questionr)
 
-## First test with VAW -----
+# list of variables added compared to those only required by the algorithms
+
+
 
 
 ### First function to test if the numeric variables are in the spreadsheet to encode missing ---
 
 
+
+
 test_numericvar_recoded <- function(Source){ #a function to test if all numeric variable are processed for recoding as missing
+ 
+  #preprocessing file for numeric variables
+  NumericVar_missing <- read.csv("Pre_processing_files/NumericVariables_with_missing.csv")
   # Isolates numeric variables from the mapping file
   Mapping_Numeric <- read.csv(paste0(Source, "/", Source, "_to_InSilicoVA.csv")) %>% filter(VarDomain == "Numeric") %>% 
     # we exclude constructed ones for VAW
@@ -48,12 +55,18 @@ test_mapping_files <- function(Source){
   
   # 1. Testing New Column name
 
+  
   # Checking new column names
-  New_indic_compared_to_Framework <- Mapping_file$New.Column.Name %in% Mapping_framework$New.Column.Name
+  additional_var <- c("MissingVA", "NonContact", "VARefused", "Questionnaire", "DoB", "DoD","Sex", "VAVisitDate", "VAInterviewType",
+                      "RespRelationship", "LivedWithDeceased", "DeathSetting", 
+                      "covid_diag", "covid_test", "covid_test_r",
+                      "taste_loss", "extreme_fatigue")
+  
+  New_indic_compared_to_Framework <- Mapping_file$New.Column.Name %in% c(Mapping_framework$New.Column.Name, additional_var)
   
   if (F %in% New_indic_compared_to_Framework) {
-    print(paste0("Errors in New Column Name for ", Source, "following column names do not match the expected format:"))
-    print(Mapping_file$New.Column.Name[Mapping_file$New.Column.Name %in% Mapping_framework$New.Column.Name == F])
+    print(paste0("Errors in New Column Name for ", Source, " following column names do not match the expected format:"))
+    print(Mapping_file$New.Column.Name[Mapping_file$New.Column.Name %in% c(Mapping_framework$New.Column.Name,additional_var ) == F])
   } else {print("New Column Name verified")
   
         # Checking the order of New Column names (important to run InterVA) if they do match
@@ -78,7 +91,7 @@ test_mapping_files <- function(Source){
   # 2. Testing relationship - I add a trimws here (trim white space) because in the function reading the mapping, we also add a strip ------
   
     # Isolating variables that would not meet requirement
-  Relationship_pb <- Mapping_file %>% filter(!(trimws(Relationship) %in% c(NA,"", "eq", "gt", "ge", "lt", "le", "contains", "between")))
+  Relationship_pb <- Mapping_file %>% filter(!(trimws(Relationship) %in% c(NA,"", "eq", "gt", "ge", "lt", "le", "contains", "between", "map_category", "rename_var")))
       #Error message
   if (nrow(Relationship_pb)>0) {
     print(paste0("Errors in Relationships for ", Source, "following variables:"))
@@ -102,7 +115,7 @@ test_mapping_files <- function(Source){
   # 3. Testing Source Column ID ------
   
   # variables available for mapping
-  HDSS_var <- c("hdss_sex", "hdss_ageindays", "hdss_dod_month", "PartnerStatus")
+  HDSS_var <- c("hdss_sex", "hdss_dob", "hdss_dod", "hdss_ageindays", "hdss_dod_month", "PartnerStatus", "Questionnaire", "Source", "IsCallCentreVisit")
   consolidated_duration <- VA_Duration_consolidation$Consolidated_variable
   
   Source_Col_pb <- Mapping_file %>% filter(!(Source.Column.ID %in% c(HDSS_var, consolidated_duration, Variable_file$Variable, NA, "")))
@@ -120,14 +133,14 @@ test_mapping_files <- function(Source){
   
     # Testing variable domain
   # Exceptional variable domains: HDSS, Numeric, NA
-  Var_Domain_pb <- Mapping_file %>% filter(!(VarDomain %in% c(Variable_domain$VarDomain, NA, "Numeric", "", "HDSS", "Text")))
+  Var_Domain_pb <- Mapping_file %>% filter(!(VarDomain %in% c(Variable_domain$VarDomain, NA, "Numeric", "", "HDSS", "Text", "Date")))
   if (nrow(Var_Domain_pb)>0) {
     print(paste0("Errors in VarDomain for ", Source, " following variables:"))
     print(Var_Domain_pb %>% select(New.Column.Name, VarDomain, Source.Column.ID))
   } else {print("Variable domains verified")}
   
   # Testing if condition belongs to Vardomain
-  Vardomain_to_be_tested <- Mapping_file %>% filter(!(trimws(VarDomain) %in% c(NA, "Numeric", "", "HDSS", "Text", "VA_Checklist", " ")))
+  Vardomain_to_be_tested <- Mapping_file %>% filter(!(trimws(VarDomain) %in% c(NA, "Numeric", "", "HDSS", "Text", "VA_Checklist", " ", "Date"))) %>% filter(!(Relationship %in% c("rename_var", "map_category") ))
   pb_lines_VarDomain <- c(NULL)
   for (i in 1:nrow(Vardomain_to_be_tested)){
     #Extracting line domain
