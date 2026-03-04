@@ -45,7 +45,7 @@ Mapping files, correspondance tables used to map historical VA data to a harmoni
 - VAQ_to_InSilicoVA.csv: mapping file for VAs using questionnaires from 2000 to 2016, including AHRI questionnaire (VAQ - 2000-2016), supplemented by AHRI's checklist 1 (VAC - 2000-2010) and AHRI's checklist 2 (2011-2016).
 - VAP_to_InSilicoVA.csv: mapping file for VAs using WHO 2016 standard questionnaire (VAP - 2017-2021)
 - VAW_to_InSilicoVA.csv: mapping file for VA using WHO 2016 standard questionnaire (VAW - 2022-2024)
-- Mapping_framework_probbase2016.csv: the general framework that each questionnaire had to be mapped to 
+- Mapping_framework_probbase2016.csv: For reference, the general framework that each questionnaire had to be mapped to 
 
 
 
