@@ -852,6 +852,10 @@ function CallCentreInterviews(df::AbstractDataFrame, source)::AbstractDataFrame
     end
     #vadata.IsCallCentreVisit = mapslices(row -> any(col -> !ismissing(row[col]) && row[col] == "Call Centre", cols), eachrow(vadata)) .|> x -> x ? "YES" : "NO"
     vadata.IsCallCentreVisit = [any(col -> !ismissing(row[col]) && row[col] == "YES", cols) ? "YES" : "NO" for row in eachrow(vadata)]
+    if source == "VAP"
+        df = DataFrame(df)
+        df[df.IIntID .== 209159, :hdss_dob] = [Date(1959, 6, 10)]
+    end
     return leftjoin(df, select(vadata, :IIntID, :IsCallCentreVisit), on=:IIntID)
 end
 
