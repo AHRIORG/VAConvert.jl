@@ -14,7 +14,7 @@ library(zoo)
 library(questionr)
 
 
-data_repo <- "C:/Data/1_VA/0_VA_raw_data/"
+data_repo <- Sys.getenv("DATA_PATH")
 
 # 1. Downloading VA data ----
 
@@ -35,7 +35,7 @@ All_deaths <- bind_rows(VAP, VAQ) %>%
 
 # CoD data -----
 
-InterVA_CoD <- read.csv(paste0(data_repo,"csvfiles/Old_VA_CoD/Individual_CoD_InterVA.csv"), sep= ",", row.names =1) %>% 
+InterVA_CoD <- read.csv(paste0(data_repo,"csvfiles/VA_CoD/Individual_CoD_InterVA.csv"), sep= ",", row.names =1) %>% 
   rename(cause1_InterVA = cause1, 
          lik1_InterVA = lik1, 
          cause2_InterVA = cause2, 
@@ -44,7 +44,7 @@ InterVA_CoD <- read.csv(paste0(data_repo,"csvfiles/Old_VA_CoD/Individual_CoD_Int
          lik3_InterVA = lik3
          )
 
-InSilico_CoD <- read.csv(paste0(data_repo,"csvfiles/Old_VA_CoD/Individual_CoD_InSilicoVA_select.csv"), sep= ",", row.names =1) %>% 
+InSilico_CoD <- read.csv(paste0(data_repo,"csvfiles/VA_CoD/Individual_CoD_InSilicoVA_select.csv"), sep= ",", row.names =1) %>% 
   rename(cause1_InSilicoVA = cause1, 
          prob1_InSilicoVA = prob1, 
          cause2_InSilicoVA = cause2, 
@@ -74,7 +74,7 @@ additional_detailed_vars <- c("IIntID","covid_diag", "covid_test","covid_test_r"
 VA_all_detailed_checked_with_added_vars<- left_join(VA_all_detailed_checked, All_deaths[,..additional_detailed_vars], by = "IIntID")
 
 
-write.csv(VA_all_detailed_checked_with_added_vars, paste0(data_repo,"csvfiles/Publishable_datasets/VA_detailed_2000_2024.csv"))
+write.csv(VA_all_detailed_checked_with_added_vars, paste0(data_repo,"csvfiles/Publishable_datasets/AHRI.HDSS.VA-detailed-2000-2024.v1.csv"))
 
 
 
@@ -105,6 +105,7 @@ Deaths <- left_join(All_deaths, InterVA_CoD, by = "IIntID") %>%
           ) 
 
 
+
 write.csv(Deaths, paste0(data_repo,"csvfiles/Deaths_CoD_2000_2024_all_variables.csv"))
 
 
@@ -126,7 +127,10 @@ Deaths_vars <- c("IIntID", "DoB_ym", "DoD_ym", "Sex", "Age_in_years", "Age_in_da
                 "MissingVA", "NonContact", "VARefused", "Questionnaire", "VAVisitDate", "VAInterviewType",
                 "RespRelationship", "LivedWithDeceased", "DeathSetting",
                 "cause1_InterVA", "lik1_InterVA", "cause2_InterVA", "lik2_InterVA", "cause3_InterVA", "lik3_InterVA",
-                "cause1_InSilicoVA", "prob1_InSilicoVA", "cause2_InSilicoVA", "prob2_InSilicoVA", "cause3_InSilicoVA", "prob3_InSilicoVA")
+                "cause1_InSilicoVA", "prob1_InSilicoVA", "prob1_upper", "prob1_lower", "cause2_InSilicoVA", 
+                "prob2_InSilicoVA", "prob2_upper","prob2_lower",
+                "cause3_InSilicoVA", "prob3_InSilicoVA", "prob3_upper","prob3_lower"
+                )
 
 if(F %in% (Deaths_vars %in% names(Deaths))){
   
@@ -143,7 +147,15 @@ Deaths_selected_vars <- Deaths[,..Deaths_vars]
 
 # Detailed VA data, only deaths with a VA
 
-write.csv(Deaths_selected_vars, paste0(data_repo,"csvfiles/Publishable_datasets/Deaths_CoD_2000_2024.csv"))
+write.csv(Deaths_selected_vars, paste0(data_repo,"csvfiles/Publishable_datasets/AHRI.HDSS.DEATHS-COD-2000-2024.v1.csv"))
 
+
+## Sanity checks
+
+
+# freq(Deaths$cause1_InterVA)
+# freq(Deaths$cause1_InSilicoVA)
+# 
+# freq(Deaths$Questionnaire)
 
 
