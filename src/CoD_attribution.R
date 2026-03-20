@@ -18,6 +18,7 @@ library(questionr)
 library(tibble)
 library(lubridate)
 
+#data_repository <- "C:/Data/1_VA/0_VA_raw_data"
 data_repository <- Sys.getenv("DATA_PATH")
 
 # Function to select TopCOD for InSilicoVA  -----
@@ -60,7 +61,7 @@ select_InSilico_prob <- function(df,
   
   ##  ---------- Rule 1: first cause Undetermined
   
-  indiv_lowprob1 <- df$prob1 < cause1_lim
+  indiv_lowprob1 <- df$prob1 <= cause1_lim
   
   df$cause1[indiv_lowprob1] <- undetermined_label
   df$prob1[indiv_lowprob1]  <- 1
@@ -74,7 +75,7 @@ select_InSilico_prob <- function(df,
   
   if (n_cause > 1) {
     for (i in 2:n_cause) {
-      low_prob <- df[[prob_cols[i]]] < other_lim | is.na(df[[prob_cols[i]]])
+      low_prob <- df[[prob_cols[i]]] <= other_lim | is.na(df[[prob_cols[i]]])
       df[[cause_cols[i]]][low_prob] <- NA_character_
       df[[prob_cols[i]]][low_prob]  <- NA_real_
       
@@ -144,7 +145,7 @@ VA_all_indic <- VA_all[,..Algorithm_indic]
 ## InterVA ----
 
 start_time <- Sys.time()
-log_file <- paste0("C:/Data/1_VA/0_VA_raw_data/csvfiles/VA_CoD", "/CoD_determination_run_log.txt")
+log_file <- paste0(data_repository, "/csvfiles/VA_CoD", "/CoD_determination_run_log.txt")
 cat("-------------------------\n Running InterVA5 all deaths, starting at:", format(start_time, "%Y-%m-%d %H:%M:%S") , " SAST \n", 
     file = log_file, append = TRUE)
 
@@ -154,8 +155,9 @@ VA_all_InterVA <- codeVA(VA_all_indic,
                           HIV = "h",
                           Malaria = "v",
                           version = "5", 
+                          # write = T, 
                           returnCheckedData = T, 
-                          directory = paste0(data_repository, "/csvfiles//VA_CoD/VAData_converted_VAQ.csv")
+                          directory = paste0(data_repository,"/csvfiles/VA_CoD")
 )
 end_time <- Sys.time()
 cat("Finished at:", format(end_time, "%Y-%m-%d %H:%M:%S") , " SAST\n", file = log_file, append = TRUE)
@@ -180,8 +182,8 @@ VA_all_InSilico <- codeVA(VA_all_indic,
                           write = T, 
                           indiv.CI = 0.95,
                           warning.write = T,
-                          directory = paste0(data_repository, "/csvfiles//VA_CoD/VAData_converted_VAQ.csv"),
-                          seed = 19800508,
+                          directory = directory = paste0(data_repository,"/csvfiles/VA_CoD")
+                          seed = 19800508, # Day of the declaration of smallpox eradication!!
                           java_option = "-Xmx32g", #Memory space
                           exclude.impossible.cause = "subset2" #Insure no impossible causes, here we put the default
 )
@@ -213,6 +215,9 @@ Individual_CoD_InSilicoVA_select <- Individual_CoD_InSilico %>%
                        full_proba_list = Individual_CoD_InSilicoVA_full)
 
 
+# get the full sample of individual probabilities for each death and cause of death
+# Full_sample_prob <- get.indiv(VA_all_InSilico, CI = 0.95, is.sample = T) 
+# saveRDS(Full_sample_prob, paste0(data_repository,"/csvfiles/VA_CoD/VA_InSilicoVA_Indiv_CoD_full_probability_distribution.rds"))
 
 
 ## Save Checked dataset -----
@@ -229,7 +234,15 @@ saveRDS(VA_all_InterVA, paste0(data_repository,"/csvfiles/VA_CoD/VA_InterVA.rds"
 
 write.csv(Individual_CoD_InterVA, paste0(data_repository,"/csvfiles/VA_CoD/Individual_CoD_InterVA.csv"))
 write.csv(Individual_CoD_InSilicoVA_select, paste0(data_repository,"/csvfiles/VA_CoD/Individual_CoD_InSilicoVA_select.csv"))
-write.csv(Individual_CoD_InSilico_full, paste0(data_repository,"/csvfiles/VA_CoD/Individual_CoD_InSilicoVA_full.csv"))
+saveRDS(Individual_CoD_InSilicoVA_full, paste0(data_repository,"/csvfiles/VA_CoD/Individual_CoD_InSilicoVA_full.csv"))
 write.csv(VA_all_InSilico_Checked_data,paste0(data_repository,"/csvfiles/VA_all_checked_data.csv" ))
 
+
 VA_all_InSilico <- readRDS(paste0(data_repository,"/csvfiles/VA_CoD/VA_InSilicoVA.rds"))
+
+# Individual_CoD_InSilico_full <- read.csv(paste0(data_repository,"/csvfiles/VA_CoD/Individual_CoD_InSilicoVA_full.csv"))
+
+
+
+
+

@@ -14,7 +14,8 @@ library(zoo)
 library(questionr)
 
 
-data_repo <- Sys.getenv("DATA_PATH")
+#data_repo <- "C:/Data/1_VA/0_VA_raw_data/"
+data_repository <- Sys.getenv("DATA_PATH")
 
 # 1. Downloading VA data ----
 
@@ -74,7 +75,7 @@ additional_detailed_vars <- c("IIntID","covid_diag", "covid_test","covid_test_r"
 VA_all_detailed_checked_with_added_vars<- left_join(VA_all_detailed_checked, All_deaths[,..additional_detailed_vars], by = "IIntID")
 
 
-write.csv(VA_all_detailed_checked_with_added_vars, paste0(data_repo,"csvfiles/Publishable_datasets/AHRI.HDSS.VA-detailed-2000-2024.v1.csv"))
+write.csv(VA_all_detailed_checked_with_added_vars, paste0(data_repo,"csvfiles/Publishable_datasets/AHRI.HDSS.VA-detailed-input-data-2000-2024.v1.csv"))
 
 
 
@@ -147,7 +148,7 @@ Deaths_selected_vars <- Deaths[,..Deaths_vars]
 
 # Detailed VA data, only deaths with a VA
 
-write.csv(Deaths_selected_vars, paste0(data_repo,"csvfiles/Publishable_datasets/AHRI.HDSS.DEATHS-COD-2000-2024.v1.csv"))
+write.csv(Deaths_selected_vars, paste0(data_repo,"csvfiles/Publishable_datasets/AHRI.HDSS.DEATHS-Cause-of-death-2000-2024.v1.csv"))
 
 
 ## Sanity checks
