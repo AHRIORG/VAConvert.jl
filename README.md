@@ -10,6 +10,8 @@ pyCrossVA: https://github.com/verbal-autopsy-software/pyCrossVA
 
 CrossVA: https://github.com/SwissTPH/CrossVA
 
+It is archived on Zenodo : [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22028690.svg)](https://doi.org/10.5281/zenodo.22028690)
+
 
 **For more details, see the report describing the harmonization process** (soon to be released, link will be added here)
 
